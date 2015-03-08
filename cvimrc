@@ -1,0 +1,13 @@
+" Settings
+set nohud
+set smoothscroll
+set noautofocus " The opposite of autofocus; this setting stops
+                " sites from focusing on an input box when they load
+set typelinkhints
+let searchlimit = 30
+let scrollstep = 370
+let barposition = "bottom"
+let searchalias g = "google" " Create a shortcut for search engines.
+                             " For example, typing ':tabnew g example'
+                             " would act the same way as ':tabnew google example'
+let blacklists = ["https://webmail.tcs.com/*","https://sgsinm02.tcs.com/*","https://cashierzth.alipay.com/*"]
