@@ -2,7 +2,7 @@
 export ZSH=$HOME/.oh-my-zsh
 
 #set Editor
-# export EDITOR='subl'
+export EDITOR='vi'
 # export GIT_EDITOR="subl --wait --new-window"
 
 #set highlight for cheat
@@ -60,7 +60,7 @@ plugins=(git colored-man colorize github jira vagrant virtualenv pip python brew
 # User configuration
 #export PATH="/usr/local/opt/coreutils/libexec/gnubin:/Library/Frameworks/Python.framework/Versions/2.7/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
 #export MANPATH="/usr/local/man:$MANPATH"
-export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$PATH"
+export PATH="/Users/zhangchen/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$PATH"
 export MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
 
 
