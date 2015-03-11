@@ -2,7 +2,7 @@
 export ZSH=$HOME/.oh-my-zsh
 
 #set Editor
-export EDITOR='vi'
+export EDITOR="/usr/local/bin/vim"
 # export GIT_EDITOR="subl --wait --new-window"
 
 #set highlight for cheat
