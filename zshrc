@@ -3,7 +3,7 @@ export ZSH=$HOME/.oh-my-zsh
 
 #set Editor
 export EDITOR="/usr/local/bin/vim"
-# export GIT_EDITOR="subl --wait --new-window"
+export GIT_EDITOR="subl --wait --new-window"
 
 #set highlight for cheat
 export CHEATCOLORS=true
@@ -12,9 +12,9 @@ export CHEATCOLORS=true
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
+#ZSH_THEME=apple
 #ZSH_THEME="robbyrussell"
 ZSH_THEME=pygmalion
-#ZSH_THEME=apple
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -23,7 +23,7 @@ ZSH_THEME=pygmalion
 # DISABLE_AUTO_UPDATE="true"
 
 # Uncomment the following line to change how often to auto-update (in days).
-# export UPDATE_ZSH_DAYS=13
+export UPDATE_ZSH_DAYS=7
 
 # Uncomment the following line to disable colors in ls.
 # DISABLE_LS_COLORS="true"
@@ -45,38 +45,32 @@ ZSH_THEME=pygmalion
 # Uncomment the following line if you want to change the command execution time
 # stamp shown in the history command output.
 # The optional three formats: "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
-HIST_STAMPS="mm/dd/yyyy"
+HIST_STAMPS="yyyy/mm/dd"
 
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-# Add wisely, as too many plugins slow down shell startup.
-#plugins=(git)
 plugins=(git colored-man colorize github jira vagrant virtualenv pip python brew-cask brew osx zsh-syntax-highlighting)
 
 # User configuration
-#export PATH="/usr/local/opt/coreutils/libexec/gnubin:/Library/Frameworks/Python.framework/Versions/2.7/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
-#export MANPATH="/usr/local/man:$MANPATH"
+export MANPATH="/usr/local/man:$MANPATH"
 export PATH="/Users/zhangchen/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$PATH"
-export MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
 
 
 source $ZSH/oh-my-zsh.sh
 
 # You may need to manually set your language environment
-# export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 
-# Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
+#Preferred editor for local and remote sessions
+if [[ -n $SSH_CONNECTION ]]; then
+  export EDITOR='vim'
+else
+  export EDITOR='mvim'
+fi
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
@@ -90,10 +84,7 @@ export LANG=en_US.UTF-8
 # For a full list of active aliases, run `alias`.
 #
 # Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
-alias zshconfig="subl ~/.zshrc"
-alias envconfig="vi ~/Projects/config/env.sh"
+alias zshconfig="vi ~/.zshrc"
 alias -s html=subl   # 在命令行直接输入后缀为 html 的文件名，会在 sublime text 中打开
 alias -s rb=subl     # 在命令行直接输入 ruby 文件，会在 sublime text 中打开
 alias -s js=vim
@@ -107,3 +98,57 @@ alias grep='grep --color'
 alias egrep='egrep --color'
 alias fgrep='fgrep --color'
 alias date='cal;date'
+alias app='cd ~/Applications;ls -l'
+alias rm='rmtrash'
+alias wor='cd ~/workspace;ls -l'
+
+#Productivity
+mcd() { mkdir -p "$1"; cd "$1";}
+cls() { cd "$1"; ls;}
+backup() { cp "$1"{,.bak};}
+md5check() { md5sum "$1" | grep "$2";}
+alias makescript="fc -rnl | head -1 >"
+alias genpasswd="strings /dev/urandom | grep -o '[[:alnum:]]' | head -n 30 | tr -d '\n'; echo"
+alias c="clear"
+alias histg="history | grep"
+alias ..='cd ..'
+alias ...='cd ../..'
+extract() {
+if [ -f $1 ] ; then
+case $1 in
+  *.tar.bz2)   tar xjf $1     ;;
+  *.tar.gz)    tar xzf $1     ;;
+  *.bz2)       bunzip2 $1     ;;
+  *.rar)       unrar e $1     ;;
+  *.gz)        gunzip $1      ;;
+  *.tar)       tar xf $1      ;;
+  *.tbz2)      tar xjf $1     ;;
+  *.tgz)       tar xzf $1     ;;
+  *.zip)       unzip $1       ;;
+  *.Z)         uncompress $1  ;;
+  *.7z)        7z x $1        ;;
+  *)     echo "'$1' cannot be extracted via extract()" ;;
+   esac
+else
+   echo "'$1' is not a valid file"
+fi
+}
+
+#System info
+alias cmount="mount | column -t"
+alias tree="ls -R | grep ":$" | sed -e 's/:$//' -e 's/[^-][^\/]*\//--/g' -e 's/^/   /' -e 's/-/|/'"
+sbs(){ du -b --max-depth 1 | sort -nr | perl -pe 's{([0-9]+)}{sprintf "%.1f%s", $1>=2**30? ($1/2**30, "G"): $1>=2**20? ($1/2**20, "M"): $1>=2**10? ($1/2**10, "K"): ($1, "")}e';}
+alias intercept="sudo strace -ff -e trace=write -e write=1,2 -p"
+alias meminfo='free -m -l -t'
+
+#Network
+alias websiteget="wget --random-wait -r -p -e robots=off -U mozilla"
+alias listen="lsof -P -i -n"
+alias port='netstat -tulanp'
+gmail() { curl -u "i.am.zhchen@gmail.com" --silent "https://mail.google.com/mail/feed/atom" | sed -e 's/<\/fullcount.*/\n/' | sed -e 's/.*fullcount>//'}
+alias ipinfo="curl ifconfig.me && curl ifconfig.me/host"
+getlocation() { lynx -dump http://www.ip-adress.com/ip_tracer/?QRY=$1|grep address|egrep 'city|state|country'|awk '{print $3,$4,$5,$6,$7,$8}'|sed 's\ip address flag \\'|sed 's\My\\';}
+
+#Funny
+kernelgraph() { lsmod | perl -e 'print "digraph \"lsmod\" {";<>;while(<>){@_=split/\s+/; print "\"$_[0]\" -> \"$_\"\n" for split/,/,$_[3]}print "}"' | dot -Tpng | display -;}
+alias busy="cat /dev/urandom | hexdump -C | grep \"ca fe\""
