@@ -113,6 +113,7 @@ alias c="clear"
 alias histg="history | grep"
 alias ..='cd ..'
 alias ...='cd ../..'
+
 extract() {
 if [ -f $1 ] ; then
 case $1 in
@@ -139,16 +140,8 @@ alias cmount="mount | column -t"
 alias tree="ls -R | grep ":$" | sed -e 's/:$//' -e 's/[^-][^\/]*\//--/g' -e 's/^/   /' -e 's/-/|/'"
 sbs(){ du -b --max-depth 1 | sort -nr | perl -pe 's{([0-9]+)}{sprintf "%.1f%s", $1>=2**30? ($1/2**30, "G"): $1>=2**20? ($1/2**20, "M"): $1>=2**10? ($1/2**10, "K"): ($1, "")}e';}
 alias intercept="sudo strace -ff -e trace=write -e write=1,2 -p"
-alias meminfo='free -m -l -t'
 
 #Network
 alias websiteget="wget --random-wait -r -p -e robots=off -U mozilla"
 alias listen="lsof -P -i -n"
-alias port='netstat -tulanp'
-gmail() { curl -u "i.am.zhchen@gmail.com" --silent "https://mail.google.com/mail/feed/atom" | sed -e 's/<\/fullcount.*/\n/' | sed -e 's/.*fullcount>//'}
 alias ipinfo="curl ifconfig.me && curl ifconfig.me/host"
-getlocation() { lynx -dump http://www.ip-adress.com/ip_tracer/?QRY=$1|grep address|egrep 'city|state|country'|awk '{print $3,$4,$5,$6,$7,$8}'|sed 's\ip address flag \\'|sed 's\My\\';}
-
-#Funny
-kernelgraph() { lsmod | perl -e 'print "digraph \"lsmod\" {";<>;while(<>){@_=split/\s+/; print "\"$_[0]\" -> \"$_\"\n" for split/,/,$_[3]}print "}"' | dot -Tpng | display -;}
-alias busy="cat /dev/urandom | hexdump -C | grep \"ca fe\""
