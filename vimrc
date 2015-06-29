@@ -1,3 +1,5 @@
+" ####################################################################################
+
 " don't bother with vi compatibility
 set nocompatible
 
@@ -19,6 +21,7 @@ endif
 " ensure ftdetect et al work by including this after the Vundle stuff
 filetype plugin indent on
 
+" ####################################################################################
 set autoindent
 set autoread                                                 " reload files when changed on disk, i.e. via `git checkout`
 set backspace=2                                              " Fix broken backspace in some setups
@@ -46,6 +49,7 @@ set wildignore=log/**,node_modules/**,target/**,tmp/**,*.rbc,*.pyc,*.swp,*.bak
 set wildmenu                                                 " show a navigable menu for tab completion
 set wildmode=longest,list,full
 
+" ####################################################################################
 " set relative line number for fast jump
 set relativenumber number
 au FocusLost * :set norelativenumber number
@@ -67,6 +71,7 @@ if exists('$TMUX')  " Support resizing in tmux
   set ttymouse=xterm2
 endif
 
+" ####################################################################################
 " keyboard shortcuts
 let mapleader = ','
 noremap <C-h> <C-w>h
@@ -86,6 +91,7 @@ nnoremap <leader>g :GitGutterToggle<CR>
 noremap <silent> <leader>v :source ~/.vimrc<CR>:filetype detect<CR>:exe ":echo 'vimrc reloaded'"<CR>
 nnoremap ; :
 
+" ####################################################################################
 " in case you forgot to sudo
 cnoremap w!! %!sudo tee > /dev/null %
 
@@ -130,6 +136,7 @@ endif
 " Don't copy the contents of an overwritten selection.
 vnoremap p "_dP
 
+" ####################################################################################
 " Go crazy!
 if filereadable(expand("~/.vimrc.local"))
   " In your .vimrc.local, you might like:

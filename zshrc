@@ -52,7 +52,7 @@ HIST_STAMPS="yyyy/mm/dd"
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-plugins=(git colored-man colorize github jira vagrant virtualenv pip python brew-cask brew osx zsh-syntax-highlighting)
+plugins=(git colored-man colorize github vagrant virtualenv pip python brew-cask brew osx zsh-syntax-highlighting)
 
 # User configuration
 export MANPATH="/usr/local/man:$MANPATH"
@@ -87,10 +87,10 @@ export LANG=en_US.UTF-8
 alias zshconfig="vi ~/.zshrc"
 alias -s html=subl   # 在命令行直接输入后缀为 html 的文件名，会在 sublime text 中打开
 alias -s rb=subl     # 在命令行直接输入 ruby 文件，会在 sublime text 中打开
-alias -s js=vim
-alias -s c=vim
-alias -s java=vim
-alias -s txt=vim
+alias -s js=vi
+alias -s c=vi
+alias -s java=vi
+alias -s txt=vi
 
 alias vi='vim'
 alias ll='ls -altr'
