@@ -12,9 +12,8 @@ export CHEATCOLORS=true
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-#ZSH_THEME=apple
 #ZSH_THEME="robbyrussell"
-ZSH_THEME=pygmalion
+ZSH_THEME=af-magic
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -32,7 +31,7 @@ export UPDATE_ZSH_DAYS=7
 # DISABLE_AUTO_TITLE="true"
 
 # Uncomment the following line to enable command auto-correction.
-# ENABLE_CORRECTION="true"
+ENABLE_CORRECTION="true"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
 # COMPLETION_WAITING_DOTS="true"
@@ -83,15 +82,13 @@ export LANG=en_US.UTF-8
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
 #
-# Example aliases
+# Aliases
 alias zshconfig="vi ~/.zshrc"
 alias -s html=subl   # 在命令行直接输入后缀为 html 的文件名，会在 sublime text 中打开
 alias -s rb=subl     # 在命令行直接输入 ruby 文件，会在 sublime text 中打开
 alias -s js=vi
 alias -s c=vi
-alias -s java=vi
 alias -s txt=vi
-
 alias vi='vim'
 alias ll='ls -altr'
 alias grep='grep --color'
@@ -101,18 +98,18 @@ alias date='cal;date'
 alias app='cd ~/Applications;ls -l'
 alias rm='rmtrash'
 alias wor='cd ~/workspace;ls -l'
-
-#Productivity
-mcd() { mkdir -p "$1"; cd "$1";}
-cls() { cd "$1"; ls;}
-backup() { cp "$1"{,.bak};}
-md5check() { md5sum "$1" | grep "$2";}
 alias makescript="fc -rnl | head -1 >"
 alias genpasswd="strings /dev/urandom | grep -o '[[:alnum:]]' | head -n 30 | tr -d '\n'; echo"
 alias c="clear"
 alias histg="history | grep"
 alias ..='cd ..'
 alias ...='cd ../..'
+
+#Function
+mcd() { mkdir -p "$1"; cd "$1";}
+cls() { cd "$1"; ls;}
+backup() { cp "$1"{,.bak};}
+md5check() { md5sum "$1" | grep "$2";}
 
 extract() {
 if [ -f $1 ] ; then
@@ -134,14 +131,3 @@ else
    echo "'$1' is not a valid file"
 fi
 }
-
-#System info
-alias cmount="mount | column -t"
-alias tree="ls -R | grep ":$" | sed -e 's/:$//' -e 's/[^-][^\/]*\//--/g' -e 's/^/   /' -e 's/-/|/'"
-sbs(){ du -b --max-depth 1 | sort -nr | perl -pe 's{([0-9]+)}{sprintf "%.1f%s", $1>=2**30? ($1/2**30, "G"): $1>=2**20? ($1/2**20, "M"): $1>=2**10? ($1/2**10, "K"): ($1, "")}e';}
-alias intercept="sudo strace -ff -e trace=write -e write=1,2 -p"
-
-#Network
-alias websiteget="wget --random-wait -r -p -e robots=off -U mozilla"
-alias listen="lsof -P -i -n"
-alias ipinfo="curl ifconfig.me && curl ifconfig.me/host"
