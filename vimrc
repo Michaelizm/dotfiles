@@ -1,5 +1,3 @@
-" ####################################################################################
-
 " don't bother with vi compatibility
 set nocompatible
 
@@ -8,27 +6,27 @@ syntax enable
 
 " configure Vundle
 filetype on " without this vim emits a zero exit status, later, because of :ft off
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
 filetype off
+set rtp+=~/.vim/bundle/vundle/
 
+call vundle#begin()
 " install Vundle bundles
 if filereadable(expand("~/.vimrc.bundles"))
   source ~/.vimrc.bundles
   source ~/.vimrc.bundles.local
 endif
+call vundle#end()
 
 " ensure ftdetect et al work by including this after the Vundle stuff
 filetype plugin indent on
 
-" ####################################################################################
 set autoindent
 set autoread                                                 " reload files when changed on disk, i.e. via `git checkout`
 set backspace=2                                              " Fix broken backspace in some setups
 set backupcopy=yes                                           " see :help crontab
 set clipboard=unnamed                                        " yank and paste with the system clipboard
-" set cursorcolumn
-" set cursorline
+set cursorcolumn
+set cursorline
 set directory-=.                                             " don't store swapfiles in the current directory
 set encoding=utf-8
 set expandtab                                                " expand tabs to spaces
@@ -49,7 +47,6 @@ set wildignore=log/**,node_modules/**,target/**,tmp/**,*.rbc,*.pyc,*.swp,*.bak
 set wildmenu                                                 " show a navigable menu for tab completion
 set wildmode=longest,list,full
 
-" ####################################################################################
 " set relative line number for fast jump
 set relativenumber number
 au FocusLost * :set norelativenumber number
@@ -71,7 +68,6 @@ if exists('$TMUX')  " Support resizing in tmux
   set ttymouse=xterm2
 endif
 
-" ####################################################################################
 " keyboard shortcuts
 let mapleader = ','
 noremap <C-h> <C-w>h
@@ -91,7 +87,6 @@ nnoremap <leader>g :GitGutterToggle<CR>
 noremap <silent> <leader>v :source ~/.vimrc<CR>:filetype detect<CR>:exe ":echo 'vimrc reloaded'"<CR>
 nnoremap ; :
 
-" ####################################################################################
 " in case you forgot to sudo
 cnoremap w!! %!sudo tee > /dev/null %
 
@@ -109,10 +104,18 @@ if executable('ag')
   let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
 endif
 
+" fdoc is yaml
+autocmd BufRead,BufNewFile *.fdoc set filetype=yaml
 " md is markdown
 autocmd BufRead,BufNewFile *.md set filetype=markdown
 autocmd BufRead,BufNewFile *.md set spell
-
+" extra rails.vim help
+autocmd User Rails silent! Rnavcommand decorator      app/decorators            -glob=**/* -suffix=_decorator.rb
+autocmd User Rails silent! Rnavcommand observer       app/observers             -glob=**/* -suffix=_observer.rb
+autocmd User Rails silent! Rnavcommand feature        features                  -glob=**/* -suffix=.feature
+autocmd User Rails silent! Rnavcommand job            app/jobs                  -glob=**/* -suffix=_job.rb
+autocmd User Rails silent! Rnavcommand mediator       app/mediators             -glob=**/* -suffix=_mediator.rb
+autocmd User Rails silent! Rnavcommand stepdefinition features/step_definitions -glob=**/* -suffix=_steps.rb
 " automatically rebalance windows on vim resize
 autocmd VimResized * :wincmd =
 
@@ -128,7 +131,6 @@ endif
 " Don't copy the contents of an overwritten selection.
 vnoremap p "_dP
 
-" ####################################################################################
 " Go crazy!
 if filereadable(expand("~/.vimrc.local"))
   " In your .vimrc.local, you might like:
