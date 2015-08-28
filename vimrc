@@ -8,13 +8,14 @@ syntax enable
 filetype on " without this vim emits a zero exit status, later, because of :ft off
 filetype off
 set rtp+=~/.vim/bundle/vundle/
-
 call vundle#begin()
+
 " install Vundle bundles
 if filereadable(expand("~/.vimrc.bundles"))
   source ~/.vimrc.bundles
   source ~/.vimrc.bundles.local
 endif
+
 call vundle#end()
 
 " ensure ftdetect et al work by including this after the Vundle stuff
@@ -25,8 +26,6 @@ set autoread                                                 " reload files when
 set backspace=2                                              " Fix broken backspace in some setups
 set backupcopy=yes                                           " see :help crontab
 set clipboard=unnamed                                        " yank and paste with the system clipboard
-set cursorcolumn
-set cursorline
 set directory-=.                                             " don't store swapfiles in the current directory
 set encoding=utf-8
 set expandtab                                                " expand tabs to spaces
@@ -37,30 +36,15 @@ set list                                                     " show trailing whi
 set listchars=tab:▸\ ,trail:▫
 set number                                                   " show line numbers
 set ruler                                                    " show where you are
-set scrolloff=10                                             " show context above/below cursorline
+set scrolloff=3                                              " show context above/below cursorline
 set shiftwidth=2                                             " normal mode indentation commands use 2 spaces
 set showcmd
 set smartcase                                                " case-sensitive search if any caps
-set softtabstop=4                                            " insert mode tab and backspace use 2 spaces
-set tabstop=4                                                " actual tabs occupy 8 characters
-set wildignore=log/**,node_modules/**,target/**,tmp/**,*.rbc,*.pyc,*.swp,*.bak
+set softtabstop=2                                            " insert mode tab and backspace use 2 spaces
+set tabstop=8                                                " actual tabs occupy 8 characters
+set wildignore=log/**,node_modules/**,target/**,tmp/**,*.rbc
 set wildmenu                                                 " show a navigable menu for tab completion
 set wildmode=longest,list,full
-
-" set relative line number for fast jump
-set relativenumber number
-au FocusLost * :set norelativenumber number
-au FocusGained * :set relativenumber
-autocmd InsertEnter * :set norelativenumber number
-autocmd InsertLeave * :set relativenumber
-function! NumberToggle()
-  if(&relativenumber == 1)
-    set norelativenumber number
-  else
-    set relativenumber
-  endif
-endfunc
-nnoremap <C-n> :call NumberToggle()<cr>
 
 " Enable basic mouse behavior such as resizing buffers.
 set mouse=a
@@ -84,8 +68,7 @@ nnoremap <leader>T :CtrlPClearCache<CR>:CtrlP<CR>
 nnoremap <leader>] :TagbarToggle<CR>
 nnoremap <leader><space> :call whitespace#strip_trailing()<CR>
 nnoremap <leader>g :GitGutterToggle<CR>
-noremap <silent> <leader>v :source ~/.vimrc<CR>:filetype detect<CR>:exe ":echo 'vimrc reloaded'"<CR>
-nnoremap ; :
+noremap <silent> <leader>V :source ~/.vimrc<CR>:filetype detect<CR>:exe ":echo 'vimrc reloaded'"<CR>
 
 " in case you forgot to sudo
 cnoremap w!! %!sudo tee > /dev/null %
@@ -93,7 +76,7 @@ cnoremap w!! %!sudo tee > /dev/null %
 " plugin settings
 let g:ctrlp_match_window = 'order:ttb,max:20'
 let g:NERDSpaceDelims=1
-let g:gitgutter_enabled = 1
+let g:gitgutter_enabled = 0
 
 " Use The Silver Searcher https://github.com/ggreer/the_silver_searcher
 if executable('ag')
