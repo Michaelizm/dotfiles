@@ -22,7 +22,7 @@ ZSH_THEME=af-magic
 # DISABLE_AUTO_UPDATE="true"
 
 # Uncomment the following line to change how often to auto-update (in days).
-export UPDATE_ZSH_DAYS=7
+export UPDATE_ZSH_DAYS=3
 
 # Uncomment the following line to disable colors in ls.
 # DISABLE_LS_COLORS="true"
@@ -31,7 +31,7 @@ export UPDATE_ZSH_DAYS=7
 # DISABLE_AUTO_TITLE="true"
 
 # Uncomment the following line to enable command auto-correction.
-ENABLE_CORRECTION="true"
+# ENABLE_CORRECTION="true"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
 # COMPLETION_WAITING_DOTS="true"
@@ -83,22 +83,16 @@ export LANG=en_US.UTF-8
 # For a full list of active aliases, run `alias`.
 #
 # Aliases
-alias zshconfig="vi ~/.zshrc"
-alias -s html=subl   # 在命令行直接输入后缀为 html 的文件名，会在 sublime text 中打开
-alias -s rb=subl     # 在命令行直接输入 ruby 文件，会在 sublime text 中打开
+alias zshconfig="mvim ~/.zshrc"
+alias vi='vim'
 alias -s js=vi
 alias -s c=vi
 alias -s txt=vi
-alias vi='vim'
 alias ll='ls -altr'
 alias grep='grep --color'
 alias egrep='egrep --color'
 alias fgrep='fgrep --color'
-alias date='cal;date'
 alias app='cd ~/Applications;ls -l'
-alias wor='cd ~/workspace;ls -l'
-alias makescript="fc -rnl | head -1 >"
-alias genpasswd="strings /dev/urandom | grep -o '[[:alnum:]]' | head -n 30 | tr -d '\n'; echo"
 alias c="clear"
 alias histg="history | grep"
 alias ..='cd ..'
