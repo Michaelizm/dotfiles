@@ -3,7 +3,7 @@ export ZSH=$HOME/.dotfiles/zsh
 
 #set Editor
 export EDITOR="/usr/local/bin/vim"
-export GIT_EDITOR="subl --wait --new-window"
+export GIT_EDITOR="mvim"
 
 #set highlight for cheat
 export CHEATCOLORS=true
