@@ -1,3 +1,7 @@
+# Base16 Shell
+BASE16_SHELL="$HOME/.config/base16-shell/base16-eighties.dark.sh"
+[[ -s $BASE16_SHELL ]] && source $BASE16_SHELL
+
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.dotfiles/zsh
 
@@ -12,8 +16,8 @@ export CHEATCOLORS=true
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-#ZSH_THEME="robbyrussell"
-ZSH_THEME=af-magic
+ZSH_THEME="robbyrussell"
+#ZSH_THEME=af-magic
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -22,7 +26,7 @@ ZSH_THEME=af-magic
 # DISABLE_AUTO_UPDATE="true"
 
 # Uncomment the following line to change how often to auto-update (in days).
-export UPDATE_ZSH_DAYS=3
+export UPDATE_ZSH_DAYS=7
 
 # Uncomment the following line to disable colors in ls.
 # DISABLE_LS_COLORS="true"
@@ -34,7 +38,7 @@ export UPDATE_ZSH_DAYS=3
 # ENABLE_CORRECTION="true"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
-# COMPLETION_WAITING_DOTS="true"
+COMPLETION_WAITING_DOTS="true"
 
 # Uncomment the following line if you want to disable marking untracked files
 # under VCS as dirty. This makes repository status check for large repositories
@@ -85,14 +89,10 @@ export LANG=en_US.UTF-8
 # Aliases
 alias zshconfig="mvim ~/.zshrc"
 alias vi='vim'
-alias -s js=vi
-alias -s c=vi
-alias -s txt=vi
 alias ll='ls -altr'
 alias grep='grep --color'
 alias egrep='egrep --color'
 alias fgrep='fgrep --color'
-alias app='cd ~/Applications;ls -l'
 alias c="clear"
 alias histg="history | grep"
 alias ..='cd ..'
