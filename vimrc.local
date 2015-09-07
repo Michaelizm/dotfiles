@@ -39,7 +39,7 @@ set novisualbell         " don't beep
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
-
+set t_ti= t_te= " keep showing content after exiting vi
 
 " File type setting
 autocmd FileType python set tabstop=4 shiftwidth=4 textwidth=79 softtabstop=4 shiftround expandtab ai
