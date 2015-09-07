@@ -97,6 +97,7 @@ alias c="clear"
 alias histg="history | grep"
 alias ..='cd ..'
 alias ...='cd ../..'
+alias rep='cd ~/Documents/Repository/'
 
 #Function
 mcd() { mkdir -p "$1"; cd "$1";}
