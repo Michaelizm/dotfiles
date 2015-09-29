@@ -40,3 +40,4 @@ Plugin 'vim-scripts/matchit.zip'
 " Personal plugin
 Plugin 'chriskempson/base16-vim'
 Plugin 'Bling/vim-airline'
+Plugin 'wting/rust.vim'
