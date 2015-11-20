@@ -6,8 +6,7 @@ BASE16_SHELL="$HOME/.config/base16-shell/base16-eighties.dark.sh"
 export ZSH=$HOME/.dotfiles/zsh
 
 #set Editor
-export EDITOR="/usr/local/bin/vim"
-export GIT_EDITOR="mvim"
+#export EDITOR="/usr/local/bin/vim"
 
 #set highlight for cheat
 export CHEATCOLORS=true
@@ -17,8 +16,8 @@ export CHEATCOLORS=true
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
 #ZSH_THEME="robbyrussell"
-ZSH_THEME=af-magic
-
+#ZSH_THEME=af-magic
+ZSH_THEME=pygmalion
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -88,8 +87,7 @@ export LANG=en_US.UTF-8
 # For a full list of active aliases, run `alias`.
 #
 # Aliases
-alias zshconfig="mvim ~/.zshrc"
-alias vi='vim'
+alias zshconfig="vim ~/.zshrc"
 alias ll='ls -altr'
 alias grep='grep --color'
 alias egrep='egrep --color'
