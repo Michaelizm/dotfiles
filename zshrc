@@ -6,7 +6,7 @@ BASE16_SHELL="$HOME/.config/base16-shell/base16-eighties.dark.sh"
 export ZSH=$HOME/.dotfiles/zsh
 
 #set Editor
-#export EDITOR="/usr/local/bin/vim"
+#export EDITOR="~/bin/vim"
 
 #set highlight for cheat
 export CHEATCOLORS=true
@@ -15,9 +15,8 @@ export CHEATCOLORS=true
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-#ZSH_THEME="robbyrussell"
 #ZSH_THEME=af-magic
-ZSH_THEME=pygmalion
+ZSH_THEME=nebirhos
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -32,10 +31,10 @@ export UPDATE_ZSH_DAYS=7
 # DISABLE_LS_COLORS="true"
 
 # Uncomment the following line to disable auto-setting terminal title.
-# DISABLE_AUTO_TITLE="true"
+DISABLE_AUTO_TITLE="true"
 
 # Uncomment the following line to enable command auto-correction.
-# ENABLE_CORRECTION="true"
+#ENABLE_CORRECTION="true"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
 COMPLETION_WAITING_DOTS="true"
@@ -55,7 +54,7 @@ HIST_STAMPS="yyyy/mm/dd"
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-plugins=(git colored-man colorize github vagrant virtualenv pip python brew-cask brew osx zsh-syntax-highlighting)
+plugins=(git svn cp tmux vagrant colored-man colorize github virtualenv pip python brew-cask brew jump osx zsh-syntax-highlighting)
 
 # User configuration
 export MANPATH="/usr/local/man:$MANPATH"
@@ -87,21 +86,29 @@ export LANG=en_US.UTF-8
 # For a full list of active aliases, run `alias`.
 #
 # Aliases
+alias s="cd ~/src"
+alias vim='mvim'
 alias zshconfig="vim ~/.zshrc"
 alias ll='ls -altr'
 alias grep='grep --color'
 alias egrep='egrep --color'
 alias fgrep='fgrep --color'
 alias c="clear"
+alias lsg="ll | grep"
 alias histg="history | grep"
-alias ..='cd ..'
-alias ...='cd ../..'
-alias rep='cd ~/Documents/Repository/'
+alias ..='cd ..; ls'
+alias ...='cd ../..; ls'
+alias ....='cd ../../..; ls'
+alias .....='cd ../../../..; ls'
+alias j='jump'
+alias m='mark'
+alias ms='marks'
+alias ali='ssh root@120.25.88.28'
 
 #Function
 mcd() { mkdir -p "$1"; cd "$1";}
 cls() { cd "$1"; ls;}
-backup() { cp "$1"{,.bak};}
+bak() { cp "$1"{,.bak};}
 md5check() { md5sum "$1" | grep "$2";}
 
 extract() {
@@ -124,3 +131,4 @@ else
    echo "'$1' is not a valid file"
 fi
 }
+source ~/.common_env

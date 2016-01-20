@@ -38,7 +38,7 @@ Plugin 'vim-scripts/greplace.vim'
 Plugin 'vim-scripts/matchit.zip'
 
 " Personal plugin
-plugin 'NERD_commenter.vim'
 Plugin 'chriskempson/base16-vim'
 Plugin 'Bling/vim-airline'
 Plugin 'wting/rust.vim'
+Plugin 'chase/vim-ansible-yaml'
