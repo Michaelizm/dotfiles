@@ -1,7 +1,7 @@
-" ####################################################################################
-" F1
+" F1 ####################################################################################
 noremap <F1> <Esc>
-" F2
+
+" F2 ####################################################################################
 function! HideNumber()
   if(&relativenumber == &number)
     set relativenumber! number!
@@ -13,58 +13,10 @@ function! HideNumber()
   set number?
 endfunc
 nnoremap <F2> :call HideNumber()<CR>
-" F3
-nnoremap <F3> :set list! list?<CR>
-" F4
-nnoremap <F4> :set wrap! wrap?<CR>
-" F5
-set pastetoggle=<F5>
-au InsertLeave * set nopaste
-" F6
-nnoremap <F6> :exec exists('syntax_on') ? 'syn off' : 'syn on'<CR>
-" F7
-" F8
-" F9
-" F10
-" F11
-" F12
+
 " ####################################################################################
 
-" Basic setting
-set noswapfile
-set showmatch
-set matchtime=2
-set noerrorbells         " don't beep
-set novisualbell         " don't beep
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-set t_ti= t_te= " keep showing content after exiting vi
-
-" File type setting
-autocmd FileType python set tabstop=4 shiftwidth=4 textwidth=79 softtabstop=4 shiftround expandtab ai
-autocmd FileType ruby set tabstop=2 shiftwidth=2 softtabstop=2 expandtab ai
-autocmd BufRead,BufNew *.md,*.mkd,*.markdown  set filetype=markdown.mkd
-
-" Plugin setting
-let g:nerdtree_tabs_open_on_console_startup=1
-let g:syntastic_auto_loc_list=1
-let g:syntastic_loc_list_height=5
-
-" gui settings
-set background=dark
-let base16colorspace=256
-colorscheme base16-eighties
-" colorscheme Tomorrow-Night
-" colorscheme Tomorrow-Night-Bright
-" colorscheme desert
-
-if (&t_Co == 256 || has('gui_running'))
-    set guifont=DejaVu\ Sans\ Mono\ for\ Powerline:h14
-    if ($TERM_PROGRAM == 'iTerm.app')
-      colorscheme base16-eighties
-    endif
-endif
+let g:snips_author = 'Zhang Chen <i.am.zhchen@gmail.com>'
 
 " set relative line number for fast jump
 set relativenumber number
@@ -81,22 +33,6 @@ function! NumberToggle()
 endfunc
 nnoremap <C-n> :call NumberToggle()<cr>
 
-" AutoSetFileHead
-autocmd BufNewFile *.sh,*.py exec ":call AutoSetFileHead()"
-function! AutoSetFileHead()
-    if &filetype == 'sh'
-        call setline(1, "\#!/bin/bash")
-    endif
-
-    if &filetype == 'python'
-        call setline(1, "\#!/usr/bin/env python")
-        call append(1, "\# encoding: utf-8")
-    endif
-
-    normal G
-    normal o
-    normal o
-endfunc
 
 " set some keyword to highlight
 if has("autocmd")
@@ -112,41 +48,6 @@ endif
 " keyboard shortcuts
 inoremap kj <ESC>
 nnoremap ; :
-
-" highlight search and remove the highlight result
-set hlsearch
-set incsearch
-set ignorecase
-set smartcase
-noremap <silent><leader>/ :nohls<CR>
-
-" Go to home and end using capitalized directions
-noremap H ^
-noremap L $
-
-"Reselect visual block after indent/outdent
-vnoremap < <gv
-vnoremap > >gv
-
-" select all
 map <Leader>sa ggVG"
-
-" ####################################################################################
-
-" Disambiguate ,a & ,t from the Align plugin, making them fast again.
-"
-" This section is here to prevent AlignMaps from adding a bunch of mappings
-" that interfere with the very-common ,a and ,t mappings. This will get run
-" at every startup to remove the AlignMaps for the *next* vim startup.
-"
-" If you do want the AlignMaps mappings, remove this section, remove
-" ~/.vim/bundle/Align, and re-run rake in maximum-awesome.
-function! s:RemoveConflictingAlignMaps()
-  if exists("g:loaded_AlignMapsPlugin")
-    AlignMapsClean
-  endif
-endfunction
-command! -nargs=0 RemoveConflictingAlignMaps call s:RemoveConflictingAlignMaps()
-silent! autocmd VimEnter * RemoveConflictingAlignMaps
 
 " ####################################################################################

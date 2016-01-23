@@ -1,12 +1,8 @@
-# Base16 Shell
-BASE16_SHELL="$HOME/.config/base16-shell/base16-eighties.dark.sh"
-[[ -s $BASE16_SHELL ]] && source $BASE16_SHELL
-
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.dotfiles/zsh
 
 #set Editor
-#export EDITOR="~/bin/vim"
+export EDITOR="mvim -f"
 
 #set highlight for cheat
 export CHEATCOLORS=true
@@ -15,8 +11,7 @@ export CHEATCOLORS=true
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-#ZSH_THEME=af-magic
-ZSH_THEME=nebirhos
+ZSH_THEME=af-magic
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -68,11 +63,11 @@ export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 
 #Preferred editor for local and remote sessions
-#if [[ -n $SSH_CONNECTION ]]; then
-#  export EDITOR='vim'
-#else
-#  export EDITOR='mvim'
-#fi
+if [[ -n $SSH_CONNECTION ]]; then
+  export EDITOR='vim'
+else
+  export EDITOR='mvim'
+fi
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
@@ -86,8 +81,7 @@ export LANG=en_US.UTF-8
 # For a full list of active aliases, run `alias`.
 #
 # Aliases
-alias s="cd ~/src"
-alias vim='mvim'
+alias vi='\vim'
 alias zshconfig="vim ~/.zshrc"
 alias ll='ls -altr'
 alias grep='grep --color'
@@ -100,35 +94,4 @@ alias ..='cd ..; ls'
 alias ...='cd ../..; ls'
 alias ....='cd ../../..; ls'
 alias .....='cd ../../../..; ls'
-alias j='jump'
-alias m='mark'
-alias ms='marks'
 alias ali='ssh root@120.25.88.28'
-
-#Function
-mcd() { mkdir -p "$1"; cd "$1";}
-cls() { cd "$1"; ls;}
-bak() { cp "$1"{,.bak};}
-md5check() { md5sum "$1" | grep "$2";}
-
-extract() {
-if [ -f $1 ] ; then
-case $1 in
-  *.tar.bz2)   tar xjf $1     ;;
-  *.tar.gz)    tar xzf $1     ;;
-  *.bz2)       bunzip2 $1     ;;
-  *.rar)       unrar e $1     ;;
-  *.gz)        gunzip $1      ;;
-  *.tar)       tar xf $1      ;;
-  *.tbz2)      tar xjf $1     ;;
-  *.tgz)       tar xzf $1     ;;
-  *.zip)       unzip $1       ;;
-  *.Z)         uncompress $1  ;;
-  *.7z)        7z x $1        ;;
-  *)     echo "'$1' cannot be extracted via extract()" ;;
-   esac
-else
-   echo "'$1' is not a valid file"
-fi
-}
-source ~/.common_env
