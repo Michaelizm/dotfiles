@@ -11,7 +11,7 @@ export CHEATCOLORS=true
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME=af-magic
+ZSH_THEME=pygmalion
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -95,3 +95,4 @@ alias ...='cd ../..; ls'
 alias ....='cd ../../..; ls'
 alias .....='cd ../../../..; ls'
 alias ali='ssh root@120.25.88.28'
+alias fuck='eval $(thefuck $(fc -ln -1 | tail -n 1)); fc -R'
