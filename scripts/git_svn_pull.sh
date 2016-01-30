@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 cd "$REPO"
 git stash
 git svn fetch
