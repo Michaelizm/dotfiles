@@ -1,0 +1,3 @@
+EXCLUDES="README.md LICENSE doc"
+DOTFILES_DIRS="$HOME/src/dotfiles"
+UNDOTTED="scripts"
