@@ -1052,7 +1052,7 @@
         " Default in terminal vim is 'dark'
         if isdirectory(expand("~/.vim/bundle/vim-airline-themes/"))
             if !exists('g:airline_theme')
-                let g:airline_theme = 'luna'
+                let g:airline_theme = 'lucius'
             endif
             if !exists('g:airline_powerline_fonts')
                 " Use the default set of separators with a few customizations

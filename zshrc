@@ -1,3 +1,7 @@
+# Base16 Shell
+BASE16_SHELL="$HOME/.config/base16-shell/base16-default.dark.sh"
+[[ -s $BASE16_SHELL ]] && source $BASE16_SHELL
+
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.dotfiles/zsh
 
@@ -95,12 +99,11 @@ alias ...='cd ../..; ls'
 alias ....='cd ../../..; ls'
 alias .....='cd ../../../..; ls'
 alias ali='ssh root@120.25.88.28'
-alias fuck='eval $(thefuck $(fc -ln -1 | tail -n 1)); fc -R'
 alias m='mark'
 alias ms='marks'
 alias j='jump'
 alias gs='git svn'
-alias brewu='brew update  && brew upgrade --all && brew cleanup && brew prune && brew doctor'
+alias brewu='brew update  && brew cask update && brew upgrade --all && brew cleanup && brew prune && brew doctor'
 
 
 # Function
