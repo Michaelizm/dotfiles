@@ -6,9 +6,6 @@ noremap <F1> <Esc>
 " ####################################################################################
 
 let g:snips_author = 'Zhang Chen <i.am.zhchen@gmail.com>'
-let base16colorspace=256  " Access colors present in 256 colorspace"
-colorscheme base16-default
-set background=dark
 
 " ####################################################################################
 
@@ -16,6 +13,7 @@ set background=dark
 inoremap kj <ESC>
 nnoremap ; :
 map <Leader>sa ggVG"
+nnoremap U <C-r>
 
 " AutoSetFileHead
 autocmd BufNewFile *.sh,*.py exec ":call AutoSetFileHead()"
