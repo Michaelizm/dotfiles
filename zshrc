@@ -1,7 +1,3 @@
-# Base16 Shell
-BASE16_SHELL="$HOME/.config/base16-shell/base16-chalk.dark.sh"
-[[ -s $BASE16_SHELL ]] && source $BASE16_SHELL
-
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.dotfiles/zsh
 
@@ -85,7 +81,8 @@ fi
 # For a full list of active aliases, run `alias`.
 #
 # Aliases
-alias vi='\vim'
+alias v='NVIM_TUI_ENABLE_TRUE_COLOR=1 nvim'
+alias vim='NVIM_TUI_ENABLE_TRUE_COLOR=1 nvim'
 alias zshconfig="vim ~/.zshrc"
 alias ll='ls -altr'
 alias grep='grep --color'
@@ -98,7 +95,7 @@ alias ..='cd ..; ls'
 alias ...='cd ../..; ls'
 alias ....='cd ../../..; ls'
 alias .....='cd ../../../..; ls'
-alias ali='ssh root@120.25.88.28'
+alias ali='ssh vagrant@120.25.88.28'
 alias m='mark'
 alias ms='marks'
 alias j='jump'

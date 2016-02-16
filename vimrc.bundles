@@ -110,9 +110,8 @@
             Bundle 'jiangmiao/auto-pairs'
             Bundle 'ctrlpvim/ctrlp.vim'
             Bundle 'tacahiroy/ctrlp-funky'
-            nnoremap <Leader>fu :CtrlPFunky<Cr>
-            nnoremap <Leader>fU :execute 'CtrlPFunky ' . expand('<cword>')<Cr> " narrow the list down with a word under cursor
-
+                nnoremap <Leader>fu :CtrlPFunky<Cr>
+                nnoremap <Leader>fU :execute 'CtrlPFunky ' . expand('<cword>')<Cr> " narrow the list down with a word under cursor
             Bundle 'terryma/vim-multiple-cursors'
             Bundle 'vim-scripts/sessionman.vim'
             Bundle 'matchit.zip'
