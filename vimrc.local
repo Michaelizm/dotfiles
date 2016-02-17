@@ -8,11 +8,12 @@ noremap <F1> <Esc>
 let g:snips_author = 'Zhang Chen <i.am.zhchen@gmail.com>'
 " ####################################################################################
 
-" keyboard shortcuts
+" personal keyboard shortcuts
 inoremap kj <ESC>
 nnoremap ; :
 map <Leader>sa ggVG"
 nnoremap U <C-r>
+nnoremap <Space> <C-d>
 
 " AutoSetFileHead
 autocmd BufNewFile *.sh,*.py exec ":call AutoSetFileHead()"
