@@ -177,13 +177,16 @@
 
 " Vim UI {
 
-    if !exists('g:override_spf13_bundles') && filereadable(expand("~/.vim/bundle/vim-colors-solarized/colors/solarized.vim"))
-        let g:solarized_termcolors=256
-        let g:solarized_termtrans=1
-        let g:solarized_contrast="high"
-        let g:solarized_visibility="high"
-        colorscheme solarized             " Load a colorscheme
-    endif
+    " if !exists('g:override_spf13_bundles') && filereadable(expand("~/.vim/bundle/vim-colors-solarized/colors/solarized.vim"))
+    "     let g:solarized_termcolors=256
+    "     let g:solarized_termtrans=1
+    "     let g:solarized_contrast="normal"
+    "     let g:solarized_visibility="normal"
+    "     color solarized             " Load a colorscheme
+    " endif
+    " let g:gruvbox_italic=1
+    let g:gruvbox_contrast='hard'
+    colorscheme gruvbox
 
     set tabpagemax=15               " Only show 15 tabs
     set showmode                    " Display the current mode
@@ -1052,7 +1055,7 @@
         " Default in terminal vim is 'dark'
         if isdirectory(expand("~/.vim/bundle/vim-airline-themes/"))
             if !exists('g:airline_theme')
-                let g:airline_theme = 'solarized'
+                let g:airline_theme = 'gruvbox'
             endif
             if !exists('g:airline_powerline_fonts')
                 " Use the default set of separators with a few customizations
