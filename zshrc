@@ -8,7 +8,7 @@ umask 022
 export ZSH=$HOME/.dotfiles/zsh
 
 #set Editor
-export EDITOR="NVIM_TUI_ENABLE_TRUE_COLOR=1 nvim"
+export EDITOR="vim"
 
 #set highlight for cheat
 export CHEATCOLORS=true
@@ -87,9 +87,9 @@ export SSH_KEY_PATH="~/.ssh/dsa_id"
 # For a full list of active aliases, run `alias`.
 #
 # Aliases
-alias v='NVIM_TUI_ENABLE_TRUE_COLOR=1 nvim'
-alias vi='NVIM_TUI_ENABLE_TRUE_COLOR=1 nvim'
-alias vim='NVIM_TUI_ENABLE_TRUE_COLOR=1 nvim'
+alias v='vim'
+alias vi='vim'
+alias vim='vim'
 alias zshconfig="vim ~/.zshrc"
 alias ll='ls -altr'
 alias grep='grep --color'

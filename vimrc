@@ -1,5 +1,5 @@
 " Modeline and Notes {
-" vim: set sw=4 ts=4 sts=4 et tw=78 foldmarker={,} foldlevel=1 foldmethod=marker spell:
+" vim: set sw=4 ts=4 sts=4 et tw=78 foldmarker={,} foldlevel=0 foldmethod=marker spell:
 "
 "                    __ _ _____              _
 "         ___ _ __  / _/ |___ /      __   __(_)_ __ ___
@@ -95,7 +95,9 @@
     endfunction
     noremap <leader>bg :call ToggleBG()<CR>
 
-
+    " if !has('gui')
+        "set term=$TERM          " Make arrow and other keys work
+    " endif
     filetype plugin indent on   " Automatically detect file types.
     syntax on                   " Syntax highlighting
     set mouse=a                 " Automatically enable mouse usage
@@ -182,9 +184,8 @@
     "     let g:solarized_visibility="normal"
     "     color solarized             " Load a colorscheme
     " endif
-    " let g:gruvbox_italic=1
-    let g:gruvbox_contrast_light='hard'
     let g:gruvbox_contrast_dark='hard'
+    let g:gruvbox_contrast_light='hard'
     colorscheme gruvbox
 
     set tabpagemax=15               " Only show 15 tabs
@@ -194,6 +195,7 @@
 
     highlight clear SignColumn      " SignColumn should match background
     highlight clear LineNr          " Current line number row will have same background color in relative mode
+    "highlight clear CursorLineNr    " Remove highlight color from current line number
 
     if has('cmdline_info')
         set ruler                   " Show the ruler
@@ -229,7 +231,7 @@
     set wildmode=list:longest,full  " Command <Tab> completion, list matches, then longest common part, then all.
     set whichwrap=b,s,h,l,<,>,[,]   " Backspace and cursor keys wrap too
     set scrolljump=5                " Lines to scroll when cursor leaves screen
-    set scrolloff=7                 " Minimum lines to keep above and below cursor
+    set scrolloff=3                 " Minimum lines to keep above and below cursor
     set foldenable                  " Auto fold code
     set list
     set listchars=tab:›\ ,trail:•,extends:#,nbsp:. " Highlight problematic whitespace
@@ -1057,10 +1059,8 @@
             endif
             if !exists('g:airline_powerline_fonts')
                 " Use the default set of separators with a few customizations
-                let g:airline_left_sep = '▶'
-                let g:airline_left_alt_sep = '❯'
-                let g:airline_right_sep = '◀'
-                let g:airline_right_alt_sep = '❮'
+                let g:airline_left_sep='›'  " Slightly fancier than '>'
+                let g:airline_right_sep='‹' " Slightly fancier than '<'
             endif
         endif
     " }

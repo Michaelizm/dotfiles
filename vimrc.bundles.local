@@ -1,3 +1,3 @@
-NeoBundle "myusuf3/numbers.vim"
-NeoBundle "morhetz/gruvbox"
-NeoBundle 'thinca/vim-themis'
+Bundle "myusuf3/numbers.vim"
+Bundle "morhetz/gruvbox"
+Bundle 'thinca/vim-themis'
