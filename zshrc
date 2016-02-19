@@ -1,14 +1,15 @@
-# For Gruvbox Theme
-source "$HOME/.vim/bundle/gruvbox/gruvbox_256palette.sh"
+# Fix neovim issue https://github.com/neovim/neovim/issues/2048
+infocmp $TERM | sed 's/kbs=^[hH]/kbs=\\177/' > $TERM.ti
+tic $TERM.ti
 
-# Better umask
-umask 022
+# For Neovim
+NVIM_TUI_ENABLE_TRUE_COLOR=1
 
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.dotfiles/zsh
 
 #set Editor
-export EDITOR="vim"
+export EDITOR="nvim"
 
 #set highlight for cheat
 export CHEATCOLORS=true
@@ -87,10 +88,10 @@ export SSH_KEY_PATH="~/.ssh/dsa_id"
 # For a full list of active aliases, run `alias`.
 #
 # Aliases
-alias v='vim'
-alias vi='vim'
-alias vim='vim'
-alias zshconfig="vim ~/.zshrc"
+alias v='nvim'
+alias vi='nvim'
+alias vim='nvim'
+alias zshconfig="nvim ~/.zshrc"
 alias ll='ls -altr'
 alias grep='grep --color'
 alias egrep='egrep --color'
@@ -168,3 +169,5 @@ copy() {
 }
 
 export PATH="$HOME/.bin:$PATH"
+
+test -e ${HOME}/.iterm2_shell_integration.zsh && source ${HOME}/.iterm2_shell_integration.zsh

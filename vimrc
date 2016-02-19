@@ -1,33 +1,3 @@
-" Modeline and Notes {
-"
-"                    __ _ _____              _
-"         ___ _ __  / _/ |___ /      __   __(_)_ __ ___
-"        / __| '_ \| |_| | |_ \ _____\ \ / /| | '_ ` _ \
-"        \__ \ |_) |  _| |___) |_____|\ V / | | | | | | |
-"        |___/ .__/|_| |_|____/        \_/  |_|_| |_| |_|
-"            |_|
-"
-"   This is the personal .vimrc file of Steve Francia.
-"   While much of it is beneficial for general use, I would
-"   recommend picking out the parts you want and understand.
-"
-"   You can find me at http://spf13.com
-"
-"   Copyright 2014 Steve Francia
-"
-"   Licensed under the Apache License, Version 2.0 (the "License");
-"   you may not use this file except in compliance with the License.
-"   You may obtain a copy of the License at
-"
-"       http://www.apache.org/licenses/LICENSE-2.0
-"
-"   Unless required by applicable law or agreed to in writing, software
-"   distributed under the License is distributed on an "AS IS" BASIS,
-"   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-"   See the License for the specific language governing permissions and
-"   limitations under the License.
-" }
-
 " Environment {
 
     " Identify platform {
@@ -176,13 +146,6 @@
 
 " Vim UI {
 
-    " if !exists('g:override_spf13_bundles') && filereadable(expand("~/.vim/bundle/vim-colors-solarized/colors/solarized.vim"))
-    "     let g:solarized_termcolors=256
-    "     let g:solarized_termtrans=1
-    "     let g:solarized_contrast="normal"
-    "     let g:solarized_visibility="normal"
-    "     color solarized             " Load a colorscheme
-    " endif
     let g:gruvbox_contrast_dark='hard'
     let g:gruvbox_termcolors=16
     let g:gruvbox_italic=1
@@ -291,8 +254,8 @@
     " The default mappings for editing and applying the spf13 configuration
     " are <leader>ev and <leader>sv respectively. Change them to your preference
     " by adding the following to your .vimrc.before.local file:
-    "   let g:spf13_edit_config_mapping='<leader>ec'
-    "   let g:spf13_apply_config_mapping='<leader>sc'
+    let g:spf13_edit_config_mapping='<leader>ec'
+    let g:spf13_apply_config_mapping='<leader>sc'
     if !exists('g:spf13_edit_config_mapping')
         let s:spf13_edit_config_mapping = '<leader>ev'
     else
@@ -572,7 +535,7 @@
     " SnipMate {
         " Setting the author var
         " If forking, please overwrite in your .vimrc.local file
-        let g:snips_author = 'Steve Francia <steve.francia@gmail.com>'
+        let g:snips_author = 'Chen Zhang <i.am.zhchen@gmail.com>'
     " }
 
     " NerdTree {
