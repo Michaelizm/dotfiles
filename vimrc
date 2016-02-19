@@ -1,5 +1,4 @@
 " Modeline and Notes {
-" vim: set sw=4 ts=4 sts=4 et tw=78 foldmarker={,} foldlevel=0 foldmethod=marker spell:
 "
 "                    __ _ _____              _
 "         ___ _ __  / _/ |___ /      __   __(_)_ __ ___
@@ -185,7 +184,8 @@
     "     color solarized             " Load a colorscheme
     " endif
     let g:gruvbox_contrast_dark='hard'
-    let g:gruvbox_contrast_light='hard'
+    let g:gruvbox_termcolors=16
+    let g:gruvbox_italic=1
     colorscheme gruvbox
 
     set tabpagemax=15               " Only show 15 tabs
