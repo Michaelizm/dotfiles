@@ -12100,7 +12100,7 @@
 	<key>Default Bookmark Guid</key>
 	<string>93D8229B-781B-4C1B-954E-1AECEF77CBCB</string>
 	<key>DimBackgroundWindows</key>
-	<false/>
+	<true/>
 	<key>DimInactiveSplitPanes</key>
 	<true/>
 	<key>DimOnlyText</key>
@@ -12122,7 +12122,7 @@
 	<key>HideMenuBarInFullscreen</key>
 	<true/>
 	<key>HideScrollbar</key>
-	<false/>
+	<true/>
 	<key>HideTab</key>
 	<true/>
 	<key>HighlightTabLabels</key>
@@ -12186,11 +12186,11 @@
 		<integer>1</integer>
 	</dict>
 	<key>NSWindow Frame Preferences</key>
-	<string>308 421 606 456 0 0 1440 900 </string>
+	<string>308 421 606 456 0 0 1440 877 </string>
 	<key>NSWindow Frame SUUpdateAlert</key>
 	<string>391 381 620 392 0 0 1440 900 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>0 0 1440 900 0 0 1440 877 </string>
+	<string>0 6 1440 871 0 0 1440 877 </string>
 	<key>NeverWarnAboutShortLivedSessions_93D8229B-781B-4C1B-954E-1AECEF77CBCB</key>
 	<true/>
 	<key>New Bookmarks</key>
@@ -12385,7 +12385,7 @@
 			<key>Blur</key>
 			<true/>
 			<key>Blur Radius</key>
-			<real>2</real>
+			<real>9.695462740384615</real>
 			<key>Bold Color</key>
 			<dict>
 				<key>Alpha Component</key>
@@ -12972,7 +12972,7 @@
 			<key>Thin Strokes</key>
 			<integer>2</integer>
 			<key>Transparency</key>
-			<real>0.0</real>
+			<real>0.077884615384615385</real>
 			<key>Triggers</key>
 			<array/>
 			<key>Unlimited Scrollback</key>
@@ -13033,7 +13033,7 @@
 	<key>OpenArrangementAtStartup</key>
 	<false/>
 	<key>OpenBookmark</key>
-	<true/>
+	<false/>
 	<key>OpenNoWindowsAtStartup</key>
 	<false/>
 	<key>OpenTmuxWindowsIn</key>
@@ -13106,7 +13106,7 @@
 	<key>SmartPlacement</key>
 	<false/>
 	<key>SplitPaneDimmingAmount</key>
-	<real>0.40000000596046448</real>
+	<real>0.23761519025533631</real>
 	<key>SwitchTabModifier</key>
 	<integer>4</integer>
 	<key>SwitchWindowModifier</key>

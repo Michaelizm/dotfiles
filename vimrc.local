@@ -4,32 +4,10 @@ noremap <F1> <Esc>
 " F2 ####################################################################################
 
 " ####################################################################################
-
-let g:snips_author = 'Zhang Chen <i.am.zhchen@gmail.com>'
-" ####################################################################################
-
 " personal keyboard shortcuts
 inoremap kj <ESC>
 nnoremap ; :
 map <Leader>sa ggVG"
 nnoremap U <C-r>
 nnoremap <Space> <C-d>
-
-" AutoSetFileHead
-autocmd BufNewFile *.sh,*.py exec ":call AutoSetFileHead()"
-function! AutoSetFileHead()
-    if &filetype == 'sh'
-        call setline(1, "\#!/bin/bash")
-    endif
-
-    if &filetype == 'python'
-        call setline(1, "\#!/usr/bin/env python")
-        call append(1, "\# encoding: utf-8")
-    endif
-
-    normal G
-    normal o
-    normal o
-endfunc
-
 " ####################################################################################

@@ -1,6 +1,6 @@
 # Fix neovim issue https://github.com/neovim/neovim/issues/2048
-infocmp $TERM | sed 's/kbs=^[hH]/kbs=\\177/' > $TERM.ti
-tic $TERM.ti
+infocmp $TERM | sed 's/kbs=^[hH]/kbs=\\177/' > /tmp/$TERM.ti
+tic /tmp/$TERM.ti
 
 # For Neovim
 NVIM_TUI_ENABLE_TRUE_COLOR=1
