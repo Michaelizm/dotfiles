@@ -108,7 +108,7 @@ alias m='mark'
 alias ms='marks'
 alias j='jump'
 alias gs='git svn'
-alias brew='brew update  && brew cask update && brew upgrade --all && brew cleanup && brew prune && brew doctor'
+alias brewu='brew update  && brew cask update && brew upgrade --all && brew cleanup && brew prune && brew doctor'
 
 
 # Function

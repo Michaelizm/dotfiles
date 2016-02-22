@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 
-
-
 ############################  SETUP PARAMETERS
 [ -z "$APP_PATH" ] && APP_PATH="$HOME/src/dotfiles"
 debug_mode='0'
