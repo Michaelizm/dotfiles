@@ -69,12 +69,12 @@ source $ZSH/oh-my-zsh.sh
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 
-#Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
+# Preferred editor for local and remote sessions
+ if [[ -n $SSH_CONNECTION ]]; then
+   export EDITOR='nvim'
+ else
+   export EDITOR='nvim'
+ fi
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
@@ -88,6 +88,7 @@ export SSH_KEY_PATH="~/.ssh/dsa_id"
 # For a full list of active aliases, run `alias`.
 #
 # Aliases
+alias s='subl'
 alias v='nvim'
 alias vi='nvim'
 alias vim='nvim'
@@ -108,10 +109,7 @@ alias m='mark'
 alias ms='marks'
 alias j='jump'
 alias gs='git svn'
-alias brewu='brew update  && brew cask update && brew upgrade --all && brew cleanup && brew prune && brew doctor'
-
-
-# Function
+alias brewu='brew update && brew cask update && brew upgrade --all && brew cleanup && brew prune && brew doctor'
 
 export PATH="$HOME/.bin:$PATH"
 
