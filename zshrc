@@ -109,7 +109,7 @@ alias m='mark'
 alias ms='marks'
 alias j='jump'
 alias gs='git svn'
-alias brewu='brew update && brew cask update && brew upgrade && brew cleanup && brew cask update && brew prune && brew doctor'
+alias brewu='brew update && brew cask update && brew upgrade && brew cleanup && brew cask cleanup && brew prune && brew doctor'
 
 export PATH="$HOME/.bin:$PATH"
 

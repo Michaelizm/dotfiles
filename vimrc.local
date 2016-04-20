@@ -1,6 +1,6 @@
 " personal keyboard shortcuts
 inoremap kj <ESC>
-nnoremap ; :
 map <Leader>sa ggVG"
 nnoremap U <C-r>
 nnoremap <Space> <C-d>
+nnoremap ; :

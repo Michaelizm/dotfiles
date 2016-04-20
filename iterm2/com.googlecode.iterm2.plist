@@ -12190,7 +12190,7 @@
 	<key>NSWindow Frame SUUpdateAlert</key>
 	<string>391 381 620 392 0 0 1440 900 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>0 0 1440 900 0 0 1440 877 </string>
+	<string>0 40 1440 837 0 0 1440 877 </string>
 	<key>NeverWarnAboutShortLivedSessions_93D8229B-781B-4C1B-954E-1AECEF77CBCB</key>
 	<true/>
 	<key>New Bookmarks</key>
@@ -12404,7 +12404,7 @@
 			<key>Close Sessions On End</key>
 			<true/>
 			<key>Columns</key>
-			<integer>800</integer>
+			<integer>8000</integer>
 			<key>Command</key>
 			<string></string>
 			<key>Cursor Boost</key>
@@ -13006,7 +13006,7 @@
 	<key>NoSyncDoNotWarnBeforeMultilinePaste_selection</key>
 	<integer>0</integer>
 	<key>NoSyncLastTipTime</key>
-	<real>478620475.03214502</real>
+	<real>482381592.89436001</real>
 	<key>NoSyncNeverRemindPrefsChangesLostForFile</key>
 	<true/>
 	<key>NoSyncNeverRemindPrefsChangesLostForFile_selection</key>
@@ -13038,6 +13038,32 @@
 		<string>0011</string>
 		<string>0012</string>
 		<string>0013</string>
+		<string>0014</string>
+		<string>0015</string>
+		<string>0016</string>
+		<string>0017</string>
+		<string>0018</string>
+		<string>0019</string>
+		<string>0020</string>
+		<string>0021</string>
+		<string>0022</string>
+		<string>0023</string>
+		<string>0024</string>
+		<string>0025</string>
+		<string>0026</string>
+		<string>0027</string>
+		<string>0028</string>
+		<string>0029</string>
+		<string>0030</string>
+		<string>0031</string>
+		<string>0032</string>
+		<string>0033</string>
+		<string>0034</string>
+		<string>0035</string>
+		<string>0036</string>
+		<string>0037</string>
+		<string>0038</string>
+		<string>0039</string>
 	</array>
 	<key>OnlyWhenMoreTabs</key>
 	<true/>
@@ -13109,7 +13135,7 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2016-02-19T16:18:42Z</date>
+	<date>2016-03-17T13:50:30Z</date>
 	<key>SavePasteHistory</key>
 	<false/>
 	<key>Secure Input</key>
