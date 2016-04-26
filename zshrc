@@ -1,7 +1,3 @@
-# Fix neovim issue https://github.com/neovim/neovim/issues/2048
-infocmp $TERM | sed 's/kbs=^[hH]/kbs=\\177/' > /tmp/$TERM.ti
-tic /tmp/$TERM.ti
-
 # For Neovim
 NVIM_TUI_ENABLE_TRUE_COLOR=1
 
@@ -60,7 +56,7 @@ plugins=(git svn cp tmux vagrant colored-man colorize github virtualenv pip pyth
 
 # User configuration
 export MANPATH="/usr/local/man:$MANPATH"
-export PATH="/Users/zhangchen/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$PATH"
+export PATH="Users/zhangchen/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$PATH"
 
 
 source $ZSH/oh-my-zsh.sh
@@ -103,13 +99,25 @@ alias histg="history | grep"
 alias ..='cd ..; ls'
 alias ...='cd ../..; ls'
 alias ....='cd ../../..; ls'
-alias .....='cd ../../../..; ls'
-alias ali='ssh vagrant@120.25.88.28'
 alias m='mark'
 alias ms='marks'
 alias j='jump'
 alias gs='git svn'
-alias brewu='brew update && brew cask update && brew upgrade && brew cleanup && brew cask cleanup && brew prune && brew doctor'
+alias ipython='ipython --pylab'
+
+
+# Function
+function ali {
+ssh $1@120.25.88.28
+}
+
+function pipu {
+pip freeze --local | grep -v '^\-e' | cut -d = -f 1  | xargs pip install -U
+}
+
+function brewu {
+brew update && brew cask update && brew upgrade && brew cleanup && brew cask cleanup && brew prune && brew doctor
+}
 
 export PATH="$HOME/.bin:$PATH"
 
