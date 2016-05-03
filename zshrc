@@ -56,8 +56,7 @@ plugins=(git svn cp tmux vagrant colored-man colorize github virtualenv pip pyth
 
 # User configuration
 export MANPATH="/usr/local/man:$MANPATH"
-export PATH="Users/zhangchen/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$PATH"
-
+export PATH="$HOME/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$PATH"
 
 source $ZSH/oh-my-zsh.sh
 
@@ -119,6 +118,5 @@ function brewu {
 brew update && brew cask update && brew upgrade && brew cleanup && brew cask cleanup && brew prune && brew doctor
 }
 
-export PATH="$HOME/.bin:$PATH"
 
 test -e ${HOME}/.iterm2_shell_integration.zsh && source ${HOME}/.iterm2_shell_integration.zsh

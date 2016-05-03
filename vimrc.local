@@ -1,4 +1,3 @@
-" personal keyboard shortcuts
 inoremap kj <ESC>
 map <Leader>sa ggVG"
 nnoremap U <C-r>
