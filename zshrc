@@ -102,7 +102,6 @@ alias m='mark'
 alias ms='marks'
 alias j='jump'
 alias gs='git svn'
-alias ipython='ipython --pylab'
 
 
 # Function
