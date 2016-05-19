@@ -84,6 +84,5 @@ create_symlinks() {
 variable_set "$HOME"
 program_must_exist "vim"
 program_must_exist "git"
-create_symlinks "$APP_PATH" \
-                "$HOME"
+create_symlinks "$APP_PATH" "$HOME"
 

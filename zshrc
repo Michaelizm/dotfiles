@@ -101,7 +101,6 @@ alias ....='cd ../../..; ls'
 alias m='mark'
 alias ms='marks'
 alias j='jump'
-alias gs='git svn'
 
 
 # Function
@@ -118,4 +117,5 @@ brew update && brew cask update && brew upgrade && brew cleanup && brew cask cle
 }
 
 
-test -e ${HOME}/.iterm2_shell_integration.zsh && source ${HOME}/.iterm2_shell_integration.zsh
+# ITerm2 integration
+source ~/.iterm2_shell_integration.`basename $SHELL`
