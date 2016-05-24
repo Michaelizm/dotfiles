@@ -179,7 +179,7 @@
     set wildmode=list:longest,full  " Command <Tab> completion, list matches, then longest common part, then all.
     set whichwrap=b,s,h,l,<,>,[,]   " Backspace and cursor keys wrap too
     set scrolljump=5                " Lines to scroll when cursor leaves screen
-    set scrolloff=3                 " Minimum lines to keep above and below cursor
+    set scrolloff=12                " Minimum lines to keep above and below cursor
     set foldenable                  " Auto fold code
     set list
     set listchars=tab:›\ ,trail:•,extends:#,nbsp:. " Highlight problematic whitespace
@@ -993,7 +993,6 @@
     " vim-airline {
         " Set configuration options for the statusline plugin vim-airline.
         " Use the powerline theme and optionally enable powerline symbols.
-        " To use the symbols , , , , , , and .in the statusline
         " segments add the following to your .vimrc.before.local file:
         "   let g:airline_powerline_fonts=1
         " If the previous symbols do not render for you then install a
@@ -1005,15 +1004,24 @@
             if !exists('g:airline_theme')
                 let g:airline_theme = 'gruvbox'
             endif
+            if !exists('g:airline_symbols')
+                let g:airline_symbols = {}
+            endif
             if !exists('g:airline_powerline_fonts')
-                " Use the default set of separators with a few customizations
-                let g:airline_left_sep='›'  " Slightly fancier than '>'
-                let g:airline_right_sep='‹' " Slightly fancier than '<'
+                let g:airline_left_sep = '▶'
+                let g:airline_left_alt_sep = '❯'
+                let g:airline_right_sep = '◀'
+                let g:airline_right_alt_sep = '❮'
             endif
         endif
     " }
 
-
+    " Dash {
+        " Set configuration options for Dash(for Mac only)
+        if isdirectory(expand("~/.vim/bundle/dash.vim/"))
+            nmap <silent> <leader>d <Plug>DashSearch
+        endif
+    " }
 
 " }
 
