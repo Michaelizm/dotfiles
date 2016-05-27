@@ -67,9 +67,7 @@ create_symlinks() {
     local target_path="$2"
 
     lnif "$source_path/vimrc"               "$target_path/.vimrc"
-    lnif "$source_path/vimrc.local"         "$target_path/.vimrc.local"
     lnif "$source_path/vimrc.bundles"       "$target_path/.vimrc.bundles"
-    lnif "$source_path/vimrc.bundles.local" "$target_path/.vimrc.bundles.local"
     lnif "$source_path/vimrc.before"        "$target_path/.vimrc.before"
     lnif "$source_path/zshrc"               "$target_path/.zshrc"
 

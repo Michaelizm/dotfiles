@@ -5,45 +5,10 @@
         set background=dark     " Assume a dark background
     " }
 
-    " Windows Compatible {
-        " On Windows, also use '.vim' instead of 'vimfiles'; this makes synchronization
-        " across (heterogeneous) systems easier.
-        if has('win32') || has('win64')
-          set runtimepath=$HOME/.vim,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after,$HOME/.vim/after
-
-          " Be nice and check for multi_byte even if the config requires
-          " multi_byte support most of the time
-          if has("multi_byte")
-            " Windows cmd.exe still uses cp850. If Windows ever moved to
-            " Powershell as the primary terminal, this would be utf-8
-            set termencoding=cp850
-            " Let Vim use utf-8 internally, because many scripts require this
-            set encoding=utf-8
-            setglobal fileencoding=utf-8
-            " Windows has traditionally used cp1252, so it's probably wise to
-            " fallback into cp1252 instead of eg. iso-8859-15.
-            " Newer Windows files might contain utf-8 or utf-16 LE so we might
-            " want to try them first.
-            set fileencodings=ucs-bom,utf-8,utf-16le,cp1252,iso-8859-15
-          endif
-        endif
-    " }
-
     " Setup Bundle Support {
-        " The next three lines ensure that the ~/.vim/bundle/ system works
         filetype off
         set rtp+=~/.vim/bundle/vundle
         call vundle#rc()
-    " }
-
-    " Add an UnBundle command {
-    function! UnBundle(arg, ...)
-      let bundle = vundle#config#init_bundle(a:arg, a:000)
-      call filter(g:vundle#bundles, 'v:val["name_spec"] != "' . a:arg . '"')
-    endfunction
-
-    com! -nargs=+         UnBundle
-    \ call UnBundle(<args>)
     " }
 
 " }
@@ -65,17 +30,20 @@
         endif
     " }
 
-    " In your .vimrc.before.local file
     " list only the plugin groups you will use
     if !exists('g:spf13_bundle_groups')
-        let g:spf13_bundle_groups=['general', 'writing', 'youcompleteme', 'programming', 'php', 'ruby', 'python', 'javascript', 'html', 'misc',]
+        let g:spf13_bundle_groups=['general', 'local', 'youcompleteme', 'programming', 'python', 'misc',]
     endif
 
     " To override all the included bundles, add the following to your
-    " .vimrc.bundles.local file:
-    "   let g:override_spf13_bundles = 1
     if !exists("g:override_spf13_bundles")
 
+    " Local {
+        if count(g:spf13_bundle_groups, 'local')
+            Bundle "morhetz/gruvbox"
+            Bundle 'rizzatti/dash.vim'
+        endif
+    " }
     " General {
         if count(g:spf13_bundle_groups, 'general')
             Bundle 'scrooloose/nerdtree'
@@ -90,14 +58,8 @@
             Bundle 'terryma/vim-multiple-cursors'
             Bundle 'vim-scripts/sessionman.vim'
             Bundle 'matchit.zip'
-            if (has("python") || has("python3")) && exists('g:spf13_use_powerline') && !exists('g:spf13_use_old_powerline')
-                Bundle 'Lokaltog/powerline', {'rtp':'/powerline/bindings/vim'}
-            elseif exists('g:spf13_use_powerline') && exists('g:spf13_use_old_powerline')
-                Bundle 'Lokaltog/vim-powerline'
-            else
-                Bundle 'vim-airline/vim-airline'
-                Bundle 'vim-airline/vim-airline-themes'
-            endif
+            Bundle 'vim-airline/vim-airline'
+            Bundle 'vim-airline/vim-airline-themes'
             Bundle 'powerline/fonts'
             Bundle 'bling/vim-bufferline'
             Bundle 'easymotion/vim-easymotion'
@@ -128,7 +90,6 @@
 
     " General Programming {
         if count(g:spf13_bundle_groups, 'programming')
-            " Pick one of the checksyntax, jslint, or syntastic
             Bundle 'scrooloose/syntastic'
             Bundle 'tpope/vim-fugitive'
             Bundle 'mattn/webapi-vim'
@@ -147,7 +108,6 @@
         if count(g:spf13_bundle_groups, 'snipmate')
             Bundle 'garbas/vim-snipmate'
             Bundle 'honza/vim-snippets'
-            " Source support_function.vim to support vim-snippets.
             if filereadable(expand("~/.vim/bundle/vim-snippets/snippets/support_functions.vim"))
                 source ~/.vim/bundle/vim-snippets/snippets/support_functions.vim
             endif
@@ -178,7 +138,6 @@
 
     " Python {
         if count(g:spf13_bundle_groups, 'python')
-            " Pick either python-mode or pyflakes & pydoc
             Bundle 'klen/python-mode'
             Bundle 'yssource/python.vim'
             Bundle 'python_match.vim'
@@ -233,8 +192,6 @@
         if count(g:spf13_bundle_groups, 'ruby')
             Bundle 'tpope/vim-rails'
             let g:rubycomplete_buffer_loading = 1
-            "let g:rubycomplete_classes_in_global = 1
-            "let g:rubycomplete_rails = 1
         endif
     " }
 
@@ -246,7 +203,6 @@
 
     " Go Lang {
         if count(g:spf13_bundle_groups, 'go')
-            "Bundle 'Blackrush/vim-gocode'
             Bundle 'fatih/vim-go'
         endif
     " }
@@ -275,14 +231,3 @@
 
 " }
 
-" Use fork bundles config if available {
-    if filereadable(expand("~/.vimrc.bundles.fork"))
-        source ~/.vimrc.bundles.fork
-    endif
-" }
-
-" Use local bundles config if available {
-    if filereadable(expand("~/.vimrc.bundles.local"))
-        source ~/.vimrc.bundles.local
-    endif
-" }

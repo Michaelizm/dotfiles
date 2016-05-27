@@ -1,5 +1,0 @@
-inoremap kj <ESC>
-map <Leader>sa ggVG"
-nnoremap U <C-r>
-nnoremap <Space> <C-d>
-nnoremap ; :

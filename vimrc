@@ -7,26 +7,13 @@
         silent function! LINUX()
             return has('unix') && !has('macunix') && !has('win32unix')
         endfunction
-        silent function! WINDOWS()
-            return  (has('win32') || has('win64'))
-        endfunction
     " }
 
     " Basics {
         set nocompatible        " Must be first line
-        if !WINDOWS()
-            set shell=/bin/sh
-        endif
+        set shell=/bin/zsh
     " }
 
-    " Windows Compatible {
-        " On Windows, also use '.vim' instead of 'vimfiles'; this makes synchronization
-        " across (heterogeneous) systems easier.
-        if WINDOWS()
-          set runtimepath=$HOME/.vim,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after,$HOME/.vim/after
-        endif
-    " }
-    
     " Arrow Key Fix {
         " https://github.com/spf13/spf13-vim/issues/780
         if &term[:4] == "xterm" || &term[:5] == 'screen' || &term[:3] == 'rxvt'
@@ -46,6 +33,14 @@
     if filereadable(expand("~/.vimrc.bundles"))
         source ~/.vimrc.bundles
     endif
+" }
+
+" Local {
+    inoremap kj <ESC>
+    map <Leader>sa ggVG"
+    nnoremap U <C-r>
+    nnoremap <Space> <C-d>
+    nnoremap ; :
 " }
 
 " General {
@@ -72,10 +67,8 @@
     "   let g:spf13_no_autochdir = 1
     if !exists('g:spf13_no_autochdir')
         autocmd BufEnter * if bufname("") !~ "^\[A-Za-z0-9\]*://" | lcd %:p:h | endif
-        " Always switch to the current file directory
     endif
 
-    "set autowrite                       " Automatically write a file when leaving a modified buffer
     set shortmess+=filmnrxoOtT          " Abbrev. of messages (avoids 'hit enter')
     set viewoptions=folds,options,cursor,unix,slash " Better Unix / Windows compatibility
     set virtualedit=onemore             " Allow for cursor beyond last character
@@ -117,10 +110,8 @@
         endif
 
         " To disable views add the following to your .vimrc.before.local file:
-        "   let g:spf13_no_views = 1
+        " let g:spf13_no_views = 1
         if !exists('g:spf13_no_views')
-            " Add exclusions to mkview and loadview
-            " eg: *.*, svn-commit.tmp
             let g:skipview_files = [
                 \ '\[example pattern\]'
                 \ ]
@@ -149,7 +140,6 @@
         set ruler                   " Show the ruler
         set rulerformat=%30(%=\:b%n%y%m%r%w\ %l,%c%V\ %P%) " A ruler on steroids
         set showcmd                 " Show partial commands in status line and
-                                    " Selected characters/lines in visual mode
     endif
 
     if has('statusline')
@@ -197,24 +187,15 @@
     set nojoinspaces                " Prevents inserting two spaces after punctuation on a join (J)
     set splitright                  " Puts new vsplit windows to the right of the current
     set splitbelow                  " Puts new split windows to the bottom of the current
-    "set matchpairs+=<:>             " Match, to be used with %
+    set matchpairs+=<:>             " Match, to be used with %
     set pastetoggle=<F12>           " pastetoggle (sane indentation on pastes)
-    "set comments=sl:/*,mb:*,elx:*/  " auto format comment blocks
-    " Remove trailing whitespaces and ^M chars
-    " To disable the stripping of whitespace, add the following to your
-    " .vimrc.before.local file:
+    set comments=sl:/*,mb:*,elx:*/  " auto format comment blocks
     "   let g:spf13_keep_trailing_whitespace = 1
     autocmd FileType c,cpp,java,go,php,javascript,puppet,python,rust,twig,xml,yml,perl,sql autocmd BufWritePre <buffer> if !exists('g:spf13_keep_trailing_whitespace') | call StripTrailingWhitespace() | endif
-    "autocmd FileType go autocmd BufWritePre <buffer> Fmt
     autocmd BufNewFile,BufRead *.html.twig set filetype=html.twig
     autocmd FileType haskell,puppet,ruby,yml setlocal expandtab shiftwidth=2 softtabstop=2
-    " preceding line best in a plugin but here for now.
-
     autocmd BufNewFile,BufRead *.coffee set filetype=coffee
-
-    " Workaround vim-commentary for Haskell
     autocmd FileType haskell setlocal commentstring=--\ %s
-    " Workaround broken colour highlighting in Haskell
     autocmd FileType haskell,rust setlocal nospell
 
 " }
@@ -294,12 +275,8 @@
         noremap 0 :call WrapRelativeMotion("0")<CR>
         noremap <Home> :call WrapRelativeMotion("0")<CR>
         noremap ^ :call WrapRelativeMotion("^")<CR>
-        " Overwrite the operator pending $/<End> mappings from above
-        " to force inclusive motion with :execute normal!
         onoremap $ v:call WrapRelativeMotion("$")<CR>
         onoremap <End> v:call WrapRelativeMotion("$")<CR>
-        " Overwrite the Visual+select mode mappings from above
-        " to ensure the correct vis_sel flag is passed to function
         vnoremap $ :<C-U>call WrapRelativeMotion("$", 1)<CR>
         vnoremap <End> :<C-U>call WrapRelativeMotion("$", 1)<CR>
         vnoremap 0 :<C-U>call WrapRelativeMotion("0", 1)<CR>
@@ -350,7 +327,6 @@
     nmap <leader>f9 :set foldlevel=9<CR>
 
     " Most prefer to toggle search highlighting rather than clear the current
-    " search results. To clear search highlighting rather than toggle it on
     " and off, add the following to your .vimrc.before.local file:
     "   let g:spf13_clear_search_highlight = 1
     if exists('g:spf13_clear_search_highlight')
@@ -400,10 +376,6 @@
 
     " Easier formatting
     nnoremap <silent> <leader>q gwip
-
-    " FIXME: Revert this f70be548
-    " fullscreen mode for GVIM and Terminal, need 'wmctrl' in you PATH
-    map <silent> <F11> :call system("wmctrl -ir " . v:windowid . " -b toggle,fullscreen")<CR>
 
 " }
 
@@ -576,7 +548,6 @@
     " }
 
     " PyMode {
-        " Disable if python support not present
         if !has('python') && !has('python3')
             let g:pymode = 0
         endif
@@ -604,9 +575,6 @@
                 let s:ctrlp_fallback = 'ack-grep %s --nocolor -f'
             elseif executable('ack')
                 let s:ctrlp_fallback = 'ack %s --nocolor -f'
-            " On Windows use "dir" as fallback command.
-            elseif WINDOWS()
-                let s:ctrlp_fallback = 'dir %s /-n /b /s /a-d'
             else
                 let s:ctrlp_fallback = 'find %s -type f'
             endif
@@ -622,10 +590,7 @@
             \ }
 
             if isdirectory(expand("~/.vim/bundle/ctrlp-funky/"))
-                " CtrlP extensions
                 let g:ctrlp_extensions = ['funky']
-
-                "funky
                 nnoremap <Leader>fu :CtrlPFunky<Cr>
             endif
         endif
@@ -654,7 +619,6 @@
             nnoremap <silent> <leader>gr :Gread<CR>
             nnoremap <silent> <leader>gw :Gwrite<CR>
             nnoremap <silent> <leader>ge :Gedit<CR>
-            " Mnemonic _i_nteractive
             nnoremap <silent> <leader>gi :Git add -p %<CR>
             nnoremap <silent> <leader>gg :SignifyToggle<CR>
         endif
@@ -663,8 +627,6 @@
     " YouCompleteMe {
         if count(g:spf13_bundle_groups, 'youcompleteme')
             let g:acp_enableAtStartup = 0
-
-            " enable completion from tags
             let g:ycm_collect_identifiers_from_tags_files = 1
 
             " remap Ultisnips for compatibility for YCM
@@ -682,8 +644,6 @@
             autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc
 
             " Haskell post write lint and check with ghcmod
-            " $ `cabal install ghcmod` if missing and ensure
-            " ~/.cabal/bin is in your $PATH.
             if !executable("ghcmod")
                 autocmd BufWritePost *.hs GhcModCheckAndLintAsync
             endif
@@ -696,8 +656,6 @@
             endif
 
             " Disable the neosnippet preview candidate window
-            " When enabled, there can be too much visual noise
-            " especially when splits are used.
             set completeopt-=preview
         endif
     " }
@@ -1036,15 +994,12 @@
                 set guifont=Andale\ Mono\ Regular\ 12,Menlo\ Regular\ 11,Consolas\ Regular\ 12,Courier\ New\ Regular\ 14
             elseif OSX() && has("gui_running")
                 set guifont=Andale\ Mono\ Regular:h12,Menlo\ Regular:h11,Consolas\ Regular:h12,Courier\ New\ Regular:h14
-            elseif WINDOWS() && has("gui_running")
-                set guifont=Andale_Mono:h10,Menlo:h10,Consolas:h10,Courier_New:h10
             endif
         endif
     else
         if &term == 'xterm' || &term == 'screen'
             set t_Co=256            " Enable 256 colors to stop the CSApprox warning and make xterm vim shine
         endif
-        "set term=builtin_ansi       " Make arrow and other keys work
     endif
 
 " }
@@ -1142,20 +1097,7 @@
     endfunction
 
     command! -complete=file -nargs=+ Shell call s:RunShellCommand(<q-args>)
-    " e.g. Grep current file for <search_term>: Shell grep -Hn <search_term> %
     " }
-
-    function! s:IsSpf13Fork()
-        let s:is_fork = 0
-        let s:fork_files = ["~/.vimrc.fork", "~/.vimrc.before.fork", "~/.vimrc.bundles.fork"]
-        for fork_file in s:fork_files
-            if filereadable(expand(fork_file, ":p"))
-                let s:is_fork = 1
-                break
-            endif
-        endfor
-        return s:is_fork
-    endfunction
      
     function! s:ExpandFilenameAndExecute(command, file)
         execute a:command . " " . expand(a:file, ":p")
@@ -1163,37 +1105,15 @@
      
     function! s:EditSpf13Config()
         call <SID>ExpandFilenameAndExecute("tabedit", "~/.vimrc")
-        call <SID>ExpandFilenameAndExecute("vsplit", "~/.vimrc.before")
         call <SID>ExpandFilenameAndExecute("vsplit", "~/.vimrc.bundles")
      
         execute bufwinnr(".vimrc") . "wincmd w"
-        call <SID>ExpandFilenameAndExecute("split", "~/.vimrc.local")
-        wincmd l
-        call <SID>ExpandFilenameAndExecute("split", "~/.vimrc.before.local")
-        wincmd l
-        call <SID>ExpandFilenameAndExecute("split", "~/.vimrc.bundles.local")
-     
-        if <SID>IsSpf13Fork()
-            execute bufwinnr(".vimrc") . "wincmd w"
-            call <SID>ExpandFilenameAndExecute("split", "~/.vimrc.fork")
-            wincmd l
-            call <SID>ExpandFilenameAndExecute("split", "~/.vimrc.before.fork")
-            wincmd l
-            call <SID>ExpandFilenameAndExecute("split", "~/.vimrc.bundles.fork")
-        endif
-     
-        execute bufwinnr(".vimrc.local") . "wincmd w"
     endfunction
      
     execute "noremap " . s:spf13_edit_config_mapping " :call <SID>EditSpf13Config()<CR>"
     execute "noremap " . s:spf13_apply_config_mapping . " :source ~/.vimrc<CR>"
 " }
 
-" Use fork vimrc if available {
-    if filereadable(expand("~/.vimrc.fork"))
-        source ~/.vimrc.fork
-    endif
-" }
 
 " Use local vimrc if available {
     if filereadable(expand("~/.vimrc.local"))
@@ -1201,10 +1121,3 @@
     endif
 " }
 
-" Use local gvimrc if available and gui is running {
-    if has('gui_running')
-        if filereadable(expand("~/.gvimrc.local"))
-            source ~/.gvimrc.local
-        endif
-    endif
-" }
