@@ -15,7 +15,6 @@
     " }
 
     " Arrow Key Fix {
-        " https://github.com/spf13/spf13-vim/issues/780
         if &term[:4] == "xterm" || &term[:5] == 'screen' || &term[:3] == 'rxvt'
             inoremap <silent> <C-[>OC <RIGHT>
         endif
@@ -23,9 +22,9 @@
 
 " }
 
-" Use before config if available {
-    if filereadable(expand("~/.vimrc.before"))
-        source ~/.vimrc.before
+" Use init config if available {
+    if filereadable(expand("~/.vimrc.init"))
+        source ~/.vimrc.init
     endif
 " }
 
@@ -38,7 +37,6 @@
 " Local {
     inoremap kj <ESC>
     nnoremap U <C-r>
-    nnoremap <Space> <C-d>
     nnoremap ; :
 " }
 
@@ -55,14 +53,12 @@
     if has('clipboard')
         if has('unnamedplus')  " When possible use + register for copy-paste
             set clipboard=unnamed,unnamedplus
-        else         " On mac and Windows, use * register for copy-paste
+        else                   " On mac and Windows, use * register for copy-paste
             set clipboard=unnamed
         endif
     endif
 
-    " Most prefer to automatically switch to the current file directory when
-    " a new buffer is opened; to prevent this behavior, add the following to
-    if !exists('g:spf13_no_autochdir')
+    if !exists('g:Sparta_no_autochdir')
         autocmd BufEnter * if bufname("") !~ "^\[A-Za-z0-9\]*://" | lcd %:p:h | endif
     endif
 
@@ -76,12 +72,11 @@
     set iskeyword-=#                    " '#' is an end of word designator
     set iskeyword-=-                    " '-' is an end of word designator
 
-    " Instead of reverting the cursor to the last position in the buffer, we
-    " set it to the first line when editing a git commit message
+    " Instead of reverting the cursor to the last position in the buffer, we set it to the first line when editing a git commit message
     au FileType gitcommit au! BufEnter COMMIT_EDITMSG call setpos('.', [0, 1, 1, 0])
 
     " http://vim.wikia.com/wiki/Restore_cursor_to_file_position_in_previous_editing_session
-    if !exists('g:spf13_no_restore_cursor')
+    if !exists('g:Sparta_no_restore_cursor')
         function! ResCur()
             if line("'\"") <= line("$")
                 silent! normal! g`"
@@ -96,15 +91,14 @@
     endif
 
     " Setting up the directories {
-        set backup                  " Backups are nice ...
+        set backup
         if has('persistent_undo')
             set undofile                " So is persistent undo ...
             set undolevels=1000         " Maximum number of changes that can be undone
             set undoreload=10000        " Maximum number lines to save for undo on a buffer reload
         endif
 
-        " To disable views add the following to your .vimrc.before.local file:
-        if !exists('g:spf13_no_views')
+        if !exists('g:Sparta_no_views')
             let g:skipview_files = [
                 \ '\[example pattern\]'
                 \ ]
@@ -137,11 +131,9 @@
 
     if has('statusline')
         set laststatus=2
-
-        " Broken down into easily includeable segments
         set statusline=%<%f\                     " Filename
         set statusline+=%w%h%m%r                 " Options
-        if !exists('g:override_spf13_bundles')
+        if !exists('g:override_Sparta_bundles')
             set statusline+=%{fugitive#statusline()} " Git Hotness
         endif
         set statusline+=\ [%{&ff}/%Y]            " Filetype
@@ -183,7 +175,7 @@
     set matchpairs+=<:>             " Match, to be used with %
     set pastetoggle=<F12>           " pastetoggle (sane indentation on pastes)
     set comments=sl:/*,mb:*,elx:*/  " auto format comment blocks
-    autocmd FileType c,cpp,java,go,php,javascript,puppet,python,rust,twig,xml,yml,perl,sql autocmd BufWritePre <buffer> if !exists('g:spf13_keep_trailing_whitespace') | call StripTrailingWhitespace() | endif
+    autocmd FileType c,cpp,java,go,php,javascript,puppet,python,rust,twig,xml,yml,perl,sql autocmd BufWritePre <buffer> if !exists('g:Sparta_keep_trailing_whitespace') | call StripTrailingWhitespace() | endif
     autocmd BufNewFile,BufRead *.html.twig set filetype=html.twig
     autocmd FileType haskell,puppet,ruby,yml setlocal expandtab shiftwidth=2 softtabstop=2
     autocmd BufNewFile,BufRead *.coffee set filetype=coffee
@@ -194,51 +186,42 @@
 
 " Key (re)Mappings {
 
-    " The default leader is '\', but many people prefer ',' as it's in a standard
-    " location. To override this behavior and set it back to '\' (or any other
-    " character) add the following to your .vimrc.before.local file:
-    if !exists('g:spf13_leader')
+    " The default leader is '\', but many people prefer ','
+    if !exists('g:Sparta_leader')
         let mapleader = ','
     else
-        let mapleader=g:spf13_leader
+        let mapleader=g:Sparta_leader
     endif
-    if !exists('g:spf13_localleader')
+    if !exists('g:Sparta_localleader')
         let maplocalleader = '_'
     else
-        let maplocalleader=g:spf13_localleader
+        let maplocalleader=g:Sparta_localleader
     endif
 
-    " The default mappings for editing and applying the spf13 configuration
-    if !exists('g:spf13_edit_config_mapping')
-        let s:spf13_edit_config_mapping = '<leader>ev'
+    " The default mappings for editing and applying the Sparta configuration
+    if !exists('g:Sparta_edit_config_mapping')
+        let s:Sparta_edit_config_mapping = '<leader>ev'
     else
-        let s:spf13_edit_config_mapping = g:spf13_edit_config_mapping
+        let s:Sparta_edit_config_mapping = g:Sparta_edit_config_mapping
     endif
-    if !exists('g:spf13_apply_config_mapping')
-        let s:spf13_apply_config_mapping = '<leader>sv'
+    if !exists('g:Sparta_apply_config_mapping')
+        let s:Sparta_apply_config_mapping = '<leader>sv'
     else
-        let s:spf13_apply_config_mapping = g:spf13_apply_config_mapping
+        let s:Sparta_apply_config_mapping = g:Sparta_apply_config_mapping
     endif
 
     " Easier moving in tabs and windows
-    " The lines conflict with the default digraph mapping of <C-K>
-    " If you prefer that functionality, add the following to your
-    if !exists('g:spf13_no_easyWindows')
+    if !exists('g:Sparta_no_easyWindows')
         map <C-J> <C-W>j<C-W>_
         map <C-K> <C-W>k<C-W>_
         map <C-L> <C-W>l<C-W>_
         map <C-H> <C-W>h<C-W>_
     endif
 
-    " Wrapped lines goes down/up to next row, rather than next line in file.
-    noremap j gj
-    noremap k gk
-
     " End/Start of line motion keys act relative to row/wrap width in the
     " presence of `:set wrap`, and relative to line for `:set nowrap`.
     " Default vim behaviour is to act relative to text line in both cases
-    " If you prefer the default behaviour, add the following to your
-    if !exists('g:spf13_no_wrapRelMotion')
+    if !exists('g:Sparta_no_wrapRelMotion')
         function! WrapRelativeMotion(key, ...)
             let vis_sel=""
             if a:0
@@ -266,16 +249,10 @@
         vnoremap ^ :<C-U>call WrapRelativeMotion("^", 1)<CR>
     endif
 
-    " The following two lines conflict with moving to top and
-    " bottom of the screen
-    " If you prefer that functionality, add the following to your
-    if !exists('g:spf13_no_fastTabs')
-        map <S-H> gT
-        map <S-L> gt
-    endif
 
     " Stupid shift key fixes
-    if !exists('g:spf13_no_keyfixes')
+    if !exists('g:Sparta_no_keyfixes')
+        cmap Tabe tabe
         if has("user_commands")
             command! -bang -nargs=* -complete=file E e<bang> <args>
             command! -bang -nargs=* -complete=file W w<bang> <args>
@@ -287,12 +264,67 @@
             command! -bang QA qa<bang>
             command! -bang Qa qa<bang>
         endif
-
-        cmap Tabe tabe
     endif
+
+
+
+    " Most prefer to toggle search highlighting rather than clear the current
+    if exists('g:Sparta_clear_search_highlight')
+        nmap <silent> <leader>/ :nohlsearch<CR>
+    else
+        nmap <silent> <leader>/ :set invhlsearch<CR>
+    endif
+
+
+    " Shortcuts
+    " Change Working Directory to that of the current file
+    cmap cwd lcd %:p:h
+    cmap cd. lcd %:p:h
+
+    " For when you forget to sudo.. Really Write the file.
+    cmap w!! w !sudo tee % >/dev/null
+
+    " Visual shifting (does not exit Visual mode)
+    vnoremap < <gv
+    vnoremap > >gv
+
+    " Allow using the repeat operator with a visual selection (!) http://stackoverflow.com/a/8064607/127816
+    vnoremap . :normal .<CR>
+
+
+    " Some helpers to edit mode http://vimcasts.org/e/14
+    cnoremap %% <C-R>=fnameescape(expand('%:h')).'/'<cr>
+    map <leader>ew :e %%
+    map <leader>es :sp %%
+    map <leader>ev :vsp %%
+    map <leader>et :tabe %%
+
+    " Adjust viewports to the same size
+    map <Leader>= <C-w>=
+
+    " Easier horizontal scrolling
+    map zl zL
+    map zh zH
+
+    " Fast tabs
+    map <S-H> gT
+    map <S-L> gt
+
+    " Find merge conflict markers
+    map <leader>fc /\v^[<\|=>]{7}( .*\|$)<CR>
+
+    " Wrapped lines goes down/up to next row, rather than next line in file.
+    noremap j gj
+    noremap k gk
+
+    " Easier formatting
+    nnoremap <silent> <leader>q gwip
 
     " Yank from the cursor to the end of the line, to be consistent with C and D.
     nnoremap Y y$
+
+    " Map <Leader>ff to display all lines with keyword under cursor and ask which one to jump to
+    nmap <Leader>ff [I:let nr = input("Which one: ")<Bar>exe "normal " . nr ."[\t"<CR>
 
     " Code folding options
     nmap <leader>f0 :set foldlevel=0<CR>
@@ -306,62 +338,12 @@
     nmap <leader>f8 :set foldlevel=8<CR>
     nmap <leader>f9 :set foldlevel=9<CR>
 
-    " Most prefer to toggle search highlighting rather than clear the current
-    " and off, add the following to your .vimrc.before.local file:
-    if exists('g:spf13_clear_search_highlight')
-        nmap <silent> <leader>/ :nohlsearch<CR>
-    else
-        nmap <silent> <leader>/ :set invhlsearch<CR>
-    endif
-
-
-    " Find merge conflict markers
-    map <leader>fc /\v^[<\|=>]{7}( .*\|$)<CR>
-
-    " Shortcuts
-    " Change Working Directory to that of the current file
-    cmap cwd lcd %:p:h
-    cmap cd. lcd %:p:h
-
-    " Visual shifting (does not exit Visual mode)
-    vnoremap < <gv
-    vnoremap > >gv
-
-    " Allow using the repeat operator with a visual selection (!)
-    " http://stackoverflow.com/a/8064607/127816
-    vnoremap . :normal .<CR>
-
-    " For when you forget to sudo.. Really Write the file.
-    cmap w!! w !sudo tee % >/dev/null
-
-    " Some helpers to edit mode
-    " http://vimcasts.org/e/14
-    cnoremap %% <C-R>=fnameescape(expand('%:h')).'/'<cr>
-    map <leader>ew :e %%
-    map <leader>es :sp %%
-    map <leader>ev :vsp %%
-    map <leader>et :tabe %%
-
-    " Adjust viewports to the same size
-    map <Leader>= <C-w>=
-
-    " Map <Leader>ff to display all lines with keyword under cursor
-    " and ask which one to jump to
-    nmap <Leader>ff [I:let nr = input("Which one: ")<Bar>exe "normal " . nr ."[\t"<CR>
-
-    " Easier horizontal scrolling
-    map zl zL
-    map zh zH
-
-    " Easier formatting
-    nnoremap <silent> <leader>q gwip
-
 " }
 
 " Plugins {
 
     " GoLang {
-        if count(g:spf13_bundle_groups, 'go')
+        if count(g:Sparta_bundle_groups, 'go')
             let g:go_highlight_functions = 1
             let g:go_highlight_methods = 1
             let g:go_highlight_structs = 1
@@ -384,7 +366,7 @@
 
 
     " TextObj Sentence {
-        if count(g:spf13_bundle_groups, 'writing')
+        if count(g:Sparta_bundle_groups, 'writing')
             augroup textobj_sentence
               autocmd!
               autocmd FileType markdown call textobj#sentence#init()
@@ -395,20 +377,13 @@
     " }
 
     " TextObj Quote {
-        if count(g:spf13_bundle_groups, 'writing')
+        if count(g:Sparta_bundle_groups, 'writing')
             augroup textobj_quote
                 autocmd!
                 autocmd FileType markdown call textobj#quote#init()
                 autocmd FileType textile call textobj#quote#init()
                 autocmd FileType text call textobj#quote#init({'educate': 0})
             augroup END
-        endif
-    " }
-
-    " PIV {
-        if isdirectory(expand("~/.vim/bundle/PIV"))
-            let g:DisableAutoPHPFolding = 0
-            let g:PIVAutoClose = 0
         endif
     " }
 
@@ -422,7 +397,7 @@
     " }
 
     " OmniComplete {
-        if !exists('g:spf13_no_omni_complete')
+        if !exists('g:Sparta_no_omni_complete')
             if has("autocmd") && exists("+omnifunc")
                 autocmd Filetype *
                     \if &omnifunc == "" |
@@ -436,7 +411,7 @@
 
             " Some convenient mappings
             "inoremap <expr> <Esc>      pumvisible() ? "\<C-e>" : "\<Esc>"
-            if exists('g:spf13_map_cr_omni_complete')
+            if exists('g:Sparta_map_cr_omni_complete')
                 inoremap <expr> <CR>     pumvisible() ? "\<C-y>" : "\<CR>"
             endif
             inoremap <expr> <Down>     pumvisible() ? "\<C-n>" : "\<Down>"
@@ -600,7 +575,7 @@
     "}
 
     " YouCompleteMe {
-        if count(g:spf13_bundle_groups, 'youcompleteme')
+        if count(g:Sparta_bundle_groups, 'youcompleteme')
             let g:acp_enableAtStartup = 0
             let g:ycm_collect_identifiers_from_tags_files = 1
 
@@ -624,7 +599,7 @@
             endif
 
             " For snippet_complete marker.
-            if !exists("g:spf13_no_conceal")
+            if !exists("g:Sparta_no_conceal")
                 if has('conceal')
                     set conceallevel=2 concealcursor=i
                 endif
@@ -636,7 +611,7 @@
     " }
 
     " neocomplete {
-        if count(g:spf13_bundle_groups, 'neocomplete')
+        if count(g:Sparta_bundle_groups, 'neocomplete')
             let g:acp_enableAtStartup = 0
             let g:neocomplete#enable_at_startup = 1
             let g:neocomplete#enable_smart_case = 1
@@ -660,11 +635,11 @@
 
             " Plugin key-mappings {
                 " These two lines conflict with the default digraph mapping of <C-K>
-                if !exists('g:spf13_no_neosnippet_expand')
+                if !exists('g:Sparta_no_neosnippet_expand')
                     imap <C-k> <Plug>(neosnippet_expand_or_jump)
                     smap <C-k> <Plug>(neosnippet_expand_or_jump)
                 endif
-                if exists('g:spf13_noninvasive_completion')
+                if exists('g:Sparta_noninvasive_completion')
                     inoremap <CR> <CR>
                     " <ESC> takes you out of insert mode
                     inoremap <expr> <Esc>   pumvisible() ? "\<C-y>\<Esc>" : "\<Esc>"
@@ -750,7 +725,7 @@
             let g:neocomplete#sources#omni#input_patterns.ruby = '[^. *\t]\.\h\w*\|\h\w*::'
     " }
     " neocomplcache {
-        elseif count(g:spf13_bundle_groups, 'neocomplcache')
+        elseif count(g:Sparta_bundle_groups, 'neocomplcache')
             let g:acp_enableAtStartup = 0
             let g:neocomplcache_enable_at_startup = 1
             let g:neocomplcache_enable_camel_case_completion = 1
@@ -777,7 +752,7 @@
                 " These two lines conflict with the default digraph mapping of <C-K>
                 imap <C-k> <Plug>(neosnippet_expand_or_jump)
                 smap <C-k> <Plug>(neosnippet_expand_or_jump)
-                if exists('g:spf13_noninvasive_completion')
+                if exists('g:Sparta_noninvasive_completion')
                     inoremap <CR> <CR>
                     " <ESC> takes you out of insert mode
                     inoremap <expr> <Esc>   pumvisible() ? "\<C-y>\<Esc>" : "\<Esc>"
@@ -850,7 +825,7 @@
             let g:neocomplcache_omni_patterns.go = '\h\w*\.\?'
     " }
     " Normal Vim omni-completion {
-        elseif !exists('g:spf13_no_omni_complete')
+        elseif !exists('g:Sparta_no_omni_complete')
             " Enable omni-completion.
             autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
             autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
@@ -864,8 +839,8 @@
     " }
 
     " Snippets {
-        if count(g:spf13_bundle_groups, 'neocomplcache') ||
-                    \ count(g:spf13_bundle_groups, 'neocomplete')
+        if count(g:Sparta_bundle_groups, 'neocomplcache') ||
+                    \ count(g:Sparta_bundle_groups, 'neocomplete')
 
             " Use honza's snippets.
             let g:neosnippet#snippets_directory='~/.vim/bundle/vim-snippets/snippets'
@@ -874,7 +849,7 @@
             let g:neosnippet#enable_snipmate_compatibility = 1
 
             " For snippet_complete marker.
-            if !exists("g:spf13_no_conceal")
+            if !exists("g:Sparta_no_conceal")
                 if has('conceal')
                     set conceallevel=2 concealcursor=i
                 endif
@@ -924,7 +899,6 @@
     " vim-airline {
         " Set configuration options for the statusline plugin vim-airline.
         " Use the powerline theme and optionally enable powerline symbols.
-        " segments add the following to your .vimrc.before.local file:
         "   let g:airline_powerline_fonts=1
         " If the previous symbols do not render for you then install a
         " powerline enabled font.
@@ -962,7 +936,7 @@
     if has('gui_running')
         set guioptions-=T           " Remove the toolbar
         set lines=40                " 40 lines of text instead of 24
-        if !exists("g:spf13_no_big_font")
+        if !exists("g:Sparta_no_big_font")
             if LINUX() && has("gui_running")
                 set guifont=Andale\ Mono\ Regular\ 12,Menlo\ Regular\ 11,Consolas\ Regular\ 12,Courier\ New\ Regular\ 14
             elseif OSX() && has("gui_running")
@@ -993,8 +967,8 @@
         endif
 
         " To specify a different directory in which to place the vimbackup,
-        if exists('g:spf13_consolidated_directory')
-            let common_dir = g:spf13_consolidated_directory . prefix
+        if exists('g:Sparta_consolidated_directory')
+            let common_dir = g:Sparta_consolidated_directory . prefix
         else
             let common_dir = parent . '/.' . prefix
         endif
@@ -1072,16 +1046,16 @@
         execute a:command . " " . expand(a:file, ":p")
     endfunction
      
-    function! s:EditSpf13Config()
-        call <SID>ExpandFilenameAndExecute("tabedit", "~/.vimrc.before")
+    function! s:EditSpartaConfig()
+        call <SID>ExpandFilenameAndExecute("tabedit", "~/.vimrc.init")
         call <SID>ExpandFilenameAndExecute("tabedit", "~/.vimrc")
         call <SID>ExpandFilenameAndExecute("vsplit", "~/.vimrc.bundles")
      
         execute bufwinnr(".vimrc") . "wincmd w"
     endfunction
      
-    execute "noremap " . s:spf13_edit_config_mapping " :call <SID>EditSpf13Config()<CR>"
-    execute "noremap " . s:spf13_apply_config_mapping . " :source ~/.vimrc<CR>"
+    execute "noremap " . s:Sparta_edit_config_mapping " :call <SID>EditSpartaConfig()<CR>"
+    execute "noremap " . s:Sparta_apply_config_mapping . " :source ~/.vimrc<CR>"
 " }
 
 

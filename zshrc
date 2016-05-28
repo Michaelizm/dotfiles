@@ -7,6 +7,7 @@ export ZSH=$HOME/.dotfiles/zsh
 #set Editor
 export EDITOR="nvim"
 
+
 #set highlight for cheat
 export CHEATCOLORS=true
 
