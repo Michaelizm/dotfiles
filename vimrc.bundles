@@ -32,7 +32,13 @@
 
     " list only the plugin groups you will use
     if !exists('g:Sparta_bundle_groups')
-        let g:Sparta_bundle_groups=['general', 'local', 'youcompleteme', 'programming', 'python', 'misc',]
+        let g:Sparta_bundle_groups = [
+                                      \ 'general',
+                                      \ 'Misc',
+                                      \ 'youcompleteme',
+                                      \ 'programming',
+                                      \ 'python',
+                                      \ 'local',]
     endif
 
     " To override all the included bundles, add the following to your
@@ -42,6 +48,7 @@
         if count(g:Sparta_bundle_groups, 'local')
             Bundle "morhetz/gruvbox"
             Bundle 'rizzatti/dash.vim'
+            Bundle 'rust-lang/rust.vim'
         endif
     " }
     " General {
@@ -97,7 +104,6 @@
             Bundle 'scrooloose/nerdcommenter'
             Bundle 'tpope/vim-commentary'
             Bundle 'godlygeek/tabular'
-            Bundle 'luochen1990/rainbow'
             if executable('ctags')
                 Bundle 'majutsushi/tagbar'
             endif
@@ -105,25 +111,9 @@
     " }
 
     " Snippets & AutoComplete {
-        if count(g:Sparta_bundle_groups, 'snipmate')
-            Bundle 'garbas/vim-snipmate'
-            Bundle 'honza/vim-snippets'
-            if filereadable(expand("~/.vim/bundle/vim-snippets/snippets/support_functions.vim"))
-                source ~/.vim/bundle/vim-snippets/snippets/support_functions.vim
-            endif
-        elseif count(g:Sparta_bundle_groups, 'youcompleteme')
+        if count(g:Sparta_bundle_groups, 'youcompleteme')
             Bundle 'Valloric/YouCompleteMe'
             Bundle 'SirVer/ultisnips'
-            Bundle 'honza/vim-snippets'
-        elseif count(g:Sparta_bundle_groups, 'neocomplcache')
-            Bundle 'Shougo/neocomplcache'
-            Bundle 'Shougo/neosnippet'
-            Bundle 'Shougo/neosnippet-snippets'
-            Bundle 'honza/vim-snippets'
-        elseif count(g:Sparta_bundle_groups, 'neocomplete')
-            Bundle 'Shougo/neocomplete.vim.git'
-            Bundle 'Shougo/neosnippet'
-            Bundle 'Shougo/neosnippet-snippets'
             Bundle 'honza/vim-snippets'
         endif
     " }
@@ -170,16 +160,6 @@
         endif
     " }
 
-    " HTML {
-        if count(g:Sparta_bundle_groups, 'html')
-            Bundle 'amirh/HTML-AutoCloseTag'
-            Bundle 'hail2u/vim-css3-syntax'
-            Bundle 'gorodinskiy/vim-coloresque'
-            Bundle 'tpope/vim-haml'
-            Bundle 'mattn/emmet-vim'
-        endif
-    " }
-
     " Ruby {
         if count(g:Sparta_bundle_groups, 'ruby')
             Bundle 'tpope/vim-rails'
@@ -193,12 +173,6 @@
         endif
     " }
 
-    " Go Lang {
-        if count(g:Sparta_bundle_groups, 'go')
-            Bundle 'fatih/vim-go'
-        endif
-    " }
-
     " Elixir {
         if count(g:Sparta_bundle_groups, 'elixir')
             Bundle 'elixir-lang/vim-elixir'
@@ -209,7 +183,6 @@
 
     " Misc {
         if count(g:Sparta_bundle_groups, 'misc')
-            Bundle 'rust-lang/rust.vim'
             Bundle 'tpope/vim-markdown'
             Bundle 'spf13/vim-preview'
             Bundle 'tpope/vim-cucumber'
