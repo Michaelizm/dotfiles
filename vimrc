@@ -37,7 +37,6 @@
 
 " Local {
     inoremap kj <ESC>
-    map <Leader>sa ggVG"
     nnoremap U <C-r>
     nnoremap <Space> <C-d>
     nnoremap ; :
@@ -63,8 +62,6 @@
 
     " Most prefer to automatically switch to the current file directory when
     " a new buffer is opened; to prevent this behavior, add the following to
-    " your .vimrc.before.local file:
-    "   let g:spf13_no_autochdir = 1
     if !exists('g:spf13_no_autochdir')
         autocmd BufEnter * if bufname("") !~ "^\[A-Za-z0-9\]*://" | lcd %:p:h | endif
     endif
@@ -84,9 +81,6 @@
     au FileType gitcommit au! BufEnter COMMIT_EDITMSG call setpos('.', [0, 1, 1, 0])
 
     " http://vim.wikia.com/wiki/Restore_cursor_to_file_position_in_previous_editing_session
-    " Restore cursor to file position in previous editing session
-    " To disable this, add the following to your .vimrc.before.local file:
-    "   let g:spf13_no_restore_cursor = 1
     if !exists('g:spf13_no_restore_cursor')
         function! ResCur()
             if line("'\"") <= line("$")
@@ -110,7 +104,6 @@
         endif
 
         " To disable views add the following to your .vimrc.before.local file:
-        " let g:spf13_no_views = 1
         if !exists('g:spf13_no_views')
             let g:skipview_files = [
                 \ '\[example pattern\]'
@@ -190,7 +183,6 @@
     set matchpairs+=<:>             " Match, to be used with %
     set pastetoggle=<F12>           " pastetoggle (sane indentation on pastes)
     set comments=sl:/*,mb:*,elx:*/  " auto format comment blocks
-    "   let g:spf13_keep_trailing_whitespace = 1
     autocmd FileType c,cpp,java,go,php,javascript,puppet,python,rust,twig,xml,yml,perl,sql autocmd BufWritePre <buffer> if !exists('g:spf13_keep_trailing_whitespace') | call StripTrailingWhitespace() | endif
     autocmd BufNewFile,BufRead *.html.twig set filetype=html.twig
     autocmd FileType haskell,puppet,ruby,yml setlocal expandtab shiftwidth=2 softtabstop=2
@@ -205,7 +197,6 @@
     " The default leader is '\', but many people prefer ',' as it's in a standard
     " location. To override this behavior and set it back to '\' (or any other
     " character) add the following to your .vimrc.before.local file:
-    "   let g:spf13_leader='\'
     if !exists('g:spf13_leader')
         let mapleader = ','
     else
@@ -218,10 +209,6 @@
     endif
 
     " The default mappings for editing and applying the spf13 configuration
-    " are <leader>ev and <leader>sv respectively. Change them to your preference
-    " by adding the following to your .vimrc.before.local file:
-    let g:spf13_edit_config_mapping='<leader>ec'
-    let g:spf13_apply_config_mapping='<leader>sc'
     if !exists('g:spf13_edit_config_mapping')
         let s:spf13_edit_config_mapping = '<leader>ev'
     else
@@ -236,8 +223,6 @@
     " Easier moving in tabs and windows
     " The lines conflict with the default digraph mapping of <C-K>
     " If you prefer that functionality, add the following to your
-    " .vimrc.before.local file:
-    "   let g:spf13_no_easyWindows = 1
     if !exists('g:spf13_no_easyWindows')
         map <C-J> <C-W>j<C-W>_
         map <C-K> <C-W>k<C-W>_
@@ -253,10 +238,7 @@
     " presence of `:set wrap`, and relative to line for `:set nowrap`.
     " Default vim behaviour is to act relative to text line in both cases
     " If you prefer the default behaviour, add the following to your
-    " .vimrc.before.local file:
-    "   let g:spf13_no_wrapRelMotion = 1
     if !exists('g:spf13_no_wrapRelMotion')
-        " Same for 0, home, end, etc
         function! WrapRelativeMotion(key, ...)
             let vis_sel=""
             if a:0
@@ -287,8 +269,6 @@
     " The following two lines conflict with moving to top and
     " bottom of the screen
     " If you prefer that functionality, add the following to your
-    " .vimrc.before.local file:
-    "   let g:spf13_no_fastTabs = 1
     if !exists('g:spf13_no_fastTabs')
         map <S-H> gT
         map <S-L> gt
@@ -328,7 +308,6 @@
 
     " Most prefer to toggle search highlighting rather than clear the current
     " and off, add the following to your .vimrc.before.local file:
-    "   let g:spf13_clear_search_highlight = 1
     if exists('g:spf13_clear_search_highlight')
         nmap <silent> <leader>/ :nohlsearch<CR>
     else
@@ -443,8 +422,6 @@
     " }
 
     " OmniComplete {
-        " To disable omni complete, add the following to your .vimrc.before.local file:
-        "   let g:spf13_no_omni_complete = 1
         if !exists('g:spf13_no_omni_complete')
             if has("autocmd") && exists("+omnifunc")
                 autocmd Filetype *
@@ -490,8 +467,6 @@
     " }
 
     " SnipMate {
-        " Setting the author var
-        " If forking, please overwrite in your .vimrc.local file
         let g:snips_author = 'Chen Zhang <i.am.zhchen@gmail.com>'
     " }
 
@@ -875,8 +850,6 @@
             let g:neocomplcache_omni_patterns.go = '\h\w*\.\?'
     " }
     " Normal Vim omni-completion {
-    " To disable omni complete, add the following to your .vimrc.before.local file:
-    "   let g:spf13_no_omni_complete = 1
         elseif !exists('g:spf13_no_omni_complete')
             " Enable omni-completion.
             autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
@@ -1020,10 +993,6 @@
         endif
 
         " To specify a different directory in which to place the vimbackup,
-        " vimviews, vimundo, and vimswap files/directories, add the following to
-        " your .vimrc.before.local file:
-        "   let g:spf13_consolidated_directory = <full path to desired directory>
-        "   eg: let g:spf13_consolidated_directory = $HOME . '/.vim/'
         if exists('g:spf13_consolidated_directory')
             let common_dir = g:spf13_consolidated_directory . prefix
         else
@@ -1104,6 +1073,7 @@
     endfunction
      
     function! s:EditSpf13Config()
+        call <SID>ExpandFilenameAndExecute("tabedit", "~/.vimrc.before")
         call <SID>ExpandFilenameAndExecute("tabedit", "~/.vimrc")
         call <SID>ExpandFilenameAndExecute("vsplit", "~/.vimrc.bundles")
      
