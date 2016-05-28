@@ -266,6 +266,9 @@
     " Allow using the repeat operator with a visual selection (!) http://stackoverflow.com/a/8064607/127816
     vnoremap . :normal .<CR>
 
+    " Don't copy the contents of an overwritten selection.
+    vnoremap p "_dP
+
     " Some helpers to edit mode http://vimcasts.org/e/14
     cnoremap %% <C-R>=fnameescape(expand('%:h')).'/'<cr>
     map <leader>ew :e %%
@@ -557,7 +560,6 @@
 
 " GUI Settings {
 
-    " GVIM- (here instead of .gvimrc)
     if has('gui_running')
         set guioptions-=T           " Remove the toolbar
         set lines=40                " 40 lines of text instead of 24
@@ -572,6 +574,19 @@
         if &term == 'xterm' || &term == 'screen'
             set t_Co=256            " Enable 256 colors to stop the CSApprox warning and make xterm vim shine
         endif
+    endif
+
+    " Enable basic mouse behavior such as resizing buffers.
+    if exists('$TMUX')  " Support resizing in tmux
+      set ttymouse=xterm2
+    endif
+    " Fix Cursor in TMUX
+    if exists('$TMUX')
+      let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
+      let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
+    else
+      let &t_SI = "\<Esc>]50;CursorShape=1\x7"
+      let &t_EI = "\<Esc>]50;CursorShape=0\x7"
     endif
 
 " }
