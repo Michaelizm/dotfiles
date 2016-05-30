@@ -1,3 +1,4 @@
+# For neovim
 NVIM_TUI_ENABLE_TRUE_COLOR=1
 
 # Path to your oh-my-zsh installation.
@@ -101,19 +102,13 @@ alias ....='cd ../../..; ls'
 alias m='mark'
 alias ms='marks'
 alias j='jump'
-
+alias vu='vim +PlugInstall! +PlugClean +q'
+alias brewu='brew update && brew cask update && brew upgrade && brew cleanup && brew cask cleanup && brew prune && brew doctor'
+alias pipu="pip freeze --local | grep -v '^\-e' | cut -d = -f 1  | xargs pip install -U"
 
 # Function
 function ali {
 ssh $1@120.25.88.28
-}
-
-function pipu {
-pip freeze --local | grep -v '^\-e' | cut -d = -f 1  | xargs pip install -U
-}
-
-function brewu {
-brew update && brew cask update && brew upgrade && brew cleanup && brew cask cleanup && brew prune && brew doctor
 }
 
 

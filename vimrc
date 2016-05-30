@@ -14,63 +14,47 @@
         set shell=/bin/zsh
     " }
 
-    " Arrow Key Fix {
-        if &term[:4] == "xterm" || &term[:5] == 'screen' || &term[:3] == 'rxvt'
-            inoremap <silent> <C-[>OC <RIGHT>
+    " Use init config if available {
+        if filereadable(expand("~/.vimrc.init"))
+            source ~/.vimrc.init
+        endif
+    " }
+
+    " Use bundles config {
+        if filereadable(expand("~/.vimrc.bundles"))
+            source ~/.vimrc.bundles
         endif
     " }
 
 " }
 
-" Use init config if available {
-    if filereadable(expand("~/.vimrc.init"))
-        source ~/.vimrc.init
-    endif
-" }
-
-" Use bundles config {
-    if filereadable(expand("~/.vimrc.bundles"))
-        source ~/.vimrc.bundles
-    endif
-" }
-
-
 " General {
 
-    set background=dark         " Assume a dark background
+    set background=dark                 " Assume a dark background
 
-    filetype plugin indent on   " Automatically detect file types.
-    syntax on                   " Syntax highlighting
-    set mouse=a                 " Automatically enable mouse usage
-    set mousehide               " Hide the mouse cursor while typing
+    filetype plugin indent on           " Automatically detect file types.
+    syntax on                           " Syntax highlighting
+    set mouse=a                         " Automatically enable mouse usage
+    set mousehide                       " Hide the mouse cursor while typing
     scriptencoding utf-8
 
     if has('clipboard')
-        if has('unnamedplus')  " When possible use + register for copy-paste
+        if has('unnamedplus')           " When possible use + register for copy-paste
             set clipboard=unnamed,unnamedplus
-        else                   " On mac and Windows, use * register for copy-paste
+        else                            " On mac and Windows, use * register for copy-paste
             set clipboard=unnamed
         endif
     endif
-
-    if !exists('g:Sparta_no_autochdir')
-        autocmd BufEnter * if bufname("") !~ "^\[A-Za-z0-9\]*://" | lcd %:p:h | endif
-    endif
-
+    set autoread                        " reload files when changed on disk, i.e. via `git checkout`
+    set backspace=2                     " Fix broken backspace in some setups
+    set directory-=.                    " don't store swapfiles in the current directory
     set shortmess+=filmnrxoOtT          " Abbrev. of messages (avoids 'hit enter')
-    set viewoptions=folds,options,cursor,unix,slash " Better Unix / Windows compatibility
     set virtualedit=onemore             " Allow for cursor beyond last character
     set history=1000                    " Store a ton of history (default is 20)
     set spell                           " Spell checking on
     set hidden                          " Allow buffer switching without saving
-    set iskeyword-=.                    " '.' is an end of word designator
-    set iskeyword-=#                    " '#' is an end of word designator
-    set iskeyword-=-                    " '-' is an end of word designator
 
-    " Instead of reverting the cursor to the last position in the buffer, we set it to the first line when editing a git commit message
-    au FileType gitcommit au! BufEnter COMMIT_EDITMSG call setpos('.', [0, 1, 1, 0])
-
-    if !exists('g:Sparta_no_restore_cursor')
+    " Restore cursor
         function! ResCur()
             if line("'\"") <= line("$")
                 silent! normal! g`"
@@ -82,7 +66,6 @@
             autocmd!
             autocmd BufWinEnter * call ResCur()
         augroup END
-    endif
 
     " Setting up the directories {
         set backup
@@ -92,11 +75,6 @@
             set undoreload=10000        " Maximum number lines to save for undo on a buffer reload
         endif
 
-        if !exists('g:Sparta_no_views')
-            let g:skipview_files = [
-                \ '\[example pattern\]'
-                \ ]
-        endif
     " }
 
 " }
@@ -110,7 +88,6 @@
 
     set tabpagemax=15               " Only show 15 tabs
     set showmode                    " Display the current mode
-
     set cursorline                  " Highlight current line
 
     highlight clear SignColumn      " SignColumn should match background
@@ -148,7 +125,7 @@
     set wildmode=list:longest,full  " Command <Tab> completion, list matches, then longest common part, then all.
     set whichwrap=b,s,h,l,<,>,[,]   " Backspace and cursor keys wrap too
     set scrolljump=5                " Lines to scroll when cursor leaves screen
-    set scrolloff=12                " Minimum lines to keep above and below cursor
+    set scrolloff=5                 " Minimum lines to keep above and below cursor
     set foldenable                  " Auto fold code
     set list
     set listchars=tab:›\ ,trail:•,extends:#,nbsp:. " Highlight problematic whitespace
@@ -168,90 +145,28 @@
     set splitbelow                  " Puts new split windows to the bottom of the current
     set matchpairs+=<:>             " Match, to be used with %
     set pastetoggle=<F12>           " pastetoggle (sane indentation on pastes)
-    set comments=sl:/*,mb:*,elx:*/  " auto format comment blocks
-
-    autocmd FileType c,cpp,java,go,php,javascript,puppet,python,rust,twig,xml,yml,perl,sql autocmd BufWritePre <buffer> if !exists('g:Sparta_keep_trailing_whitespace') | call StripTrailingWhitespace() | endif
-    autocmd BufNewFile,BufRead *.html.twig set filetype=html.twig
-    autocmd FileType haskell,puppet,ruby,yml setlocal expandtab shiftwidth=2 softtabstop=2
-    autocmd BufNewFile,BufRead *.coffee set filetype=coffee
-    autocmd FileType haskell setlocal commentstring=--\ %s
-    autocmd FileType haskell,rust setlocal nospell
 
 " }
 
 " Key (re)Mappings {
 
     " The default leader is '\', but many people prefer ','
-    if !exists('g:Sparta_leader')
-        let mapleader = ','
-    else
-        let mapleader=g:Sparta_leader
-    endif
-    if !exists('g:Sparta_localleader')
-        let maplocalleader = '_'
-    else
-        let maplocalleader=g:Sparta_localleader
-    endif
+    let mapleader = ','
+    let maplocalleader = '_'
 
     " The default mappings for editing and applying the Sparta configuration
-    if !exists('g:Sparta_edit_config_mapping')
-        let s:Sparta_edit_config_mapping = '<leader>ev'
-    else
-        let s:Sparta_edit_config_mapping = g:Sparta_edit_config_mapping
-    endif
-    if !exists('g:Sparta_apply_config_mapping')
-        let s:Sparta_apply_config_mapping = '<leader>sv'
-    else
-        let s:Sparta_apply_config_mapping = g:Sparta_apply_config_mapping
-    endif
+    let s:Sparta_edit_config_mapping = '<leader>ev'
+    let s:Sparta_apply_config_mapping = '<leader>sv'
 
     " Easier moving in tabs and windows
-    if !exists('g:Sparta_no_easyWindows')
-        map <C-J> <C-W>j<C-W>_
-        map <C-K> <C-W>k<C-W>_
-        map <C-L> <C-W>l<C-W>_
-        map <C-H> <C-W>h<C-W>_
-    endif
-
-    " End/Start of line motion keys act relative to row/wrap width in the
-    " presence of `:set wrap`, and relative to line for `:set nowrap`.
-    " Default vim behaviour is to act relative to text line in both cases
-    if !exists('g:Sparta_no_wrapRelMotion')
-        function! WrapRelativeMotion(key, ...)
-            let vis_sel=""
-            if a:0
-                let vis_sel="gv"
-            endif
-            if &wrap
-                execute "normal!" vis_sel . "g" . a:key
-            else
-                execute "normal!" vis_sel . a:key
-            endif
-        endfunction
-
-        " Map g* keys in Normal, Operator-pending, and Visual+select
-        noremap $ :call WrapRelativeMotion("$")<CR>
-        noremap <End> :call WrapRelativeMotion("$")<CR>
-        noremap 0 :call WrapRelativeMotion("0")<CR>
-        noremap <Home> :call WrapRelativeMotion("0")<CR>
-        noremap ^ :call WrapRelativeMotion("^")<CR>
-        onoremap $ v:call WrapRelativeMotion("$")<CR>
-        onoremap <End> v:call WrapRelativeMotion("$")<CR>
-        vnoremap $ :<C-U>call WrapRelativeMotion("$", 1)<CR>
-        vnoremap <End> :<C-U>call WrapRelativeMotion("$", 1)<CR>
-        vnoremap 0 :<C-U>call WrapRelativeMotion("0", 1)<CR>
-        vnoremap <Home> :<C-U>call WrapRelativeMotion("0", 1)<CR>
-        vnoremap ^ :<C-U>call WrapRelativeMotion("^", 1)<CR>
-    endif
+    map <C-J> <C-W>j
+    map <C-K> <C-W>k
+    map <C-L> <C-W>l
+    map <C-H> <C-W>h
 
     " Most prefer to toggle search highlighting rather than clear the current
-    if exists('g:Sparta_clear_search_highlight')
-        nmap <silent> <leader>/ :nohlsearch<CR>
-    else
-        nmap <silent> <leader>/ :set invhlsearch<CR>
-    endif
+    nmap <silent> <leader>/ :set invhlsearch<CR>
 
-    " Shortcuts
     " Change Working Directory to that of the current file
     cmap cwd lcd %:p:h
     cmap cd. lcd %:p:h
@@ -265,9 +180,6 @@
 
     " Allow using the repeat operator with a visual selection (!) http://stackoverflow.com/a/8064607/127816
     vnoremap . :normal .<CR>
-
-    " Don't copy the contents of an overwritten selection.
-    vnoremap p "_dP
 
     " Some helpers to edit mode http://vimcasts.org/e/14
     cnoremap %% <C-R>=fnameescape(expand('%:h')).'/'<cr>
@@ -302,18 +214,6 @@
 
     " Map <Leader>ff to display all lines with keyword under cursor and ask which one to jump to
     nmap <Leader>ff [I:let nr = input("Which one: ")<Bar>exe "normal " . nr ."[\t"<CR>
-
-    " Code folding options
-    nmap <leader>f0 :set foldlevel=0<CR>
-    nmap <leader>f1 :set foldlevel=1<CR>
-    nmap <leader>f2 :set foldlevel=2<CR>
-    nmap <leader>f3 :set foldlevel=3<CR>
-    nmap <leader>f4 :set foldlevel=4<CR>
-    nmap <leader>f5 :set foldlevel=5<CR>
-    nmap <leader>f6 :set foldlevel=6<CR>
-    nmap <leader>f7 :set foldlevel=7<CR>
-    nmap <leader>f8 :set foldlevel=8<CR>
-    nmap <leader>f9 :set foldlevel=9<CR>
 
     " fast jump out of insert mode
     inoremap kj <ESC>
@@ -430,6 +330,7 @@
 
     " ctrlp {
         if isdirectory(expand("~/.vim/bundle/ctrlp.vim/"))
+            let g:ctrlp_match_window = 'order:ttb,max:20'
             let g:ctrlp_working_path_mode = 'ra'
             nnoremap <silent> <D-t> :CtrlP<CR>
             nnoremap <silent> <D-r> :CtrlPMRU<CR>
@@ -470,13 +371,9 @@
         endif
     "}
 
-    " Rainbow {
-        if isdirectory(expand("~/.vim/bundle/rainbow/"))
-            let g:rainbow_active = 1 "0 if you want to enable it later via :RainbowToggle
-        endif
-    "}
-
     " Fugitive {
+        " Instead of reverting the cursor to the last position in the buffer, we set it to the first line when editing a git commit message
+        au FileType gitcommit au! BufEnter COMMIT_EDITMSG call setpos('.', [0, 1, 1, 0])
         if isdirectory(expand("~/.vim/bundle/vim-fugitive/"))
             nnoremap <silent> <leader>gs :Gstatus<CR>
             nnoremap <silent> <leader>gd :Gdiff<CR>
@@ -492,20 +389,34 @@
         endif
     "}
 
-    " YouCompleteMe {
-        if count(g:Sparta_bundle_groups, 'youcompleteme')
-            let g:acp_enableAtStartup = 0
-            let g:ycm_collect_identifiers_from_tags_files = 1
+    " Deoplete {
+        if count(g:Sparta_bundle_groups, 'deoplete')
+            " Use deoplete.
+            let g:deoplete#enable_at_startup = 1
+            " Use smartcase.
+            let g:deoplete#enable_smart_case = 1
 
-            " remap Ultisnips for compatibility for YCM
-            let g:UltiSnipsExpandTrigger = '<C-j>'
-            let g:UltiSnipsJumpForwardTrigger = '<C-j>'
-            let g:UltiSnipsJumpBackwardTrigger = '<C-k>'
+            " <C-h>, <BS>: close popup and delete backword char.
+            inoremap <expr><C-h> deoplete#mappings#smart_close_popup()."\<C-h>"
+            inoremap <expr><BS>  deoplete#mappings#smart_close_popup()."\<C-h>"
 
-            " Haskell post write lint and check with ghcmod
-            if !executable("ghcmod")
-                autocmd BufWritePost *.hs GhcModCheckAndLintAsync
-            endif
+            " <CR>: close popup and save indent.
+            inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
+            function! s:my_cr_function() abort
+              return deoplete#mappings#close_popup() . "\<CR>"
+            endfunction
+
+            let g:deoplete#keyword_patterns = {}
+            let g:deoplete#keyword_patterns.tex = '\\?[a-zA-Z_]\w*'
+            "TODO for other files
+
+            autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+            autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+            autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+            autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+            autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+            autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
+            autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc
         endif
     " }
 
@@ -576,19 +487,6 @@
         endif
     endif
 
-    " Enable basic mouse behavior such as resizing buffers.
-    if exists('$TMUX')  " Support resizing in tmux
-      set ttymouse=xterm2
-    endif
-    " Fix Cursor in TMUX
-    if exists('$TMUX')
-      let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
-      let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
-    else
-      let &t_SI = "\<Esc>]50;CursorShape=1\x7"
-      let &t_EI = "\<Esc>]50;CursorShape=0\x7"
-    endif
-
 " }
 
 " Functions {
@@ -633,6 +531,7 @@
     " }
 
     " Initialize NERDTree as needed {
+    let g:NERDSpaceDelims=1
     function! NERDTreeInitAsNeeded()
         redir => bufoutput
         buffers!
@@ -646,41 +545,6 @@
     endfunction
     " }
 
-    " Strip whitespace {
-    function! StripTrailingWhitespace()
-        " Preparation: save last search, and cursor position.
-        let _s=@/
-        let l = line(".")
-        let c = col(".")
-        " do the business:
-        %s/\s\+$//e
-        " clean up: restore previous search history, and cursor position
-        let @/=_s
-        call cursor(l, c)
-    endfunction
-    " }
-
-    " Shell command {
-    function! s:RunShellCommand(cmdline)
-        botright new
-
-        setlocal buftype=nofile
-        setlocal bufhidden=delete
-        setlocal nobuflisted
-        setlocal noswapfile
-        setlocal nowrap
-        setlocal filetype=shell
-        setlocal syntax=shell
-
-        call setline(1, a:cmdline)
-        call setline(2, substitute(a:cmdline, '.', '=', 'g'))
-        execute 'silent $read !' . escape(a:cmdline, '%#')
-        setlocal nomodifiable
-        1
-    endfunction
-    command! -complete=file -nargs=+ Shell call s:RunShellCommand(<q-args>)
-    " }
-     
     function! s:ExpandFilenameAndExecute(command, file)
         execute a:command . " " . expand(a:file, ":p")
     endfunction
