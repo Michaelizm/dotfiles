@@ -3,9 +3,6 @@
 " let g:Sparta_clear_search_highlight
 " let g:Sparta_consolidated_directory = <full path to desired directory>
 " let g:Sparta_edit_config_mapping
-" let g:Sparta_leader='\'
-" let g:Sparta_localleader
-" let g:Sparta_no_autochdir
 " let g:Sparta_no_big_font
 " let g:Sparta_no_easyWindows = 1
 " let g:Sparta_no_keyfixes

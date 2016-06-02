@@ -145,24 +145,23 @@
     set splitbelow                  " Puts new split windows to the bottom of the current
     set matchpairs+=<:>             " Match, to be used with %
     set pastetoggle=<F12>           " pastetoggle (sane indentation on pastes)
-
+    autocmd FileType c,cpp,java,go,php,javascript,puppet,python,rust,twig,xml,yml,perl,sql autocmd BufWritePre <buffer> call StripTrailingWhitespace()
 " }
 
 " Key (re)Mappings {
 
     " The default leader is '\', but many people prefer ','
     let mapleader = ','
-    let maplocalleader = '_'
 
     " The default mappings for editing and applying the Sparta configuration
     let s:Sparta_edit_config_mapping = '<leader>ev'
     let s:Sparta_apply_config_mapping = '<leader>sv'
 
     " Easier moving in tabs and windows
-    map <C-J> <C-W>j
-    map <C-K> <C-W>k
-    map <C-L> <C-W>l
-    map <C-H> <C-W>h
+    map <C-J> <C-W>j<C-W>_
+    map <C-K> <C-W>k<C-W>_
+    map <C-L> <C-W>l<C-W>_
+    map <C-H> <C-W>h<C-W>_
 
     " Most prefer to toggle search highlighting rather than clear the current
     nmap <silent> <leader>/ :set invhlsearch<CR>
@@ -367,7 +366,7 @@
 
     " TagBar {
         if isdirectory(expand("~/.vim/bundle/tagbar/"))
-            nnoremap <silent> <leader>tt :TagbarToggle<CR>
+            nnoremap <silent> <leader>] :TagbarToggle<CR>
         endif
     "}
 
@@ -393,22 +392,9 @@
         if count(g:Sparta_bundle_groups, 'deoplete')
             " Use deoplete.
             let g:deoplete#enable_at_startup = 1
-            " Use smartcase.
-            let g:deoplete#enable_smart_case = 1
-
-            " <C-h>, <BS>: close popup and delete backword char.
-            inoremap <expr><C-h> deoplete#mappings#smart_close_popup()."\<C-h>"
-            inoremap <expr><BS>  deoplete#mappings#smart_close_popup()."\<C-h>"
-
-            " <CR>: close popup and save indent.
-            inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
-            function! s:my_cr_function() abort
-              return deoplete#mappings#close_popup() . "\<CR>"
-            endfunction
-
-            let g:deoplete#keyword_patterns = {}
-            let g:deoplete#keyword_patterns.tex = '\\?[a-zA-Z_]\w*'
-            "TODO for other files
+            if !exists('g:deoplete#omni#input_patterns')
+              let g:deoplete#omni#input_patterns = {}
+            endif
 
             autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
             autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
@@ -553,10 +539,9 @@
         call <SID>ExpandFilenameAndExecute("tabedit", "~/.vimrc.init")
         call <SID>ExpandFilenameAndExecute("tabedit", "~/.vimrc")
         call <SID>ExpandFilenameAndExecute("vsplit", "~/.vimrc.bundles")
-     
         execute bufwinnr(".vimrc") . "wincmd w"
     endfunction
      
-    execute "noremap " . s:Sparta_edit_config_mapping " :call <SID>EditSpartaConfig()<CR>"
-    execute "noremap " . s:Sparta_apply_config_mapping . " :source ~/.vimrc<CR>"
+    execute "noremap " . s:Sparta_edit_config_mapping . " :call <SID>EditSpartaConfig()<CR>"
+    execute "noremap " . s:Sparta_apply_config_mapping . " :source ~/.vimrc<CR>".":filetype detect<CR>:exe \":echo \'vimrc reloaded\'\"<CR>"
 " }
