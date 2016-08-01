@@ -5,7 +5,7 @@ NVIM_TUI_ENABLE_TRUE_COLOR=1
 export ZSH=$HOME/.dotfiles/zsh
 
 #set Editor
-export EDITOR="nvim"
+export EDITOR="vim"
 
 
 #set highlight for cheat
@@ -67,9 +67,9 @@ export LANG=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
  if [[ -n $SSH_CONNECTION ]]; then
-   export EDITOR='nvim'
+   export EDITOR='vim'
  else
-   export EDITOR='nvim'
+   export EDITOR='vim'
  fi
 
 # Compilation flags
@@ -85,10 +85,10 @@ export SSH_KEY_PATH="~/.ssh/dsa_id"
 #
 # Aliases
 alias s='subl'
-alias v='nvim'
-alias vi='nvim'
-alias vim='nvim'
-alias zshconfig="nvim ~/.zshrc"
+alias v='vim'
+alias vi='vim'
+alias vim='vim'
+alias zshconfig="vim ~/.zshrc"
 alias ll='ls -altr'
 alias grep='grep --color'
 alias egrep='egrep --color'
@@ -102,8 +102,7 @@ alias ....='cd ../../..; ls'
 alias m='mark'
 alias ms='marks'
 alias j='jump'
-alias vu='nvim +PlugInstall! +PlugClean +q'
-alias brewu='brew update && brew cask update && brew upgrade && brew cleanup && brew cask cleanup && brew prune && brew doctor'
+alias brewu='brew update && brew cask update && brew cleanup && brew cask cleanup && brew prune && brew doctor'
 alias pipu="pip freeze --local | grep -v '^\-e' | cut -d = -f 1  | xargs pip install -U"
 
 # Function
