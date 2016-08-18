@@ -1,14 +1,14 @@
-" let g:override_Sparta_bundles
-" let g:Sparta_bundle_groups
-" let g:Sparta_clear_search_highlight
-" let g:Sparta_consolidated_directory = <full path to desired directory>
-" let g:Sparta_edit_config_mapping
-" let g:Sparta_no_big_font
-" let g:Sparta_no_easyWindows = 1
-" let g:Sparta_no_keyfixes
-" let g:Sparta_no_neosnippet_expand
-" let g:Sparta_no_restore_cursor
-" let g:Sparta_no_views
-" let g:Sparta_no_wrapRelMotion
-" let g:Sparta_apply_config_mapping='<leader>sc'
-" let g:Sparta_edit_config_mapping='<leader>ec'
+" let g:override_bundles =
+" let g:no_autochdir =
+" let g:bundle_groups =
+" let g:clear_search_highlight =
+" let g:consolidated_directory = <full path to desired directory>
+" let g:edit_config_mapping =
+" let g:no_easyWindows = 1
+" let g:no_keyfixes =
+" let g:no_neosnippet_expand =
+" let g:no_restore_cursor =
+" let g:no_views =
+" let g:no_wrapRelMotion =
+" let g:apply_config_mapping='<leader>sc'
+" let g:edit_config_mapping='<leader>ec'

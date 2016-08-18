@@ -10,17 +10,13 @@
     " }
 
     " Basics {
-        set nocompatible        " Must be first line
+        set nocompatible
         set shell=/bin/zsh
-    " }
 
-    " Use init config if available {
         if filereadable(expand("~/.vimrc.init"))
             source ~/.vimrc.init
         endif
-    " }
 
-    " Use bundles config {
         if filereadable(expand("~/.vimrc.bundles"))
             source ~/.vimrc.bundles
         endif
@@ -54,26 +50,31 @@
     set spell                           " Spell checking on
     set hidden                          " Allow buffer switching without saving
 
-    " Restore cursor
-        function! ResCur()
-            if line("'\"") <= line("$")
-                silent! normal! g`"
-                return 1
-            endif
-        endfunction
+    " Always switch to the current file directory
+    if !exists('g:no_autochdir')
+        autocmd BufEnter * if bufname("") !~ "^\[A-Za-z0-9\]*://" | lcd %:p:h | endif
+    endif
 
-        augroup resCur
-            autocmd!
-            autocmd BufWinEnter * call ResCur()
-        augroup END
+    " Restore cursor
+    function! ResCur()
+        if line("'\"") <= line("$")
+            silent! normal! g`"
+            return 1
+        endif
+    endfunction
+
+    augroup resCur
+        autocmd!
+        autocmd BufWinEnter * call ResCur()
+    augroup END
 
     " Setting up the directories {
-        set backup
-        if has('persistent_undo')
-            set undofile                " So is persistent undo ...
-            set undolevels=1000         " Maximum number of changes that can be undone
-            set undoreload=10000        " Maximum number lines to save for undo on a buffer reload
-        endif
+    set backup
+    if has('persistent_undo')
+        set undofile                " So is persistent undo ...
+        set undolevels=1000         " Maximum number of changes that can be undone
+        set undoreload=10000        " Maximum number lines to save for undo on a buffer reload
+    endif
 
     " }
 
@@ -86,7 +87,6 @@
     let g:gruvbox_italic=1
     colorscheme gruvbox
 
-    set tabpagemax=15               " Only show 15 tabs
     set showmode                    " Display the current mode
     set cursorline                  " Highlight current line
 
@@ -104,7 +104,7 @@
         set laststatus=2
         set statusline=%<%f\                     " Filename
         set statusline+=%w%h%m%r                 " Options
-        if !exists('g:override_Sparta_bundles')
+        if !exists('g:override_bundles')
             set statusline+=%{fugitive#statusline()} " Git Hotness
         endif
         set statusline+=\ [%{&ff}/%Y]            " Filetype
@@ -153,22 +153,19 @@
     " The default leader is '\', but many people prefer ','
     let mapleader = ','
 
-    " The default mappings for editing and applying the Sparta configuration
-    let s:Sparta_edit_config_mapping = '<leader>ev'
-    let s:Sparta_apply_config_mapping = '<leader>sv'
+    " The default mappings for editing and applying the  configuration
+    let s:edit_config_mapping = '<leader>ev'
+    let s:apply_config_mapping = '<leader>sv'
 
     " Easier moving in tabs and windows
     map <C-J> <C-W>j<C-W>_
     map <C-K> <C-W>k<C-W>_
     map <C-L> <C-W>l<C-W>_
     map <C-H> <C-W>h<C-W>_
+    map <Leader>= <C-w>=
 
     " Most prefer to toggle search highlighting rather than clear the current
     nmap <silent> <leader>/ :set invhlsearch<CR>
-
-    " Change Working Directory to that of the current file
-    cmap cwd lcd %:p:h
-    cmap cd. lcd %:p:h
 
     " For when you forget to sudo.. Really Write the file.
     cmap w!! w !sudo tee % >/dev/null
@@ -186,9 +183,6 @@
     map <leader>es :sp %%
     map <leader>ev :vsp %%
     map <leader>et :tabe %%
-
-    " Adjust viewports to the same size
-    map <Leader>= <C-w>=
 
     " Easier horizontal scrolling
     map zl zL
@@ -222,7 +216,7 @@
 " Plugins {
 
     " TextObj Sentence {
-        if count(g:Sparta_bundle_groups, 'writing')
+        if count(g:bundle_groups, 'writing')
             augroup textobj_sentence
               autocmd!
               autocmd FileType markdown call textobj#sentence#init()
@@ -233,7 +227,7 @@
     " }
 
     " TextObj Quote {
-        if count(g:Sparta_bundle_groups, 'writing')
+        if count(g:bundle_groups, 'writing')
             augroup textobj_quote
                 autocmd!
                 autocmd FileType markdown call textobj#quote#init()
@@ -388,14 +382,19 @@
         endif
     "}
 
-    " Deoplete {
-        if count(g:Sparta_bundle_groups, 'deoplete')
-            " Use deoplete.
-            let g:deoplete#enable_at_startup = 1
-            if !exists('g:deoplete#omni#input_patterns')
-              let g:deoplete#omni#input_patterns = {}
-            endif
+    " YouCompleteMe {
+        if count(g:bundle_groups, 'youcompleteme')
+            let g:acp_enableAtStartup = 0
 
+            " enable completion from tags
+            let g:ycm_collect_identifiers_from_tags_files = 1
+
+            " remap Ultisnips for compatibility for YCM
+            let g:UltiSnipsExpandTrigger = '<C-j>'
+            let g:UltiSnipsJumpForwardTrigger = '<C-j>'
+            let g:UltiSnipsJumpBackwardTrigger = '<C-k>'
+
+            " Enable omni completion.
             autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
             autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
             autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
@@ -403,6 +402,15 @@
             autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
             autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
             autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc
+
+            " For snippet_complete marker.
+            if !exists("g:spf13_no_conceal")
+                if has('conceal')
+                    set conceallevel=2 concealcursor=i
+                endif
+            endif
+
+            set completeopt-=preview
         endif
     " }
 
@@ -460,13 +468,6 @@
     if has('gui_running')
         set guioptions-=T           " Remove the toolbar
         set lines=40                " 40 lines of text instead of 24
-        if !exists("g:Sparta_no_big_font")
-            if LINUX() && has("gui_running")
-                set guifont=Andale\ Mono\ Regular\ 12,Menlo\ Regular\ 11,Consolas\ Regular\ 12,Courier\ New\ Regular\ 14
-            elseif OSX() && has("gui_running")
-                set guifont=Andale\ Mono\ Regular:h12,Menlo\ Regular:h11,Consolas\ Regular:h12,Courier\ New\ Regular:h14
-            endif
-        endif
     else
         if &term == 'xterm' || &term == 'screen'
             set t_Co=256            " Enable 256 colors to stop the CSApprox warning and make xterm vim shine
@@ -491,8 +492,8 @@
         endif
 
         " To specify a different directory in which to place the vimbackup,
-        if exists('g:Sparta_consolidated_directory')
-            let common_dir = g:Sparta_consolidated_directory . prefix
+        if exists('g:consolidated_directory')
+            let common_dir = g:consolidated_directory . prefix
         else
             let common_dir = parent . '/.' . prefix
         endif
@@ -535,13 +536,13 @@
         execute a:command . " " . expand(a:file, ":p")
     endfunction
      
-    function! s:EditSpartaConfig()
+    function! s:EditConfig()
         call <SID>ExpandFilenameAndExecute("tabedit", "~/.vimrc.init")
         call <SID>ExpandFilenameAndExecute("tabedit", "~/.vimrc")
         call <SID>ExpandFilenameAndExecute("vsplit", "~/.vimrc.bundles")
         execute bufwinnr(".vimrc") . "wincmd w"
     endfunction
      
-    execute "noremap " . s:Sparta_edit_config_mapping . " :call <SID>EditSpartaConfig()<CR>"
-    execute "noremap " . s:Sparta_apply_config_mapping . " :source ~/.vimrc<CR>".":filetype detect<CR>:exe \":echo \'vimrc reloaded\'\"<CR>"
+    execute "noremap " . s:edit_config_mapping . " :call <SID>EditConfig()<CR>"
+    execute "noremap " . s:apply_config_mapping . " :source ~/.vimrc<CR>".":filetype detect<CR>:exe \":echo \'vimrc reloaded\'\"<CR>"
 " }
