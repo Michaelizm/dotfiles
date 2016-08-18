@@ -1,8 +1,11 @@
 # For neovim
 NVIM_TUI_ENABLE_TRUE_COLOR=1
 
+# Path to your oh-my-zsh installation.
+export ZSH=$HOME/.oh-my-zsh
+
 #set Editor
-export EDITOR="vim"
+export EDITOR="nvim"
 
 #set highlight for cheat
 export CHEATCOLORS=true
@@ -63,9 +66,9 @@ export LANG=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
  if [[ -n $SSH_CONNECTION ]]; then
-   export EDITOR='vim'
+   export EDITOR='nvim'
  else
-   export EDITOR='vim'
+   export EDITOR='nvim'
  fi
 
 # Compilation flags
@@ -81,10 +84,10 @@ export SSH_KEY_PATH="~/.ssh/dsa_id"
 #
 # Aliases
 alias s='subl'
-alias v='vim'
-alias vi='vim'
-alias vim='vim'
-alias zshconfig="vim ~/.zshrc"
+alias v='nvim'
+alias vi='nvim'
+alias vim='nvim'
+alias zshconfig="nvim ~/.zshrc"
 alias ll='ls -altr'
 alias grep='grep --color'
 alias egrep='egrep --color'
