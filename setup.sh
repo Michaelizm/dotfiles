@@ -71,8 +71,8 @@ create_symlinks() {
     lnif "$source_path/vimrc.init"          "$target_path/.vimrc.init"
     lnif "$source_path/zshrc"               "$target_path/.zshrc"
 
-    lnif "$source_path/tmux.conf"           "$target_path/.tmux.conf"
-    lnif "$source_path/tmux.conf.local"     "$target_path/.tmux.conf.local"
+    # lnif "$source_path/tmux.conf"           "$target_path/.tmux.conf"
+    # lnif "$source_path/tmux.conf.local"     "$target_path/.tmux.conf.local"
     ret="$?"
     success "Setting up vim symlinks."
     debug

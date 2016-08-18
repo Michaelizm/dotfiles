@@ -1,12 +1,8 @@
 # For neovim
 NVIM_TUI_ENABLE_TRUE_COLOR=1
 
-# Path to your oh-my-zsh installation.
-export ZSH=$HOME/.dotfiles/zsh
-
 #set Editor
 export EDITOR="vim"
-
 
 #set highlight for cheat
 export CHEATCOLORS=true
