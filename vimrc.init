@@ -6,6 +6,7 @@ let g:apply_config_mapping='<leader>sc'
 let g:edit_config_mapping='<leader>ec'
 
 " Initialize directories
+set backup
 function! InitializeDirectories()
     let parent = $HOME
     let prefix = 'vim'
@@ -16,6 +17,9 @@ function! InitializeDirectories()
 
     if has('persistent_undo')
         let dir_list['undo'] = 'undodir'
+        set undofile                " So is persistent undo ...
+        set undolevels=1000         " Maximum number of changes that can be undone
+        set undoreload=10000        " Maximum number lines to save for undo on a buffer reload
     endif
 
     " To specify a different directory in which to place the vimbackup,
@@ -42,15 +46,6 @@ function! InitializeDirectories()
     endfor
 endfunction
 call InitializeDirectories()
-
-" Setting up the directories
-set backup
-if has('persistent_undo')
-    set undofile                " So is persistent undo ...
-    set undolevels=1000         " Maximum number of changes that can be undone
-    set undoreload=10000        " Maximum number lines to save for undo on a buffer reload
-endif
-
 
 
 
