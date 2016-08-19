@@ -10,6 +10,20 @@ if filereadable(expand("~/.vimrc.bundles"))
     source ~/.vimrc.bundles
 endif
 
+" Functions {
+function! s:ExpandFilenameAndExecute(command, file)
+    execute a:command . " " . expand(a:file, ":p")
+endfunction
+function! s:EditConfig()
+    call <SID>ExpandFilenameAndExecute("tabedit", "~/.vimrc.init")
+    call <SID>ExpandFilenameAndExecute("tabedit", "~/.vimrc")
+    call <SID>ExpandFilenameAndExecute("vsplit", "~/.vimrc.bundles")
+    execute bufwinnr(".vimrc") . "wincmd w"
+endfunction
+execute "noremap " . g:edit_config_mapping . " :call <SID>EditConfig()<CR>"
+execute "noremap " . g:apply_config_mapping . " :source ~/.vimrc<CR>".":filetype detect<CR>:exe \":echo \'vimrc reloaded\'\"<CR>"
+" }
+
 " General {
 set nowrap                      " Do not wrap long lines
 set autoindent                  " Indent at the same level of the previous line
@@ -87,22 +101,8 @@ set background=dark
 let g:gruvbox_contrast_dark='hard'
 let g:gruvbox_termcolors=16
 let g:gruvbox_italic=1
+let g:airline_theme = 'gruvbox'
 colorscheme gruvbox
-
-if isdirectory(expand("~/.vim/bundle/vim-airline-themes/"))
-    if !exists('g:airline_theme')
-        let g:airline_theme = 'gruvbox'
-    endif
-    if !exists('g:airline_symbols')
-        let g:airline_symbols = {}
-    endif
-    if !exists('g:airline_powerline_fonts')
-        let g:airline_left_sep = '▶'
-        let g:airline_left_alt_sep = '❯'
-        let g:airline_right_sep = '◀'
-        let g:airline_right_alt_sep = '❮'
-    endif
-endif
 
 set showmode                    " Display the current mode
 set cursorline                  " Highlight current line
@@ -165,24 +165,11 @@ noremap j gj
 noremap k gk
 " Yank from the cursor to the end of the line, to be consistent with C and D.
 nnoremap Y y$
-"fast enter command mode
+" Fast enter command mode
 nnoremap ; :
 " Map <Leader>ff to display all lines with keyword under cursor and ask which one to jump to
 nmap <Leader>ff [I:let nr = input("Which one: ")<Bar>exe "normal " . nr ."[\t"<CR>
-" fast jump out of insert mode
+" Fast jump out of insert mode
 inoremap kj <ESC>
 " }
 
-" Functions {
-function! s:ExpandFilenameAndExecute(command, file)
-    execute a:command . " " . expand(a:file, ":p")
-endfunction
-function! s:EditConfig()
-    call <SID>ExpandFilenameAndExecute("tabedit", "~/.vimrc.init")
-    call <SID>ExpandFilenameAndExecute("tabedit", "~/.vimrc")
-    call <SID>ExpandFilenameAndExecute("vsplit", "~/.vimrc.bundles")
-    execute bufwinnr(".vimrc") . "wincmd w"
-endfunction
-execute "noremap " . g:edit_config_mapping . " :call <SID>EditConfig()<CR>"
-execute "noremap " . g:apply_config_mapping . " :source ~/.vimrc<CR>".":filetype detect<CR>:exe \":echo \'vimrc reloaded\'\"<CR>"
-" }
