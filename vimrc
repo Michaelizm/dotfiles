@@ -25,6 +25,7 @@ execute "noremap " . g:apply_config_mapping . " :source ~/.vimrc<CR>".":filetype
 " }
 
 " General {
+set termguicolors
 set nowrap                      " Do not wrap long lines
 set autoindent                  " Indent at the same level of the previous line
 set shiftwidth=4                " Use indents of 4 spaces
@@ -62,13 +63,12 @@ set mouse=a                         " Automatically enable mouse usage
 set mousehide                       " Hide the mouse cursor while typing
 scriptencoding utf-8
 
-if has('clipboard')
-    if has('unnamedplus')           " When possible use + register for copy-paste
-        set clipboard=unnamed,unnamedplus
-    else                            " On mac and Windows, use * register for copy-paste
-        set clipboard=unnamed
-    endif
+if has('unnamedplus')               " When possible use + register for copy-paste
+    set clipboard=unnamed,unnamedplus
+else                                " On mac and Windows, use * register for copy-paste
+    set clipboard=unnamed
 endif
+
 set autoread                        " reload files when changed on disk, i.e. via `git checkout`
 set backspace=2                     " Fix broken backspace in some setups
 set directory-=.                    " don't store swapfiles in the current directory
@@ -98,11 +98,11 @@ augroup END
 
 " Vim UI {
 set background=dark
-let g:gruvbox_contrast_dark='hard'
-let g:gruvbox_termcolors=16
-let g:gruvbox_italic=1
+let g:gruvbox_contrast_dark = 'medium'
+let g:gruvbox_italic = 1
 let g:airline_theme = 'gruvbox'
 colorscheme gruvbox
+
 
 set showmode                    " Display the current mode
 set cursorline                  " Highlight current line
@@ -148,10 +148,10 @@ vnoremap > >gv
 vnoremap . :normal .<CR>
 " Some helpers to edit mode http://vimcasts.org/e/14
 cnoremap %% <C-R>=fnameescape(expand('%:h')).'/'<cr>
-map <leader>ew :e %%
-map <leader>es :sp %%
-map <leader>ev :vsp %%
-map <leader>et :tabe %%
+map <leader>ow :e %%
+map <leader>os :sp %%
+map <leader>ov :vsp %%
+map <leader>ot :tabe %%
 " Easier horizontal scrolling
 map zl zL
 map zh zH

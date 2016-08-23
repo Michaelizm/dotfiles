@@ -1,6 +1,3 @@
-# For neovim
-NVIM_TUI_ENABLE_TRUE_COLOR=1
-
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
 
@@ -112,3 +109,4 @@ ssh $1@120.25.88.28
 
 # ITerm2 integration
 source ~/.iterm2_shell_integration.`basename $SHELL`
+source "$HOME/.vim/bundle/gruvbox/gruvbox_256palette.sh"

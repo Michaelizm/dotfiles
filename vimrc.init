@@ -2,8 +2,8 @@
 let mapleader = ','
 
 " The default mappings for editing and applying the  configuration
-let g:apply_config_mapping='<leader>sc'
-let g:edit_config_mapping='<leader>ec'
+let g:apply_config_mapping='<leader>sv'
+let g:edit_config_mapping='<leader>ev'
 
 " Initialize directories
 set backup
@@ -49,7 +49,6 @@ call InitializeDirectories()
 
 
 
-" let g:override_bundles =
 " let g:no_autochdir =
 " let g:bundle_groups =
 " let g:clear_search_highlight =

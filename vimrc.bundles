@@ -37,17 +37,18 @@ endif
 " list only the plugin groups you will use
 if !exists('g:bundle_groups')
     let g:bundle_groups = [
+                          \ 'mine',
                           \ 'general',
-                          \ 'Misc',
+                          \ 'misc',
                           \ 'youcompleteme',
                           \ 'programming',
-                          \ 'python',
-                          \ 'mine',]
+                          \ 'python',]
 endif
 
 " Mine {
 if count(g:bundle_groups, 'mine')
     Plug 'morhetz/gruvbox'
+    Plug 'altercation/vim-colors-solarized'
     Plug 'rizzatti/dash.vim'
         nmap <silent> <leader>d <Plug>DashSearch
     Plug 'rust-lang/rust.vim'
@@ -83,7 +84,6 @@ if count(g:bundle_groups, 'general')
         let NERDTreeShowHidden=1
         let NERDTreeKeepTreeInNewTab=1
         let g:nerdtree_tabs_open_on_gui_startup=0
-    Plug 'altercation/vim-colors-solarized'
     Plug 'spf13/vim-colors'
     Plug 'tpope/vim-surround'
     Plug 'tpope/vim-repeat'
@@ -138,7 +138,7 @@ if count(g:bundle_groups, 'general')
             let g:airline_right_sep = '◀'
             let g:airline_right_alt_sep = '❮'
         endif
-    Plug 'powerline/fonts'
+    " Plug 'powerline/fonts'
     Plug 'bling/vim-bufferline'
     Plug 'easymotion/vim-easymotion'
     Plug 'jistr/vim-nerdtree-tabs'
@@ -296,7 +296,6 @@ if count(g:bundle_groups, 'javascript')
     Plug 'kchmck/vim-coffee-script'
 endif
 " }
-
 
 " Ruby {
 if count(g:bundle_groups, 'ruby')
