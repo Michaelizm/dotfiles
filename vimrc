@@ -1,4 +1,4 @@
-" Basic
+" Basic {
 set nocompatible
 set shell=/bin/zsh
 
@@ -9,19 +9,6 @@ endif
 if filereadable(expand("~/.vimrc.bundles"))
     source ~/.vimrc.bundles
 endif
-
-" Functions {
-function! s:ExpandFilenameAndExecute(command, file)
-    execute a:command . " " . expand(a:file, ":p")
-endfunction
-function! s:EditConfig()
-    call <SID>ExpandFilenameAndExecute("tabedit", "~/.vimrc.init")
-    call <SID>ExpandFilenameAndExecute("tabedit", "~/.vimrc")
-    call <SID>ExpandFilenameAndExecute("vsplit", "~/.vimrc.bundles")
-    execute bufwinnr(".vimrc") . "wincmd w"
-endfunction
-execute "noremap " . g:edit_config_mapping . " :call <SID>EditConfig()<CR>"
-execute "noremap " . g:apply_config_mapping . " :source ~/.vimrc<CR>".":filetype detect<CR>:exe \":echo \'vimrc reloaded\'\"<CR>"
 " }
 
 " General {
@@ -36,7 +23,6 @@ set nojoinspaces                " Prevents inserting two spaces after punctuatio
 set splitright                  " Puts new vsplit windows to the right of the current
 set splitbelow                  " Puts new split windows to the bottom of the current
 set matchpairs+=<:>             " Match, to be used with %
-set pastetoggle=<F12>           " pastetoggle (sane indentation on pastes)
 
 set backspace=indent,eol,start  " Backspace for dummies
 set linespace=0                 " No extra spaces between rows
@@ -96,40 +82,6 @@ augroup END
 
 " }
 
-" Vim UI {
-set background=dark
-let g:gruvbox_contrast_dark = 'medium'
-let g:gruvbox_italic = 1
-let g:airline_theme = 'gruvbox'
-colorscheme gruvbox
-
-
-set showmode                    " Display the current mode
-set cursorline                  " Highlight current line
-
-highlight clear SignColumn      " SignColumn should match background
-highlight clear LineNr          " Current line number row will have same background color in relative mode
-highlight clear CursorLineNr    " Remove highlight color from current line number
-
-if has('cmdline_info')
-    set ruler                   " Show the ruler
-    set rulerformat=%30(%=\:b%n%y%m%r%w\ %l,%c%V\ %P%) " A ruler on steroids
-    set showcmd                 " Show partial commands in status line and
-endif
-
-if has('statusline')
-    set laststatus=2
-    set statusline=%<%f\                     " Filename
-    set statusline+=%w%h%m%r                 " Options
-    if !exists('g:override_bundles')
-        set statusline+=%{fugitive#statusline()} " Git Hotness
-    endif
-    set statusline+=\ [%{&ff}/%Y]            " Filetype
-    set statusline+=\ [%{getcwd()}]          " Current dir
-    set statusline+=%=%-14.(%l,%c%V%)\ %p%%  " Right aligned file nav info
-endif
-" }
-
 " Key (re)Mappings {
 " Easier moving in tabs and windows
 map <C-J> <C-W>j<C-W>_
@@ -173,3 +125,36 @@ nmap <Leader>ff [I:let nr = input("Which one: ")<Bar>exe "normal " . nr ."[\t"<C
 inoremap kj <ESC>
 " }
 
+" Vim UI {
+set background=dark
+let g:gruvbox_contrast_dark = 'medium'
+let g:gruvbox_italic = 1
+let g:airline_theme = 'gruvbox'
+colorscheme gruvbox
+
+
+set showmode                    " Display the current mode
+set cursorline                  " Highlight current line
+
+highlight clear SignColumn      " SignColumn should match background
+highlight clear LineNr          " Current line number row will have same background color in relative mode
+highlight clear CursorLineNr    " Remove highlight color from current line number
+
+if has('cmdline_info')
+    set ruler                   " Show the ruler
+    set rulerformat=%30(%=\:b%n%y%m%r%w\ %l,%c%V\ %P%) " A ruler on steroids
+    set showcmd                 " Show partial commands in status line and
+endif
+
+if has('statusline')
+    set laststatus=2
+    set statusline=%<%f\                     " Filename
+    set statusline+=%w%h%m%r                 " Options
+    if !exists('g:override_bundles')
+        set statusline+=%{fugitive#statusline()} " Git Hotness
+    endif
+    set statusline+=\ [%{&ff}/%Y]            " Filetype
+    set statusline+=\ [%{getcwd()}]          " Current dir
+    set statusline+=%=%-14.(%l,%c%V%)\ %p%%  " Right aligned file nav info
+endif
+" }

@@ -1,9 +1,9 @@
 " The default leader is '\', but many people prefer ','
 let mapleader = ','
 
-" The default mappings for editing and applying the  configuration
-let g:apply_config_mapping='<leader>sv'
-let g:edit_config_mapping='<leader>ev'
+" The default mappings for editing and applying the configuration
+let g:apply_config='<leader>sv'
+let g:edit_config='<leader>ev'
 
 " Initialize directories
 set backup
@@ -48,12 +48,30 @@ endfunction
 call InitializeDirectories()
 
 
+" Toggle
+set pastetoggle=<F12>           " pastetoggle (sane indentation on pastes)
+
+" Functions
+function! s:ExpandFilenameAndExecute(command, file)
+    execute a:command . " " . expand(a:file, ":p")
+endfunction
+
+function! s:EditConfig()
+    call <SID>ExpandFilenameAndExecute("tabedit", "~/.vimrc.init")
+    call <SID>ExpandFilenameAndExecute("tabedit", "~/.vimrc")
+    call <SID>ExpandFilenameAndExecute("vsplit", "~/.vimrc.bundles")
+    execute bufwinnr(".vimrc") . "wincmd w"
+endfunction
+
+execute "noremap " . g:edit_config . " :call <SID>EditConfig()<CR>"
+execute "noremap " . g:apply_config . " :source ~/.vimrc<CR>".":filetype detect<CR>:exe \":echo \'vimrc reloaded\'\"<CR>"
+
+
 
 " let g:no_autochdir =
 " let g:bundle_groups =
 " let g:clear_search_highlight =
 " let g:consolidated_directory = <full path to desired directory>
-" let g:edit_config_mapping =
 " let g:no_easyWindows = 1
 " let g:no_keyfixes =
 " let g:no_neosnippet_expand =
