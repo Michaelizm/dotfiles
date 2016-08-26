@@ -7,6 +7,7 @@ let g:edit_config='<leader>ev'
 
 " Initialize directories
 set backup
+
 function! InitializeDirectories()
     let parent = $HOME
     let prefix = 'vim'
@@ -22,12 +23,7 @@ function! InitializeDirectories()
         set undoreload=10000        " Maximum number lines to save for undo on a buffer reload
     endif
 
-    " To specify a different directory in which to place the vimbackup,
-    if exists('g:consolidated_directory')
-        let common_dir = g:consolidated_directory . prefix
-    else
-        let common_dir = parent . '/.' . prefix
-    endif
+    let common_dir = parent . '/.' . prefix
 
     for [dirname, settingname] in items(dir_list)
         let directory = common_dir . dirname . '/'
@@ -47,9 +43,18 @@ function! InitializeDirectories()
 endfunction
 call InitializeDirectories()
 
+" Restore cursor
+function! ResCur()
+    if line("'\"") <= line("$")
+        silent! normal! g`"
+        return 1
+    endif
+endfunction
 
-" Toggle
-set pastetoggle=<F12>           " pastetoggle (sane indentation on pastes)
+augroup resCur
+    autocmd!
+    autocmd BufWinEnter * call ResCur()
+augroup END
 
 " Functions
 function! s:ExpandFilenameAndExecute(command, file)
@@ -65,17 +70,4 @@ endfunction
 
 execute "noremap " . g:edit_config . " :call <SID>EditConfig()<CR>"
 execute "noremap " . g:apply_config . " :source ~/.vimrc<CR>".":filetype detect<CR>:exe \":echo \'vimrc reloaded\'\"<CR>"
-
-
-
-" let g:no_autochdir =
-" let g:bundle_groups =
-" let g:clear_search_highlight =
-" let g:consolidated_directory = <full path to desired directory>
-" let g:no_easyWindows = 1
-" let g:no_keyfixes =
-" let g:no_neosnippet_expand =
-" let g:no_restore_cursor =
-" let g:no_views =
-" let g:no_wrapRelMotion =
 

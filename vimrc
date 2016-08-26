@@ -42,6 +42,7 @@ set foldenable                  " Auto fold code
 set list
 set listchars=tab:›\ ,trail:•,extends:#,nbsp:. " Highlight problematic whitespace
 
+set pastetoggle=<F12>           " pastetoggle (sane indentation on pastes)
 
 filetype plugin indent on           " Automatically detect file types.
 syntax on                           " Syntax highlighting
@@ -67,19 +68,26 @@ set hidden                          " Allow buffer switching without saving
 " Always switch to the current file directory
 autocmd BufEnter * if bufname("") !~ "^\[A-Za-z0-9\]*://" | lcd %:p:h | endif
 
-" Restore cursor
-function! ResCur()
-    if line("'\"") <= line("$")
-        silent! normal! g`"
-        return 1
-    endif
+" Use Q to intelligently close a window 
+" (if there are multiple windows into the same buffer)
+" or kill the buffer entirely if it's the last window looking into that buffer
+function! CloseWindowOrKillBuffer()
+  let number_of_windows_to_this_buffer = len(filter(range(1, winnr('$')), "winbufnr(v:val) == bufnr('%')"))
+
+  " We should never bdelete a nerd tree
+  if matchstr(expand("%"), 'NERD') == 'NERD'
+    wincmd c
+    return
+  endif
+
+  if number_of_windows_to_this_buffer > 1
+    wincmd c
+  else
+    bdelete
+  endif
 endfunction
 
-augroup resCur
-    autocmd!
-    autocmd BufWinEnter * call ResCur()
-augroup END
-
+nnoremap <silent> Q :call CloseWindowOrKillBuffer()<CR>
 " }
 
 " Key (re)Mappings {
@@ -89,40 +97,57 @@ map <C-K> <C-W>k<C-W>_
 map <C-L> <C-W>l<C-W>_
 map <C-H> <C-W>h<C-W>_
 map <Leader>= <C-w>=
+
 " Most prefer to toggle search highlighting rather than clear the current
 nmap <silent> <leader>/ :set invhlsearch<CR>
+
 " For when you forget to sudo.. Really Write the file.
 cmap w!! w !sudo tee % >/dev/null
+
 " Visual shifting (does not exit Visual mode)
 vnoremap < <gv
 vnoremap > >gv
+
 " Allow using the repeat operator with a visual selection (!) http://stackoverflow.com/a/8064607/127816
 vnoremap . :normal .<CR>
+
 " Some helpers to edit mode http://vimcasts.org/e/14
 cnoremap %% <C-R>=fnameescape(expand('%:h')).'/'<cr>
 map <leader>ow :e %%
 map <leader>os :sp %%
 map <leader>ov :vsp %%
 map <leader>ot :tabe %%
+
 " Easier horizontal scrolling
 map zl zL
 map zh zH
+
 " Fast tabs
 map <S-H> gT
 map <S-L> gt
+
 " Find merge conflict markers
 map <leader>fc /\v^[<\|=>]{7}( .*\|$)<CR>
+
 " Wrapped lines goes down/up to next row, rather than next line in file.
 noremap j gj
 noremap k gk
+
 " Yank from the cursor to the end of the line, to be consistent with C and D.
 nnoremap Y y$
+
 " Fast enter command mode
 nnoremap ; :
+
 " Map <Leader>ff to display all lines with keyword under cursor and ask which one to jump to
 nmap <Leader>ff [I:let nr = input("Which one: ")<Bar>exe "normal " . nr ."[\t"<CR>
+
 " Fast jump out of insert mode
 inoremap kj <ESC>
+
+"Move back and forth through previous and next buffers
+nnoremap <silent> ,z :bp<CR>
+nnoremap <silent> ,x :bn<CR>
 " }
 
 " Vim UI {
@@ -131,7 +156,6 @@ let g:gruvbox_contrast_dark = 'medium'
 let g:gruvbox_italic = 1
 let g:airline_theme = 'gruvbox'
 colorscheme gruvbox
-
 
 set showmode                    " Display the current mode
 set cursorline                  " Highlight current line

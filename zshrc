@@ -103,7 +103,7 @@ alias pipu="pip freeze --local | grep -v '^\-e' | cut -d = -f 1  | xargs pip ins
 
 # Function
 function ali {
-ssh $1@120.25.88.28
+ssh -p 222 vagrant@120.25.88.28
 }
 
 
