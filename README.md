@@ -1,12 +1,9 @@
-# Bits of Vim #
+# Best bits of Vim #
 
 ## Screenshot ##
 
 ![image](https://github.com/Michaelizm/dotfiles/raw/master/doc/Screenshot1.png)
 ![image](https://github.com/Michaelizm/dotfiles/raw/master/doc/Screenshot2.png)
-
-    Theme: Gruvbox
-    Font: Fira Mono
 
 ## Something you should try for your Mac##
 
@@ -31,12 +28,12 @@
 
 ### Mapping prefix ###
 
-  `'i'` - effective in insert mode  
-  `'v'` - effective in visual mode  
-  `'c'` - effective in command mode  
-  `'n'` - effective in normal mode  
-  `'nore'` - not recursive  
-  `'un'` - disable key binding  
+1. `'i'` - effective in insert mode
+2. `'v'` - effective in visual mode
+3. `'c'` - effective in command mode
+4. `'n'` - effective in normal mode
+5. `'nore'` - not recursive
+6. `'un'` - disable key binding
 
 ### Mapping sample ###
 
@@ -71,16 +68,16 @@
 
 #### Edit and apply your Vimrc ####
 
+  More can be found about those 2 key bindings in `~/.vimrc.init`  
   * `,ev` - Open all your vim configuration files(`~/.vimrc.init`, `~/.vimrc` and `~/.vimrc.bounds`) and the same time
   * `,sv` - Reload and source all your vim configuration files
-  More can be found about those 2 key bindings in `~/.vimrc.init`
 
 #### Buffer Navigation ####
 
+  Every file you've opened will keep as buffers in the wings, you can tell which buffer to go from status line at the bottom  
   * `,z` - go to previous buffer (just same as :bp)
   * `,x` - go to next buffer (:bn)
   * `:b3` - go to the third buffer
-  Every file you've opened will keep as buffers in the wings, you can tell which buffer to go from status line at the bottom
 
 #### Cursor and Page Navigation ####
 
@@ -92,7 +89,7 @@
   * `G` - go to the end of file(default in vim)
 
 #### Window/Tab Navigation ####
-  Please use [ctrlp.vim](https://github.com/ctrlpvim/ctrlp.vim)
+  Please use [ctrlp.vim](https://github.com/ctrlpvim/ctrlp.vim)  
   * `Ctrl-p` - enter CtrlP
 
 
