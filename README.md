@@ -29,6 +29,8 @@ Font: Fira Mono
 
 ### Mapping sample ###
 
+
+  * Prefix for key setting
   `'i'` - effective in insert mode
   `'v'` - effective in visual mode
   `'c'` - effective in command mode
