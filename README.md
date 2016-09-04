@@ -1,10 +1,14 @@
-# Best bits of Vim #
+# dotfiles #
 
-I spent lots of time gathering some best bits of top dotfile repos to my personal config, trying to make it elegant and powerfull, meanwhile easier for maintaining and refernce. Hoping you will like the way I reformed.  
+I spent lots of time gathering some best bits of top dotfile repos to my personal config, 
+trying to make it elegant and powerful, 
+meanwhile easier for maintaining and reference. 
+Hoping you will like the way I reformed.  
 
   * `vimrc.init` - for initialization, such as some import pre-setting and create undo-dir for persist undo, and you won't want to change it for a thousand years
-  * `vimrc` - mainly for editor env setting and some default keys remapping
-  * `vimrc.bounds` - Pro user will like this, add your personal plugins in the form of `group` and set up your key bindngs right below 
+  * `vimrc` - mainly for editor env setting and some default keystrokes remapping
+  * `vimrc.bounds` - Pro user will like this, add your personal plugins in the form of `bound_group` and set up your key bindngs right below 
+
 ![image](https://github.com/Michaelizm/dotfiles/raw/master/doc/Screenshot3.png)
 
 ## Screenshot ##
@@ -12,22 +16,22 @@ I spent lots of time gathering some best bits of top dotfile repos to my persona
 ![image](https://github.com/Michaelizm/dotfiles/raw/master/doc/Screenshot1.png)
 ![image](https://github.com/Michaelizm/dotfiles/raw/master/doc/Screenshot2.png)
 
-## Something you should try for your Mac##
-
-  * [Neovim](http://lri.me/)
-  * [oh-my-zsh](http://hotfusion.nl/)
-  * [iTerm2](http://nicolasgallagher.com/)
-  * [Karabiner](https://pqrs.org/osx/karabiner/) and [Seil](https://pqrs.org/osx/karabiner/seil.html.en)
-
 ## Fonts for programing ##
 
   * [Fira Mono](https://mozilla.github.io/Fira/)
   * [Ubuntu Mono](http://font.ubuntu.com/)
 
+## Pandora's box ##
+
+  * [Neovim](https://github.com/neovim/neovim) is a project that seeks to aggressively refactor Vim 
+  * [oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh) is more powerful and convient than bash, worth a try
+  * [iTerm2](https://www.iterm2.com/) is the only terminal you want to use on your Mac(and Mac only)
+  * [Karabiner](https://pqrs.org/osx/karabiner/) and [Seil](https://pqrs.org/osx/karabiner/seil.html.en) will make up your keyboard 
+
 ## Prerequisite ##
 
-  * ag
-  * ctags
+  * [ag](https://github.com/ggreer/the_silver_searcher) is the replacement of `grep` and 5x faster than it 
+  * [ctags](https://github.com/universal-ctags/ctags) is essential for `CtrlP`
 
 -------------------------------------------------------------------------------
 
@@ -110,10 +114,6 @@ I spent lots of time gathering some best bits of top dotfile repos to my persona
 #### Better keystrokes for common editing commands ####
 
 
-#### Tabs, Windows, Splits ####
-
-
-#### Utility
 
 
 
