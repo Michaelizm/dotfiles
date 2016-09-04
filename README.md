@@ -35,6 +35,11 @@ Hoping you will like the way I reformed.
   * [ag](https://github.com/ggreer/the_silver_searcher) is the replacement of `grep` and 5x faster than it 
   * [ctags](https://github.com/universal-ctags/ctags) is essential for `CtrlP`
 
+## Installation ##
+  ```shell
+
+  ```
+
 -------------------------------------------------------------------------------
 
 ## Key (re)Mappings ##
@@ -79,13 +84,12 @@ Hoping you will like the way I reformed.
 
 #### Edit and apply your Vimrc ####
 
-  More can be found about those 2 key bindings in `~/.vimrc.init`  
   * `,ev` - Open all your vim configuration files(`~/.vimrc.init`, `~/.vimrc` and `~/.vimrc.bounds`) and the same time
   * `,sv` - Reload and source all your vim configuration files
 
 #### Buffer Navigation ####
 
-  Every file you've opened will keep as buffers in the wings, you can tell which buffer to go from status line at the bottom  
+  Every file you've opened will keep as buffers in the wings, you can tell which buffer to go from status line at the bottom
   * `,z` - go to previous buffer (just same as :bp)
   * `,x` - go to next buffer (:bn)
   * `:b3` - go to the third buffer
@@ -100,7 +104,7 @@ Hoping you will like the way I reformed.
   * `G` - go to the end of file(default in vim)
 
 #### Window/Tab Navigation ####
-  The better way would be [ctrlp.vim](https://github.com/ctrlpvim/ctrlp.vim)  
+  The better way would be [ctrlp.vim](https://github.com/ctrlpvim/ctrlp.vim)
   * `Ctrl-p` - enter CtrlP
 
 
