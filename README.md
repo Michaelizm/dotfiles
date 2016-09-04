@@ -30,30 +30,33 @@ Font: Fira Mono
 ### Mapping sample ###
 
 
-  * Prefix for key setting
-  `'i'` - effective in insert mode
-  `'v'` - effective in visual mode
-  `'c'` - effective in command mode
-  `'n'` - effective in normal mode
-  `'nore'` - not recursive
-  `'un'` - disable key binding
+    `'i'` - effective in insert mode
+    `'v'` - effective in visual mode
+    `'c'` - effective in command mode
+    `'n'` - effective in normal mode
+    `'nore'` - not recursive
+    `'un'` - disable key binding
 
 
-  * `inore` - effective in insert mode and not recursive
+  * `'inore'` - effective in insert mode and not recursive
+
   ```vim
   inoremap kj <ESC>
   ```
-  * `vnore` - effective in visual mode and not recursive
+  * `'vnore'` - effective in visual mode and not recursive
+
   ```vim
   vnoremap < <gv
   vnoremap > >gv
   vnoremap . :normal .<CR>
   ```
-  * `cnore` - effective in command mode and not recursive
+  * `'cnore'` - effective in command mode and not recursive
+
   ```vim
   cnoremap %% <C-R>=fnameescape(expand('%:h')).'/'<cr>
   ```
-  * `nnore` - effective in normal mode and not recursive
+  * `'nnore'` - effective in normal mode and not recursive
+
   ```vim
   nnoremap <silent> Q :call CloseWindowOrKillBuffer()<CR>
   noremap j gj
