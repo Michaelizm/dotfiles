@@ -1,20 +1,20 @@
 # dotfiles #
 
-I spent lots of time gathering some best bits of top dotfile repos to my personal config, 
+I spent lots of time gathering the best bits of top dotfile repos to my personal config, 
 trying to make it elegant and powerful, 
 meanwhile easier for maintaining and reference. 
-Hoping you will like the way I reformed.  
+Hoping you will like the way I reformed.
 
-  * `vimrc.init` - for initialization, such as some import pre-setting and create undo-dir for persist undo, and you won't want to change it for a thousand years
+  * `vimrc.init` - for initialization, such as some import pre-setting and create undo-dir for `persist undo`, and you won't want to change it for a thousand years
   * `vimrc` - mainly for editor env setting and some default keystrokes remapping
   * `vimrc.bounds` - Pro user will like this, add your personal plugins in the form of `bound_group` and set up your key bindngs right below 
 
-![image](https://github.com/Michaelizm/dotfiles/raw/master/doc/Screenshot3.png)
+  ![image](https://github.com/Michaelizm/dotfiles/raw/master/doc/Screenshot3.png)
 
 ## Screenshot ##
 
-![image](https://github.com/Michaelizm/dotfiles/raw/master/doc/Screenshot1.png)
-![image](https://github.com/Michaelizm/dotfiles/raw/master/doc/Screenshot2.png)
+  ![image](https://github.com/Michaelizm/dotfiles/raw/master/doc/Screenshot1.png)
+  ![image](https://github.com/Michaelizm/dotfiles/raw/master/doc/Screenshot2.png)
 
 ## Fonts for programing ##
 
@@ -23,13 +23,15 @@ Hoping you will like the way I reformed.
 
 ## Pandora's box ##
 
-  * [Neovim](https://github.com/neovim/neovim) is a project that seeks to aggressively refactor Vim 
+  * [Homebrew](http://brew.sh/) and [Homebrew-cask](https://caskroom.github.io/), I will show you how to install the most components using them in the coming 
+  * [Neovim](https://github.com/neovim/neovim) is a project that seeks to aggressively refactor Vim, still under heavy development and way better than it 
   * [oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh) is more powerful and convient than bash, worth a try
   * [iTerm2](https://www.iterm2.com/) is the only terminal you want to use on your Mac(and Mac only)
   * [Karabiner](https://pqrs.org/osx/karabiner/) and [Seil](https://pqrs.org/osx/karabiner/seil.html.en) will make up your keyboard 
 
 ## Prerequisite ##
 
+  * [vim-plug](https://github.com/junegunn/vim-plug) with super fast parallel installation/update 
   * [ag](https://github.com/ggreer/the_silver_searcher) is the replacement of `grep` and 5x faster than it 
   * [ctags](https://github.com/universal-ctags/ctags) is essential for `CtrlP`
 
@@ -58,7 +60,6 @@ Hoping you will like the way I reformed.
   ```vim
   vnoremap < <gv
   vnoremap > >gv
-  vnoremap . :normal .<CR>
   ```
   * `'cnore'` - effective in command mode and not recursive
 
@@ -74,7 +75,6 @@ Hoping you will like the way I reformed.
   nnoremap ; :
   nnoremap <silent> ,z :bp<CR>
   nnoremap <silent> ,x :bn<CR>
-  nnoremap <silent> Q :call CloseWindowOrKillBuffer()<CR>
   ```
 
 #### Edit and apply your Vimrc ####
@@ -100,7 +100,7 @@ Hoping you will like the way I reformed.
   * `G` - go to the end of file(default in vim)
 
 #### Window/Tab Navigation ####
-  Please use [ctrlp.vim](https://github.com/ctrlpvim/ctrlp.vim)  
+  The better way would be [ctrlp.vim](https://github.com/ctrlpvim/ctrlp.vim)  
   * `Ctrl-p` - enter CtrlP
 
 
