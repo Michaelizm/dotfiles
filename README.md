@@ -29,12 +29,12 @@ Font: Fira Mono
 
 ### Mapping sample ###
 
-  `i` - effective in insert mode
-  `v` - effective in visual mode
-  `c` - effective in command mode
-  `n` - effective in normal mode
-  `nore` - not recursive
-  `un` - disable key binding
+  `'i'` - effective in insert mode
+  `'v'` - effective in visual mode
+  `'c'` - effective in command mode
+  `'n'` - effective in normal mode
+  `'nore'` - not recursive
+  `'un'` - disable key binding
 
 
   * `inore` - effective in insert mode and not recursive
