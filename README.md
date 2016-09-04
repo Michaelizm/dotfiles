@@ -1,5 +1,12 @@
 # Best bits of Vim #
 
+I spent lots of time gathering some best bits of top dotfile repos to my personal config, trying to make it elegant and powerfull, meanwhile easier for maintaining and refernce. Hoping you will like the way I reformed.  
+
+  * `vimrc.init` - for initialization, such as some import pre-setting and create undo-dir for persist undo, and you won't want to change it for a thousand years
+  * `vimrc` - mainly for editor env setting and some default keys remapping
+  * `vimrc.bounds` - Pro user will like this, add your personal plugins in the form of `group` and set up your key bindngs right below 
+![image](https://github.com/Michaelizm/dotfiles/raw/master/doc/Screenshot3.png)
+
 ## Screenshot ##
 
 ![image](https://github.com/Michaelizm/dotfiles/raw/master/doc/Screenshot1.png)
@@ -28,12 +35,12 @@
 
 ### Mapping prefix ###
 
-1. `'i'` - effective in insert mode
-2. `'v'` - effective in visual mode
-3. `'c'` - effective in command mode
-4. `'n'` - effective in normal mode
-5. `'nore'` - not recursive
-6. `'un'` - disable key binding
+  `'i'` - effective in insert mode  
+  `'v'` - effective in visual mode  
+  `'c'` - effective in command mode  
+  `'n'` - effective in normal mode  
+  `'nore'` - not recursive  
+  `'un'` - disable key binding
 
 ### Mapping sample ###
 
