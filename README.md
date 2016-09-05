@@ -263,61 +263,29 @@ All the key bindings are as both mnemonic and instinct as possible, you will get
   * `,os` - find a file and open it in a split window below
   * `,ov` - find a file and open it in a split window right
   * `,ot` - find a file and open it in a new tab
-  * `Ctrl-p` - enter CtrlP
+  * `Ctrl-p` - default enter CtrlP, use `Ctrl-f` and `Ctrl-b` to cycle between modes
+      * `CtrlP` - file mode
+      * `CtrlPBuffer` - buffer mode
+      * `CtrlPMRU` - order the file list in usage
+      * `CtrlPMixed` - (optional)to search in Files, Buffers and MRU files at the same time 
+
+  ```vim
+  " Press <c-d> to switch to filename only search instead of full path.
+  " Press <c-r> to switch to regexp mode.
+  " Use <c-j>, <c-k> or the arrow keys to navigate the result list.
+  " Use <c-t> or <c-v>, <c-s> to open the selected entry in a new tab or in a new split.
+  " Use <c-n>, <c-p> to select the next/previous string in the prompt's history.
+  " Use <c-y> to create a new file and its parent directories.
+  " Use <c-z> to mark/unmark multiple files and <c-o> to open the marked files
+  ```
+
   * `,e` - open NERDTree and keep cursor on current file
 
   ```vim
   " o: open in prev window
-  " go: preview
   " t: open in new tab
-  " T: open in new tab silently
-  " middle-click,
   " i: open split
-  " gi: preview split
   " s: open vsplit
-  " gs: preview vsplit
-  "
-  " ----------------------------
-  " Directory node mappings~
-  " single-click,
-  " o: open & close node
-  " O: recursively open node
-  " x: close parent of node
-  " X: close all child nodes of
-  "    current node recursively
-  " middle-click,
-  " e: explore selected dir
-  "
-  " ----------------------------
-  " Bookmark table mappings~
-  " double-click,
-  " o: open bookmark
-  " t: open in new tab
-  " T: open in new tab silently
-  " D: delete bookmark
-  "
-  " ----------------------------
-  " Tree navigation mappings~
-  " P: go to root
-  " p: go to parent
-  " K: go to first child
-  " J: go to last child
-  " <C-j>: go to next sibling
-  " <C-k>: go to prev sibling
-  "
-  " ----------------------------
-  " Filesystem mappings~
-  " C: change tree root to the
-  "    selected dir
-  " u: move tree root up a dir
-  " U: move tree root up a dir
-  "    but leave old root open
-  " r: refresh cursor dir
-  " R: refresh current root
-  " m: Show menu
-  " cd:change the CWD to the
-  "    selected dir
-  " CD:change tree root to CWD
   ```
 
 #### Better keystrokes for common editing commands ####
