@@ -26,6 +26,7 @@ Hoping you will like the way I reformed.
 ### Pandora's box ###
 
   * [Homebrew](http://brew.sh/) and [Homebrew-cask](https://caskroom.github.io/), I will show you how to install the most components using them in the coming 
+  * [Dash](https://github.com/rizzatti/dash.vim) will search for terms using the excellent [Dash.app](https://kapeli.com/dash) , making API lookups simple on your Mac(and Maconly)
   * [iTerm2](https://www.iterm2.com/) is the only terminal you want to use on your Mac(and Mac only)
   * [Karabiner](https://pqrs.org/osx/karabiner/) and [Seil](https://pqrs.org/osx/karabiner/seil.html.en) will make up your keyboard 
   * [tpope/vim-scriptease](https://github.com/tpope/vim-scriptease) is a vim plugin for vim plugins, but the most cheerful thing is you can use it to find out
@@ -247,6 +248,8 @@ All the key bindings are as both mnemonic and instinct as possible, you will get
 
 #### Search/Code Navigation ####
 
+  * `b` and `w` - lower case b/w is for moving backward/forward of a **word**
+  * `B` and `W` - upper case B/W is for moving backward/forward of a **WORD**, wondering diff between word and WORD? check `:h word`
   * `,ff` - display all lines with keyword under cursor and ask which one to jump to
   * `,fu` - `:Ctrlpfunky` to find all functions in current file
   * `,]` - toggle [Tagbar](https://github.com/majutsushi/tagbar), a class outline viewer
@@ -256,40 +259,53 @@ All the key bindings are as both mnemonic and instinct as possible, you will get
   * `zo` - open a fold (if the cursor is in a closed fold) 
   * `zC` - close all folds at the cursor
   * `zR` - open all folds 
-  *  all shortcuts for [EasyMontion](https://github.com/easymotion/vim-easymotion) are unchanged
+  *  all shortcuts for [EasyMontion](https://github.com/easymotion/vim-easymotion) stay still 
+     * `,,w` or `,,b` - toggle **word** motion 
+     * `,,W` or `,,B` - toggle **WORD** motion 
+     * `,,s` - input one character then jumping there
+     * `,,j` - line downward
+     * `,,k` - line upward
+    
 
 #### File Navigation ####
 
   * `,os` - find a file and open it in a split window below
   * `,ov` - find a file and open it in a split window right
   * `,ot` - find a file and open it in a new tab
-  * `Ctrl-p` - default enter CtrlP, use `Ctrl-f` and `Ctrl-b` to cycle between modes
+  * `Ctrl-p` - is the better way to find something in your system for opening it, default enter file mode, use `Ctrl-f` and `Ctrl-b` to cycle between modes
       * `CtrlP` - file mode
       * `CtrlPBuffer` - buffer mode
-      * `CtrlPMRU` - order the file list in usage
+      * `CtrlPMRU` - **MRU** is for most recently used, order the file list in usage
       * `CtrlPMixed` - (optional)to search in Files, Buffers and MRU files at the same time 
 
   ```vim
-  " Press <c-d> to switch to filename only search instead of full path.
-  " Press <c-r> to switch to regexp mode.
-  " Use <c-j>, <c-k> or the arrow keys to navigate the result list.
-  " Use <c-t> or <c-v>, <c-s> to open the selected entry in a new tab or in a new split.
-  " Use <c-n>, <c-p> to select the next/previous string in the prompt's history.
-  " Use <c-y> to create a new file and its parent directories.
-  " Use <c-z> to mark/unmark multiple files and <c-o> to open the marked files
+  While CtrlP is invoking:
+  " Press <Ctrl-d> to switch to filename only search instead of full path.
+  " Press <Ctrl-r> to switch to regexp mode.
+  " Use <Ctrl-j>, <Ctrl-k> or the arrow keys to navigate the result list.
+  " Use <Ctrl-t> or <Ctrl-v>, <Ctrl-s> to open the selected entry in a new tab or in a new split.
+  " Use <Ctrl-n>, <Ctrl-p> to select the next/previous string in the prompt's history.
+  " Use <Ctrl-y> to create a new file and its parent directories.
+  " Use <Ctrl-z> to mark/unmark multiple files and <Ctrl-o> to open the marked files
   ```
 
-  * `,e` - open NERDTree and keep cursor on current file
+  * `,e` - open NERDTree and keep cursor on current file. (NERDTree can be complex, but we don't have to make it that way, the essential is fine)
 
   ```vim
+  While NERDTree is invoking:
   " o: open in prev window
   " t: open in new tab
   " i: open split
   " s: open vsplit
   ```
 
-#### Better keystrokes for common editing commands ####
+  * `,a` - `ag` aims at search key words in massive files, kind of `grep`
 
+  ```vim
+  ```
+
+#### Better keystrokes for common editing commands ####
+  * 
 
 
 
