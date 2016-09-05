@@ -264,8 +264,8 @@ All the key bindings are as both mnemonic and instinct as possible, you will get
   * `,ov` - find a file and open it in a split window right
   * `,ot` - find a file and open it in a new tab
   * `Ctrl-p` - enter CtrlP
-  * `,e` - open NERDTree and keep cursor on current file
-  ``` viml
+  * `,e` - open NERDTree and keep cursor on current file  
+  ```vim
   " o: open in prev window
   " go: preview
   " t: open in new tab
