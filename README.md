@@ -11,21 +11,30 @@ Hoping you will like the way I reformed.
 
   ![image](https://github.com/Michaelizm/dotfiles/raw/master/doc/Screenshot3.png)
 
-## Screenshot ##
+### Screenshot ###
 
   ![image](https://github.com/Michaelizm/dotfiles/raw/master/doc/Screenshot1.png)
   ![image](https://github.com/Michaelizm/dotfiles/raw/master/doc/Screenshot2.png)
 
-## Fonts for programing ##
+-------------------------------------------------------------------------------
+
+### Fonts for programing ###
 
   * [Fira Mono](https://mozilla.github.io/Fira/)
   * [Ubuntu Mono](http://font.ubuntu.com/)
 
-## Pandora's box ##
+### Pandora's box ###
 
   * [Homebrew](http://brew.sh/) and [Homebrew-cask](https://caskroom.github.io/), I will show you how to install the most components using them in the coming 
   * [iTerm2](https://www.iterm2.com/) is the only terminal you want to use on your Mac(and Mac only)
   * [Karabiner](https://pqrs.org/osx/karabiner/) and [Seil](https://pqrs.org/osx/karabiner/seil.html.en) will make up your keyboard 
+  * [tpope/vim-scriptease](https://github.com/tpope/vim-scriptease) is a vim plugin for vim plugins, but the most cheerful thing is you can use it to find out
+  all your current key bindings in use(include default key bindings and the one remapped by you, even the key bindings provided by plugins, you can find them out in 
+  one place)
+
+    * `,pk` - show all key bindings in a preview window, than use `/` to search (how to read the preview? refer to `:h map-verbose`)
+
+-------------------------------------------------------------------------------
 
 ## Prerequisite ##
 
@@ -77,27 +86,63 @@ Hoping you will like the way I reformed.
 
 -------------------------------------------------------------------------------
 
+## Editor env setting ##
+
+  ```vim
+  set termguicolors               " Force true color for neovim
+  set nowrap                      " Do not wrap long lines
+  set autoindent                  " Indent at the same level of the previous line
+  set shiftwidth=4                " Use indents of 4 spaces
+  set expandtab                   " Tabs are spaces, not tabs
+  set tabstop=4                   " An indentation every four columns
+  set softtabstop=4               " Let backspace delete indent
+  set nojoinspaces                " Prevents inserting two spaces after punctuation on a join (J)
+  set splitright                  " Puts new vsplit windows to the right of the current
+  set splitbelow                  " Puts new split windows to the bottom of the current
+  set matchpairs+=<:>             " Match, to be used with %
+  set backspace=indent,eol,start  " Backspace for dummies
+  set linespace=0                 " No extra spaces between rows
+  set number                      " Line numbers on
+  set showmatch                   " Show matching brackets/parenthesis
+  set incsearch                   " Find as you type search
+  set hlsearch                    " Highlight search terms
+  set winminheight=0              " Windows can be 0 line high
+  set ignorecase                  " Case insensitive search
+  set smartcase                   " Case sensitive when uc present
+  set wildmenu                    " Show list instead of just completing
+  set wildmode=list:longest,full  " Command <Tab> completion, list matches, then longest common part, then all.
+  set whichwrap=b,s,h,l,<,>,[,]   " Backspace and cursor keys wrap too
+  set scrolljump=5                " Lines to scroll when cursor leaves screen
+  set scrolloff=5                 " Minimum lines to keep above and below cursor
+  set foldenable                  " Auto fold code
+  set list
+  set listchars=tab:›\ ,trail:•,extends:#,nbsp:. " Highlight problematic whitespace
+
+  ```
+
+-------------------------------------------------------------------------------
+
 ## Key (re)Mappings ##
 
-### Something you may want to know about `Mapping prefix` ###
+### Something you may want to know about Mapping prefix ###
 
-  `'i'` - effective in insert mode  
-  `'v'` - effective in visual mode  
-  `'c'` - effective in command mode  
-  `'n'` - effective in normal mode  
+  `'i'` - effective in insert-mode  
+  `'v'` - effective in visual-mode  
+  `'c'` - effective in command-mode  
+  `'n'` - effective in normal-mode  
   `'nore'` - not recursive  
   `'un'` - disable key binding
 
 ### Mapping sample ###
 
-  * `'inoremap'` - effective in insert mode and not recursive
+  * `'inoremap'` - effective in insert-mode and not recursive
 
   ```vim
   " Fast jump out of insert mode
   inoremap kj <ESC>
   ```
 
-  * `'vnoremap'` - effective in visual mode and not recursive
+  * `'vnoremap'` - effective in visual-mode and not recursive
 
   ```vim
   " Visual shifting (does not exit Visual mode)
@@ -105,7 +150,7 @@ Hoping you will like the way I reformed.
   vnoremap > >gv
   ```
 
-  * `'nnoremap'` - effective in normal mode and not recursive
+  * `'nnoremap'` - effective in normal-mode and not recursive
 
   ```vim
   " Wrapped lines goes down/up to next row, rather than next line in file.
@@ -120,14 +165,14 @@ Hoping you will like the way I reformed.
   nnoremap <silent> ,x :bn<CR>
   ```
 
-  * `'cmap'` - effective in command mode and recursive
+  * `'cmap'` - effective in command-mode and recursive
 
   ```vim
   " For when you forget to sudo.. Really Write the file.
   cmap w!! w !sudo tee % >/dev/null
   ```
 
-  * `'nmap'` - effective in normal mode and recursive
+  * `'nmap'` - effective in normal-mode and recursive
 
   ```vim
   " Most prefer to toggle search highlighting rather than clear the current
@@ -136,10 +181,13 @@ Hoping you will like the way I reformed.
   nmap <Leader>ff [I:let nr = input("Which one: ")<Bar>exe "normal " . nr ."[\t"<CR>
   ```
 
-  * `'map'` - effective in all mode and recursive
+  * `'map'` - effective in all modes and recursive
 
   ```vim
-  " Easier moving in windows
+  map <leader>pi :PlugInstall<CR>
+  map <leader>pd :PlugUpdate<CR>
+  map <leader>pg :PlugUpgrade<CR>
+ " Easier moving in windows
   map <C-J> <C-W>j<C-W>_
   map <C-K> <C-W>k<C-W>_
   map <C-L> <C-W>l<C-W>_
@@ -159,11 +207,17 @@ Hoping you will like the way I reformed.
   map <leader>fc /\v^[<\|=>]{7}( .*\|$)<CR>
   ```
 
+-------------------------------------------------------------------------------
 
-#### Edit and apply your Vimrc ####
+### The frequent key bindings in use ###
+
+#### Edit and apply your vim config ####
 
   * `,ev` - Open all your vim configuration files(`~/.vimrc.init`, `~/.vimrc` and `~/.vimrc.bounds`) and the same time
   * `,sv` - Reload and source all your vim configuration files
+  * `,pi` - `:PlugInstall` 
+  * `,pd` - `:PlugUpdate`
+  * `,pg` - `:PlugUpgrade` Upgrade `vim-plug` itself
 
 #### Buffer Navigation ####
 
@@ -174,7 +228,7 @@ Hoping you will like the way I reformed.
 
 #### Cursor and Page Navigation ####
 
-  * `Ctrl-o` - jump to last cursor position(default in vim)
+  * `Ctrl-o` - jump to previous cursor position(default in vim)
   * `Ctrl-i` - opposite of Ctrl-O(default in vim)
   * `Ctrl-d` - Pagedown(default in vim)
   * `Ctrl-u` - Pageup(default in vim)
@@ -183,22 +237,34 @@ Hoping you will like the way I reformed.
 
 #### Window/Tab Navigation ####
 
-  * `Ctrl-k` - jump to the window above
-  * `Ctrl-j` - jump to the window below
-  * `Ctrl-h` - jump to the left window
-  * `Ctrl-l` - jump to the right window 
+  * `Ctrl-k` - jump to the window above and to the full height
+  * `Ctrl-j` - jump to the window below and to the full height
+  * `Ctrl-h` - jump to the left window and to the full height
+  * `Ctrl-l` - jump to the right window and to the full height
   * `,=` - equalize width and height of all windows
-  
-  
-  But the better way would be [ctrlp.vim](https://github.com/ctrlpvim/ctrlp.vim)
-  * `Ctrl-p` - enter CtrlP
-
-
+  * `H` - jump to the previous tab
+  * `L` - jump to the next tab
 
 #### Search/Code Navigation ####
-
+  * `,ff` - display all lines with keyword under cursor and ask which one to jump to
+  * `,fu` - `:Ctrlpfunky` to find all functions in current file
+  * `/` - basic search
+  * `,/` - toggle search hightlight
+  * `zc` - close a fold (if the cursor is in an open fold)
+  * `zo` - open a fold (if the cursor is in a closed fold) 
+  * `zC` - close all folds at the cursor
+  * `zR` - open all folds 
 
 #### File Navigation ####
+
+  * `,os` - find a file and open it in a split window below
+  * `,ov` - find a file and open it in a split window right
+  * `,ot` - find a file and open it in a new tab
+  But the better way would be [NERDTree](https://github.com/scrooloose/nerdtree) and [ctrlp.vim](https://github.com/ctrlpvim/ctrlp.vim)
+  * `Ctrl-p` - enter CtrlP
+
+  * `Ctrl-e` - toggle NERDTree
+  * `,e` - open NERDTree and keep cursor on current file
 
 
 #### Better keystrokes for common editing commands ####

@@ -5,6 +5,10 @@ let mapleader = ','
 let g:apply_config='<leader>sv'
 let g:edit_config='<leader>ev'
 
+map <leader>pi :PlugInstall<CR>
+map <leader>pd :PlugUpdate<CR>
+map <leader>pg :PlugUpgrade<CR>
+
 " Initialize directories
 set backup
 

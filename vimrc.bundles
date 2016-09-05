@@ -31,6 +31,8 @@ elseif executable('ack')
 endif
 nnoremap <leader>a<space> :Ack!<space>
 Plug 'vim-scripts/restore_view.vim'
+Plug 'tpope/vim-scriptease'
+nnoremap <leader>pk :Verbose map<CR>
 " }
 
 " list only the plugin groups you will use
@@ -72,7 +74,6 @@ if count(g:bundle_groups, 'general')
     let g:NERDShutUp=1
     map <C-e> <plug>NERDTreeTabsToggle<CR>
     map <leader>e :NERDTreeFind<CR>
-    nmap <leader>nt :NERDTreeFind<CR>
     let NERDTreeShowBookmarks=1
     let NERDTreeIgnore=['\.py[cd]$', '\~$', '\.swo$', '\.swp$', '^\.git$', '^\.hg$', '^\.svn$', '\.bzr$']
     let NERDTreeChDirMode=0
