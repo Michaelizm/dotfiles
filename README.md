@@ -249,7 +249,7 @@ All the key bindings are as both mnemonic and instinct as possible, you will get
 #### Search/Code Navigation ####
 
   * `b` and `w` - lower case b/w is for moving backward/forward of a **word**
-  * `B` and `W` - upper case B/W is for moving backward/forward of a **WORD**, wondering diff between word and WORD? check `:h word`
+  * `B` and `W` - upper case B/W is for moving backward/forward of a **WORD** (wondering the diff between word and WORD? check `:h word`)
   * `,ff` - display all lines with keyword under cursor and ask which one to jump to
   * `,fu` - `:Ctrlpfunky` to find all functions in current file
   * `,]` - toggle [Tagbar](https://github.com/majutsushi/tagbar), a class outline viewer
@@ -299,14 +299,31 @@ All the key bindings are as both mnemonic and instinct as possible, you will get
   " s: open vsplit
   ```
 
-  * `,a` - `ag` aims at search key words in massive files, kind of `grep`
+  * `,a<space>` - invoke `ag` which aims at searching key words in massive files, kind of `grep`, default search in current path
 
   ```vim
+  " ?       display a quick summary of these mappings.
+  " o       open file (same as Enter).
+  " O       open file and close the quickfix window.
+  " go      preview file (open but maintain focus on ack.vim results).
+  " t       open in a new tab.
+  " T       open in new tab without moving to it.
+  " h       open in horizontal split.
+  " H       open in horizontal split, keeping focus on the results.
+  " v       open in vertical split.
+  " gv      open in vertical split, keeping focus on the results.
+  " q       close the quickfix window.
   ```
 
 #### Better keystrokes for common editing commands ####
-  * 
 
+  * `Ctrl-o o` - jump to the next line immediately from insert mode
+  * vim-surround
+  * sessionman
+  * undotree
+  * vim-fugitive
+  * tabular
+  * YouCompleteMe
 
 
 
