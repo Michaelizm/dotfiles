@@ -30,9 +30,8 @@ Hoping you will like the way I reformed.
   * [Karabiner](https://pqrs.org/osx/karabiner/) and [Seil](https://pqrs.org/osx/karabiner/seil.html.en) will make up your keyboard 
   * [tpope/vim-scriptease](https://github.com/tpope/vim-scriptease) is a vim plugin for vim plugins, but the most cheerful thing is you can use it to find out
   all your current key bindings in use(include default key bindings and the one remapped by you, even the key bindings provided by plugins, you can find them out in 
-  one place)  
+  one place)
 
-  `,pk` - show all key bindings in a preview window, than use `/` to search (how to read the preview? refer to `:h map-verbose`)
 
 -------------------------------------------------------------------------------
 
@@ -72,7 +71,6 @@ Hoping you will like the way I reformed.
 
   ```shell
   git clone https://github.com/Michaelizm/dotfiles.git ~/src/
-
   ./$HOME/src/dotfile/setup.sh
   ```
 
@@ -80,7 +78,6 @@ Hoping you will like the way I reformed.
 
   ```shell
   ln -s ~/.vim ~/.config/nvim
-
   ln -s ~/.vimrc ~/.config/nvim/init.vim
   ```
 
@@ -220,6 +217,7 @@ All the key bindings are as both mnemonic and instinct as possible, you will get
   * `,pi` - `:PlugInstall` 
   * `,pd` - `:PlugUpdate`
   * `,pg` - `:PlugUpgrade` Upgrade vim-plug itself
+  * `,pk` - show all key bindings in a preview window, than use `/` to search (how to read the preview? refer to `:h map-verbose`)
 
 #### Buffer Navigation ####
 
@@ -248,6 +246,7 @@ All the key bindings are as both mnemonic and instinct as possible, you will get
   * `L` - jump to the next tab
 
 #### Search/Code Navigation ####
+
   * `,ff` - display all lines with keyword under cursor and ask which one to jump to
   * `,fu` - `:Ctrlpfunky` to find all functions in current file
   * `/` - basic search
@@ -261,10 +260,9 @@ All the key bindings are as both mnemonic and instinct as possible, you will get
 
   * `,os` - find a file and open it in a split window below
   * `,ov` - find a file and open it in a split window right
-  * `,ot` - find a file and open it in a new tab
+  * `,ot` - find a file and open it in a new tab  
   But the better way would be [NERDTree](https://github.com/scrooloose/nerdtree) and [ctrlp.vim](https://github.com/ctrlpvim/ctrlp.vim)
   * `Ctrl-p` - enter CtrlP
-
   * `Ctrl-e` - toggle NERDTree
   * `,e` - open NERDTree and keep cursor on current file
 
