@@ -55,7 +55,7 @@ Hoping you will like the way I reformed.
   brew install the_silver_searcher
   ```
 
-  * [ctags](https://github.com/universal-ctags/ctags) is essential for `CtrlP`
+  * [ctags](https://github.com/universal-ctags/ctags) is essential for `CtrlP` and `Tagbar`
 
   ```shell
   brew install ctags
@@ -212,12 +212,12 @@ All the key bindings are as both mnemonic and instinct as possible, you will get
 
 #### Edit and apply your vim config ####
 
-  * `,ev` - (edit vimrc)Open all your vim configuration files(`~/.vimrc.init`, `~/.vimrc` and `~/.vimrc.bounds`) and the same time
+  * `,ev` - (edit vimrc)Open all your vim configuration files(`~/.vimrc.init`, `~/.vimrc` and `~/.vimrc.bounds`) at the same time
   * `,sv` - (save vimrc)Reload and source all your vim configuration files
   * `,pi` - `:PlugInstall` 
   * `,pd` - `:PlugUpdate`
   * `,pg` - `:PlugUpgrade` Upgrade vim-plug itself
-  * `,pk` - show all key bindings in a preview window, than use `/` to search (how to read the preview? refer to `:h map-verbose`)
+  * `,pk` - list all key bindings in a preview window, than use `/` to search, and press `q` to exit (how to read the preview? refer to `:h map-verbose`)
 
 #### Buffer Navigation ####
 
@@ -249,23 +249,75 @@ All the key bindings are as both mnemonic and instinct as possible, you will get
 
   * `,ff` - display all lines with keyword under cursor and ask which one to jump to
   * `,fu` - `:Ctrlpfunky` to find all functions in current file
+  * `,]` - toggle [Tagbar](https://github.com/majutsushi/tagbar), a class outline viewer
   * `/` - basic search
   * `,/` - toggle search hightlight
   * `zc` - close a fold (if the cursor is in an open fold)
   * `zo` - open a fold (if the cursor is in a closed fold) 
   * `zC` - close all folds at the cursor
   * `zR` - open all folds 
+  *  all shortcuts for [EasyMontion](https://github.com/easymotion/vim-easymotion) are unchanged
 
 #### File Navigation ####
 
   * `,os` - find a file and open it in a split window below
   * `,ov` - find a file and open it in a split window right
-  * `,ot` - find a file and open it in a new tab  
-  But the better way would be [NERDTree](https://github.com/scrooloose/nerdtree) and [ctrlp.vim](https://github.com/ctrlpvim/ctrlp.vim)
+  * `,ot` - find a file and open it in a new tab
   * `Ctrl-p` - enter CtrlP
-  * `Ctrl-e` - toggle NERDTree
   * `,e` - open NERDTree and keep cursor on current file
-
+  ``` viml
+  " o: open in prev window
+  " go: preview
+  " t: open in new tab
+  " T: open in new tab silently
+  " middle-click,
+  " i: open split
+  " gi: preview split
+  " s: open vsplit
+  " gs: preview vsplit
+  "
+  " ----------------------------
+  " Directory node mappings~
+  " single-click,
+  " o: open & close node
+  " O: recursively open node
+  " x: close parent of node
+  " X: close all child nodes of
+  "    current node recursively
+  " middle-click,
+  " e: explore selected dir
+  "
+  " ----------------------------
+  " Bookmark table mappings~
+  " double-click,
+  " o: open bookmark
+  " t: open in new tab
+  " T: open in new tab silently
+  " D: delete bookmark
+  "
+  " ----------------------------
+  " Tree navigation mappings~
+  " P: go to root
+  " p: go to parent
+  " K: go to first child
+  " J: go to last child
+  " <C-j>: go to next sibling
+  " <C-k>: go to prev sibling
+  "
+  " ----------------------------
+  " Filesystem mappings~
+  " C: change tree root to the
+  "    selected dir
+  " u: move tree root up a dir
+  " U: move tree root up a dir
+  "    but leave old root open
+  " r: refresh cursor dir
+  " R: refresh current root
+  " m: Show menu
+  " cd:change the CWD to the
+  "    selected dir
+  " CD:change tree root to CWD
+  ```
 
 #### Better keystrokes for common editing commands ####
 

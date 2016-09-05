@@ -90,8 +90,6 @@ if count(g:bundle_groups, 'general')
     Plug 'tacahiroy/ctrlp-funky'
     let g:ctrlp_match_window = 'order:ttb,max:20'
     let g:ctrlp_working_path_mode = 'ra'
-    nnoremap <silent> <D-t> :CtrlP<CR>
-    nnoremap <silent> <D-r> :CtrlPMRU<CR>
     let g:ctrlp_custom_ignore = {
                 \ 'dir':  '\.git$\|\.hg$\|\.svn$',
                 \ 'file': '\.exe$\|\.so$\|\.dll$\|\.pyc$' }
@@ -137,7 +135,7 @@ if count(g:bundle_groups, 'general')
     endif
     Plug 'powerline/fonts'
     Plug 'bling/vim-bufferline'
-    Plug 'easymotion/vim-easymotion'
+    Plug 'eshowasymotion/vim-easymotion'
     Plug 'jistr/vim-nerdtree-tabs'
     Plug 'flazz/vim-colorschemes'
     Plug 'mbbill/undotree'
