@@ -11,13 +11,6 @@ Hoping you will like the way I reformed.
 
   ![image](https://github.com/Michaelizm/dotfiles/raw/master/doc/Screenshot3.png)
 
-### Screenshot ###
-
-  ![image](https://github.com/Michaelizm/dotfiles/raw/master/doc/Screenshot1.png)
-  ![image](https://github.com/Michaelizm/dotfiles/raw/master/doc/Screenshot2.png)
-
--------------------------------------------------------------------------------
-
 ### Fonts for programing ###
 
   * [Fira Mono](https://mozilla.github.io/Fira/)
@@ -33,8 +26,15 @@ Hoping you will like the way I reformed.
   all your current key bindings in use(include default key bindings and the one remapped by you, even the key bindings provided by plugins, you can find them out in 
   one place)
 
+-------------------------------------------------------------------------------
+
+### Screenshot ###
+
+  ![image](https://github.com/Michaelizm/dotfiles/raw/master/doc/Screenshot1.png)
+  ![image](https://github.com/Michaelizm/dotfiles/raw/master/doc/Screenshot2.png)
 
 -------------------------------------------------------------------------------
+
 
 ## Prerequisite ##
 
@@ -318,6 +318,7 @@ All the key bindings are as both mnemonic and instinct as possible, you will get
 #### Better keystrokes for common editing commands ####
 
   * `Ctrl-o o` - jump to the next line immediately from insert mode
+  * `Ctrl-o R` - jump to the previous line immediately from insert mode
   * vim-surround
   * sessionman
   * undotree
