@@ -30,9 +30,9 @@ Hoping you will like the way I reformed.
   * [Karabiner](https://pqrs.org/osx/karabiner/) and [Seil](https://pqrs.org/osx/karabiner/seil.html.en) will make up your keyboard 
   * [tpope/vim-scriptease](https://github.com/tpope/vim-scriptease) is a vim plugin for vim plugins, but the most cheerful thing is you can use it to find out
   all your current key bindings in use(include default key bindings and the one remapped by you, even the key bindings provided by plugins, you can find them out in 
-  one place)
+  one place)  
 
-    * `,pk` - show all key bindings in a preview window, than use `/` to search (how to read the preview? refer to `:h map-verbose`)
+  `,pk` - show all key bindings in a preview window, than use `/` to search (how to read the preview? refer to `:h map-verbose`)
 
 -------------------------------------------------------------------------------
 
@@ -211,13 +211,15 @@ Hoping you will like the way I reformed.
 
 ### The frequent key bindings in use ###
 
+All the key bindings are as both mnemonic and instinct as possible, you will get used to them in no time
+
 #### Edit and apply your vim config ####
 
-  * `,ev` - Open all your vim configuration files(`~/.vimrc.init`, `~/.vimrc` and `~/.vimrc.bounds`) and the same time
-  * `,sv` - Reload and source all your vim configuration files
+  * `,ev` - (edit vimrc)Open all your vim configuration files(`~/.vimrc.init`, `~/.vimrc` and `~/.vimrc.bounds`) and the same time
+  * `,sv` - (save vimrc)Reload and source all your vim configuration files
   * `,pi` - `:PlugInstall` 
   * `,pd` - `:PlugUpdate`
-  * `,pg` - `:PlugUpgrade` Upgrade `vim-plug` itself
+  * `,pg` - `:PlugUpgrade` Upgrade vim-plug itself
 
 #### Buffer Navigation ####
 
