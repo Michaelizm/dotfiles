@@ -1,10 +1,7 @@
 # dotfiles #
 
     
-I spent lots of time gathering the best bits of top dotfile repos to my personal config, 
-trying to make it elegant and powerful, 
-meanwhile easier for maintaining and reference. 
-Hoping you will like the way I reformed.
+I spent lots of time gathering the best bits of top dotfile repos to my personal config, tweaking to make it elegant and powerful, meanwhile easier for maintaining and reference. Hoping you will like the way I reformed.
 
   * `vimrc.init` - for initialization, such as some import pre-settings and create undo-dir for `persist undo`, and you won't want to change it for a thousand years
   * `vimrc` - mainly for editor env setting and some default keystrokes remapping
@@ -211,7 +208,7 @@ Hoping you will like the way I reformed.
 
 All the key bindings are as both mnemonic and instinct as possible, you will get used to them in no time
 
-#### Edit and apply your vim config ####
+#### vim config maintenance ####
 
   * `<space>ev` - (edit vimrc)Open all your vim configuration files(`~/.vimrc.init`, `~/.vimrc` and `~/.vimrc.bounds`) at the same time
   * `<space>sv` - (save vimrc)Reload and source all your vim configuration files
@@ -285,7 +282,6 @@ All the key bindings are as both mnemonic and instinct as possible, you will get
       " Use <Ctrl-j>, <Ctrl-k> or the arrow keys to navigate the result list.
       " Use <Ctrl-t> or <Ctrl-v>, <Ctrl-s> to open the selected entry in a new tab or in a new split.
       " Use <Ctrl-n>, <Ctrl-p> to select the next/previous string in the prompt's history.
-      " Use <Ctrl-y> to create a new file and its parent directories.
       " Use <Ctrl-z> to mark/unmark multiple files and <Ctrl-o> to open the marked files
       ```
 
@@ -337,29 +333,26 @@ All the key bindings are as both mnemonic and instinct as possible, you will get
       * `<space>ss` save session and input a name for it
       * `<space>sc` close current session
 
-  * [undotree](https://github.com/mbbill/undotree)
+  * [undotree](https://github.com/mbbill/undotree) is an undo history visualizer
 
-      * `<space>u` toggle undotree, navigate with 'g/h/j/k/l', press 'enter' to confirm and 'q' to exit
+      * `<space>u` toggle undotree, navigate with 'j/k', press 'enter' to confirm and 'q' to exit
       * `u` undo
       * `Ctrl-r` redo
 
-  * [vim-fugitive](https://github.com/tpope/vim-fugitive)
+  * [vim-fugitive](https://github.com/tpope/vim-fugitive) is a awesome git wrapper
 
-      * `<leader>gs` - Gstatus
-      * `<leader>gd` - Gdiff
-      * `<leader>gc` - Gcommit
-      * `<leader>gb` - Gblame
-      * `<leader>gl` - Glog
-      * `<leader>gp` - Git push
-      * `<leader>gr` - Gread
-      * `<leader>gw` - Gwrite
-      * `<leader>ge` - Gedit
-      * `<leader>gi` - Git add -p %
-      * `<leader>gg` - SignifyToggle
+      * `<leader>gs` - git status
+      * `<leader>gd` - git diff
+      * `<leader>gc` - git commit
+      * `<leader>gb` - git blame
+      * `<leader>gl` - git log
+      * `<leader>gp` - git push
+      * `<leader>gr` - git read
+      * `<leader>gw` - git write
+      * `<leader>ge` - git edit
+      * `<leader>gi` - git add -p %
 
-  * tabular
-  
-  * YouCompleteMe
+  * Snippets/AutoComplete with [YouCompleteMe](https://github.com/Valloric/YouCompleteMe), SirVer/ultisnips, honza/vim-snippets 
 
 
 

@@ -241,6 +241,7 @@ if  count(g:bundle_groups, 'youcompleteme')
     let g:UltiSnipsExpandTrigger = '<C-j>'
     let g:UltiSnipsJumpForwardTrigger = '<C-j>'
     let g:UltiSnipsJumpBackwardTrigger = '<C-k>'
+    let g:UltiSnipsEditSplit="vertical"
     " Enable omni completion.
     autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
     autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
