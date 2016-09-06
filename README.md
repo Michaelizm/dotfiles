@@ -24,8 +24,7 @@ Hoping you will like the way I reformed.
   * [iTerm2](https://www.iterm2.com/) is the only terminal you want to use on your Mac(and Mac only)
   * [Karabiner](https://pqrs.org/osx/karabiner/) and [Seil](https://pqrs.org/osx/karabiner/seil.html.en) will make up your keyboard 
   * [tpope/vim-scriptease](https://github.com/tpope/vim-scriptease) is a vim plugin for vim plugins, but the most cheerful thing is you can use it to find out
-  all your current key bindings in use(include default key bindings and the one remapped by you, even the key bindings provided by plugins, you can find them out in 
-  one place)
+  all your current key bindings in use(include the one remapped by you, and the key bindings provided by plugins, you can find them out in one place)
 
 -------------------------------------------------------------------------------
 
@@ -279,16 +278,16 @@ All the key bindings are as both mnemonic and instinct as possible, you will get
       * `CtrlPMRU` - 'MRU' is for most recently used, order the file list in usage
       * `CtrlPMixed` - (optional)to search in Files, Buffers and MRU files at the same time 
 
-  ```vim
-  While CtrlP is invoking:
-  " Press <Ctrl-d> to switch to filename only search instead of full path.
-  " Press <Ctrl-r> to switch to regexp mode.
-  " Use <Ctrl-j>, <Ctrl-k> or the arrow keys to navigate the result list.
-  " Use <Ctrl-t> or <Ctrl-v>, <Ctrl-s> to open the selected entry in a new tab or in a new split.
-  " Use <Ctrl-n>, <Ctrl-p> to select the next/previous string in the prompt's history.
-  " Use <Ctrl-y> to create a new file and its parent directories.
-  " Use <Ctrl-z> to mark/unmark multiple files and <Ctrl-o> to open the marked files
-  ```
+      ```vim
+      While CtrlP is invoking:
+      " Press <Ctrl-d> to switch to filename only search instead of full path.
+      " Press <Ctrl-r> to switch to regexp mode.
+      " Use <Ctrl-j>, <Ctrl-k> or the arrow keys to navigate the result list.
+      " Use <Ctrl-t> or <Ctrl-v>, <Ctrl-s> to open the selected entry in a new tab or in a new split.
+      " Use <Ctrl-n>, <Ctrl-p> to select the next/previous string in the prompt's history.
+      " Use <Ctrl-y> to create a new file and its parent directories.
+      " Use <Ctrl-z> to mark/unmark multiple files and <Ctrl-o> to open the marked files
+      ```
 
   * `<space>e` - open NERDTree and keep cursor on current file. (NERDTree can be complex, but we don't have to make it that way, the essential is fine)
 
@@ -344,7 +343,19 @@ All the key bindings are as both mnemonic and instinct as possible, you will get
       * `u` undo
       * `Ctrl-r` redo
 
-  * vim-fugitive
+  * [vim-fugitive](https://github.com/tpope/vim-fugitive)
+
+      * `<leader>gs` - Gstatus
+      * `<leader>gd` - Gdiff
+      * `<leader>gc` - Gcommit
+      * `<leader>gb` - Gblame
+      * `<leader>gl` - Glog
+      * `<leader>gp` - Git push
+      * `<leader>gr` - Gread
+      * `<leader>gw` - Gwrite
+      * `<leader>ge` - Gedit
+      * `<leader>gi` - Git add -p %
+      * `<leader>gg` - SignifyToggle
 
   * tabular
   

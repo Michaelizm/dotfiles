@@ -9,6 +9,7 @@ let g:edit_config='<leader>ev'
 map <leader>pi :PlugInstall<CR>
 map <leader>pd :PlugUpdate<CR>
 map <leader>pg :PlugUpgrade<CR>
+map <leader>pk :Verbose map<CR>
 
 " Initialize directories
 set backup
