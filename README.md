@@ -352,9 +352,11 @@ All the key bindings are as both mnemonic and instinct as possible, you will get
       * `<leader>ge` - git edit
       * `<leader>gi` - git add -p %
 
-  * Snippets/AutoComplete with [YouCompleteMe](https://github.com/Valloric/YouCompleteMe), SirVer/ultisnips, honza/vim-snippets 
+  * Snippets/AutoComplete with [YouCompleteMe](https://github.com/Valloric/YouCompleteMe), [SirVer/ultisnips](https://github.com/SirVer/ultisnips), [honza/vim-snippets](https://github.com/honza/vim-snippets) 
 
-
+     * `Ctrl-n`/`Ctrl-p` - navigate down/up the prompt
+     * `Ctrl-j` - UltiSnipsExpandTrigger and UltiSnipsJumpForwardTrigger, means you can stroke `Ctrl-j` to enter snippet and jump to next position to type
+     * `Ctrl-k` - UltiSnipsJumpBackwardTrigger
 
 ## Thanks to ##
   * [square/maximum-awesome](https://github.com/square/maximum-awesome)
