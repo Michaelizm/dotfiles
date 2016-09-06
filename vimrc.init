@@ -1,5 +1,6 @@
 " The default leader is '\', but many people prefer ','
-let mapleader = ','
+" let mapleader = ','
+let mapleader = "\<Space>"
 
 " The default mappings for editing and applying the configuration
 let g:apply_config='<leader>sv'

@@ -1,5 +1,6 @@
 # dotfiles #
 
+    
 I spent lots of time gathering the best bits of top dotfile repos to my personal config, 
 trying to make it elegant and powerful, 
 meanwhile easier for maintaining and reference. 
@@ -159,8 +160,8 @@ Hoping you will like the way I reformed.
   " Fast enter command mode
   nnoremap ; :
   "Move back and forth through previous and next buffers
-  nnoremap <silent> ,z :bp<CR>
-  nnoremap <silent> ,x :bn<CR>
+  nnoremap <silent> <leader>z :bp<CR>
+  nnoremap <silent> <leader>x :bn<CR>
   ```
 
   * `'cmap'` - effective in command-mode and recursive
@@ -213,18 +214,18 @@ All the key bindings are as both mnemonic and instinct as possible, you will get
 
 #### Edit and apply your vim config ####
 
-  * `,ev` - (edit vimrc)Open all your vim configuration files(`~/.vimrc.init`, `~/.vimrc` and `~/.vimrc.bounds`) at the same time
-  * `,sv` - (save vimrc)Reload and source all your vim configuration files
-  * `,pi` - `:PlugInstall` 
-  * `,pd` - `:PlugUpdate`
-  * `,pg` - `:PlugUpgrade` Upgrade vim-plug itself
-  * `,pk` - list all key bindings in a preview window, than use `/` to search, and press `q` to exit (how to read the preview? refer to `:h map-verbose`)
+  * `<space>ev` - (edit vimrc)Open all your vim configuration files(`~/.vimrc.init`, `~/.vimrc` and `~/.vimrc.bounds`) at the same time
+  * `<space>sv` - (save vimrc)Reload and source all your vim configuration files
+  * `<space>pi` - `:PlugInstall` 
+  * `<space>pd` - `:PlugUpdate`
+  * `<space>pg` - `:PlugUpgrade` Upgrade vim-plug itself
+  * `<space>pk` - list all key bindings in a preview window, than use `/` to search, and press `q` to exit (how to read the preview? refer to `:h map-verbose`)
 
 #### Buffer Navigation ####
 
   Every file you've opened will keep as buffers in the wings, you can tell which buffer to go from status line at the bottom
-  * `,z` - go to previous buffer (just same as :bp)
-  * `,x` - go to next buffer (:bn)
+  * `<space>z` - go to previous buffer (just same as :bp)
+  * `<space>x` - go to next buffer (:bn)
   * `:b3` - go to the third buffer
 
 #### Cursor and Page Navigation ####
@@ -242,40 +243,40 @@ All the key bindings are as both mnemonic and instinct as possible, you will get
   * `Ctrl-j` - jump to the window below and to the full height
   * `Ctrl-h` - jump to the left window and to the full height
   * `Ctrl-l` - jump to the right window and to the full height
-  * `,=` - equalize width and height of all windows
+  * `<space>=` - equalize width and height of all windows
   * `H` - jump to the previous tab
   * `L` - jump to the next tab
 
 #### Search/Code Navigation ####
 
-  * `b` and `w` - lower case b/w is for moving backward/forward of a **word**
-  * `B` and `W` - upper case B/W is for moving backward/forward of a **WORD** (wondering the diff between word and WORD? check `:h word`)
-  * `,ff` - display all lines with keyword under cursor and ask which one to jump to
-  * `,fu` - `:Ctrlpfunky` to find all functions in current file
-  * `,]` - toggle [Tagbar](https://github.com/majutsushi/tagbar), a class outline viewer
+  * `b` and `w` - lower case b/w is for moving backward/forward of a 'word'
+  * `B` and `W` - upper case B/W is for moving backward/forward of a 'WORD' (wondering the diff between 'word' and 'WORD'? check `:h word`)
+  * `<space>ff` - display all lines with keyword under cursor and ask which one to jump to
+  * `<space>fu` - `:Ctrlpfunky` to find all functions in current file
+  * `<space>]` - toggle [Tagbar](https://github.com/majutsushi/tagbar), a class outline viewer
   * `/` - basic search
-  * `,/` - toggle search hightlight
+  * `<space>/` - toggle search hightlight
   * `zc` - close a fold (if the cursor is in an open fold)
   * `zo` - open a fold (if the cursor is in a closed fold) 
   * `zC` - close all folds at the cursor
   * `zR` - open all folds 
   *  all shortcuts for [EasyMontion](https://github.com/easymotion/vim-easymotion) stay still 
-     * `,,w` or `,,b` - toggle **word** motion 
-     * `,,W` or `,,B` - toggle **WORD** motion 
-     * `,,s` - input one character then jumping there
-     * `,,j` - line downward
-     * `,,k` - line upward
+     * `<space><space>w` or `<space><space>b` - toggle 'word' motion 
+     * `<space><space>W` or `<space><space>B` - toggle 'WORD' motion 
+     * `<space><space>s` - input one character then jumping there
+     * `<space><space>j` - line downward
+     * `<space><space>k` - line upward
     
 
 #### File Navigation ####
 
-  * `,os` - find a file and open it in a split window below
-  * `,ov` - find a file and open it in a split window right
-  * `,ot` - find a file and open it in a new tab
+  * `<space>os` - find a file and open it in a split window below
+  * `<space>ov` - find a file and open it in a split window right
+  * `<space>ot` - find a file and open it in a new tab
   * `Ctrl-p` - is the better way to find something in your system for opening it, default enter file mode, use `Ctrl-f` and `Ctrl-b` to cycle between modes
       * `CtrlP` - file mode
       * `CtrlPBuffer` - buffer mode
-      * `CtrlPMRU` - **MRU** is for most recently used, order the file list in usage
+      * `CtrlPMRU` - 'MRU' is for most recently used, order the file list in usage
       * `CtrlPMixed` - (optional)to search in Files, Buffers and MRU files at the same time 
 
   ```vim
@@ -289,7 +290,7 @@ All the key bindings are as both mnemonic and instinct as possible, you will get
   " Use <Ctrl-z> to mark/unmark multiple files and <Ctrl-o> to open the marked files
   ```
 
-  * `,e` - open NERDTree and keep cursor on current file. (NERDTree can be complex, but we don't have to make it that way, the essential is fine)
+  * `<space>e` - open NERDTree and keep cursor on current file. (NERDTree can be complex, but we don't have to make it that way, the essential is fine)
 
   ```vim
   While NERDTree is invoking:
@@ -299,9 +300,10 @@ All the key bindings are as both mnemonic and instinct as possible, you will get
   " s: open vsplit
   ```
 
-  * `,a<space>` - invoke `ag` which aims at searching key words in massive files, kind of `grep`, default search in current path
+  * `<space>a<space>` - invoke `ag` which aims at searching key words in massive files, kind of `grep`, default search under current path
 
   ```vim
+  :Ack[!] [options] {pattern} [{directory}] 
   " ?       display a quick summary of these mappings.
   " o       open file (same as Enter).
   " O       open file and close the quickfix window.
@@ -318,12 +320,34 @@ All the key bindings are as both mnemonic and instinct as possible, you will get
 #### Better keystrokes for common editing commands ####
 
   * `Ctrl-o o` - jump to the next line immediately from insert mode
-  * `Ctrl-o R` - jump to the previous line immediately from insert mode
-  * vim-surround
-  * sessionman
-  * undotree
+
+  * `Ctrl-o O` - jump to the previous line immediately from insert mode
+
+  * [vim-surround](https://github.com/tpope/vim-surround) is a tool for dealing with pairs of "surroundings."  Examples of surroundings include parentheses, quotes, and HTML tags. Provided are mappings to allow for removing, changing, and adding surroundings.
+
+      * `ds'` - delete surroundings
+      * `cs"'` - change surroundings
+      * `ysiw)` - surround the word under cursor
+      * `yss)` - surround current line
+      * `vSf` - than type 'print', see what will happen
+      * `vS)` - surround the selected part
+
+  * [sessionman](https://github.com/vim-scripts/sessionman.vim) will help you manage your session
+
+      * `<space>sl` show session list
+      * `<space>ss` save session and input a name for it
+      * `<space>sc` close current session
+
+  * [undotree](https://github.com/mbbill/undotree)
+
+      * `<space>u` toggle undotree, navigate with 'g/h/j/k/l', press 'enter' to confirm and 'q' to exit
+      * `u` undo
+      * `Ctrl-r` redo
+
   * vim-fugitive
+
   * tabular
+  
   * YouCompleteMe
 
 
