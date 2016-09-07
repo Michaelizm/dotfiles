@@ -1,7 +1,8 @@
 # dotfiles #
 
+> When you see a good move, look for a better one. --Emanuel Lasker 
     
-I spent lots of time gathering the best bits of top dotfile repos to my personal config, tweaking to make it elegant and powerful, meanwhile easier for maintaining and reference. Hoping you will like the way I reformed.
+I spent lots of time gathering the best bits of top dotfile repos to my personal config, tweaking to make it elegant and powerful, meanwhile easier for maintaining and reference. Hoping you will like the way I reformed:
 
   * `vimrc.init` - for initialization, such as some import pre-settings and create undo-dir for `persist undo`, and you won't want to change it for a thousand years
   * `vimrc` - mainly for editor env setting and some default keystrokes remapping
@@ -17,7 +18,7 @@ I spent lots of time gathering the best bits of top dotfile repos to my personal
 ### Pandora's box ###
 
   * [Homebrew](http://brew.sh/) and [Homebrew-cask](https://caskroom.github.io/), I will show you how to install the most components using them in the coming 
-  * [Dash](https://github.com/rizzatti/dash.vim) will search for terms using the excellent [Dash.app](https://kapeli.com/dash) , making API lookups simple on your Mac(and Maconly)
+  * [Dash](https://github.com/rizzatti/dash.vim) will search for terms using the excellent [Dash.app](https://kapeli.com/dash)
   * [iTerm2](https://www.iterm2.com/) is the only terminal you want to use on your Mac(and Mac only)
   * [Karabiner](https://pqrs.org/osx/karabiner/) and [Seil](https://pqrs.org/osx/karabiner/seil.html.en) will make up your keyboard 
   * [tpope/vim-scriptease](https://github.com/tpope/vim-scriptease) is a vim plugin for vim plugins, but the most cheerful thing is you can use it to find out
