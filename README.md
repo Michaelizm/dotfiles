@@ -1,8 +1,9 @@
 # dotfiles #
 
-> When you see a good move, look for a better one. --Emanuel Lasker 
+> When you see a good move, look for a better one. 
+> --Emanuel Lasker 
     
-I spent lots of time gathering the best bits of top dotfile repos to my personal config, tweaking to make it elegant and powerful, meanwhile easier for maintaining and reference. Hoping you will like the way I reformed:
+I spent lots of time gathering the best bits of top dotfile repos to my personal config, trying to make it elegant and powerful, meanwhile easier for maintaining and reference. Hoping you will like the way I reformed, or just tweak it, get your hands dirty:
 
   * `vimrc.init` - for initialization, such as some import pre-settings and create undo-dir for `persist undo`, and you won't want to change it for a thousand years
   * `vimrc` - mainly for editor env setting and some default keystrokes remapping
@@ -22,7 +23,7 @@ I spent lots of time gathering the best bits of top dotfile repos to my personal
   * [iTerm2](https://www.iterm2.com/) is the only terminal you want to use on your Mac(and Mac only)
   * [Karabiner](https://pqrs.org/osx/karabiner/) and [Seil](https://pqrs.org/osx/karabiner/seil.html.en) will make up your keyboard 
   * [tpope/vim-scriptease](https://github.com/tpope/vim-scriptease) is a vim plugin for vim plugins, but the most cheerful thing is you can use it to find out
-  all your current key bindings in use(include the one remapped by you, and the key bindings provided by plugins, you can find them out in one place)
+  all your current keybindings in use(include the one remapped by you, and the keybindings provided by plugins, you can find them out in one place)
 
 -------------------------------------------------------------------------------
 
@@ -127,7 +128,7 @@ I spent lots of time gathering the best bits of top dotfile repos to my personal
   `'c'` - effective in command-mode  
   `'n'` - effective in normal-mode  
   `'nore'` - not recursive  
-  `'un'` - disable key binding
+  `'un'` - disable keybinding
 
 ### Mapping sample ###
 
@@ -205,24 +206,26 @@ I spent lots of time gathering the best bits of top dotfile repos to my personal
 
 -------------------------------------------------------------------------------
 
-### The frequent key bindings in use ###
+### The frequent keybindings in use ###
 
-All the key bindings are as both mnemonic and instinct as possible, you will get used to them in no time
+All the keybindings are as both mnemonic and instinct as possible, you will get used to them in no time
 
 #### vim config maintenance ####
 
-  * `<space>ev` - (edit vimrc)Open all your vim configuration files(`~/.vimrc.init`, `~/.vimrc` and `~/.vimrc.bounds`) at the same time
-  * `<space>sv` - (save vimrc)Reload and source all your vim configuration files
-  * `<space>pi` - `:PlugInstall` 
-  * `<space>pd` - `:PlugUpdate`
-  * `<space>pg` - `:PlugUpgrade` Upgrade vim-plug itself
-  * `<space>pk` - list all key bindings in a preview window, than use `/` to search, and press `q` to exit (how to read the preview? refer to `:h map-verbose`)
+  * `<SPC>ev` - (edit vimrc)Open all your vim configuration files(`~/.vimrc.init`, `~/.vimrc` and `~/.vimrc.bounds`) at the same time
+  * `<SPC>sv` - (save vimrc)Reload and source all your vim configuration files
+  * `<SPC>pi` - `:PlugInstall` 
+  * `<SPC>pd` - `:PlugUpdate`
+  * `<SPC>pg` - `:PlugUpgrade` Upgrade vim-plug itself
+  * `<SPC>pk` - list all keybindings in a preview window, than use `/` to search, and press `q` to exit (how to read the preview? refer to `:h map-verbose`)
+
+    > `<SPC>` is for space key
 
 #### Buffer Navigation ####
 
   Every file you've opened will keep as buffers in the wings, you can tell which buffer to go from status line at the bottom
-  * `<space>z` - go to previous buffer (just same as :bp)
-  * `<space>x` - go to next buffer (:bn)
+  * `<SPC>z` - go to previous buffer (just same as :bp)
+  * `<SPC>x` - go to next buffer (:bn)
   * `:b3` - go to the third buffer
 
 #### Cursor and Page Navigation ####
@@ -240,7 +243,7 @@ All the key bindings are as both mnemonic and instinct as possible, you will get
   * `Ctrl-j` - jump to the window below and to the full height
   * `Ctrl-h` - jump to the left window and to the full height
   * `Ctrl-l` - jump to the right window and to the full height
-  * `<space>=` - equalize width and height of all windows
+  * `<SPC>=` - equalize width and height of all windows
   * `H` - jump to the previous tab
   * `L` - jump to the next tab
 
@@ -248,28 +251,28 @@ All the key bindings are as both mnemonic and instinct as possible, you will get
 
   * `b` and `w` - lower case b/w is for moving backward/forward of a 'word'
   * `B` and `W` - upper case B/W is for moving backward/forward of a 'WORD' (wondering the diff between 'word' and 'WORD'? check `:h word`)
-  * `<space>ff` - display all lines with keyword under cursor and ask which one to jump to
-  * `<space>fu` - `:Ctrlpfunky` to find all functions in current file
-  * `<space>]` - toggle [Tagbar](https://github.com/majutsushi/tagbar), a class outline viewer
+  * `<SPC>ff` - display all lines with keyword under cursor and ask which one to jump to
+  * `<SPC>fu` - `:Ctrlpfunky` to find all functions in current file
+  * `<SPC>]` - toggle [Tagbar](https://github.com/majutsushi/tagbar), a class outline viewer
   * `/` - basic search
-  * `<space>/` - toggle search hightlight
+  * `<SPC>/` - toggle search hightlight
   * `zc` - close a fold (if the cursor is in an open fold)
   * `zo` - open a fold (if the cursor is in a closed fold) 
   * `zC` - close all folds at the cursor
   * `zR` - open all folds 
   *  all shortcuts for [EasyMontion](https://github.com/easymotion/vim-easymotion) stay still 
-     * `<space><space>w` or `<space><space>b` - toggle 'word' motion 
-     * `<space><space>W` or `<space><space>B` - toggle 'WORD' motion 
-     * `<space><space>s` - input one character then jumping there
-     * `<space><space>j` - line downward
-     * `<space><space>k` - line upward
+     * `<SPC><SPC>w` or `<SPC><SPC>b` - toggle 'word' motion 
+     * `<SPC><SPC>W` or `<SPC><SPC>B` - toggle 'WORD' motion 
+     * `<SPC><SPC>s` - input one character then jumping there
+     * `<SPC><SPC>j` - line downward
+     * `<SPC><SPC>k` - line upward
     
 
 #### File Navigation ####
 
-  * `<space>os` - find a file and open it in a split window below
-  * `<space>ov` - find a file and open it in a split window right
-  * `<space>ot` - find a file and open it in a new tab
+  * `<SPC>os` - find a file and open it in a split window below
+  * `<SPC>ov` - find a file and open it in a split window right
+  * `<SPC>ot` - find a file and open it in a new tab
   * `Ctrl-p` - is the better way to find something in your system for opening it, default enter file mode, use `Ctrl-f` and `Ctrl-b` to cycle between modes
       * `CtrlP` - file mode
       * `CtrlPBuffer` - buffer mode
@@ -286,7 +289,7 @@ All the key bindings are as both mnemonic and instinct as possible, you will get
       " Use <Ctrl-z> to mark/unmark multiple files and <Ctrl-o> to open the marked files
       ```
 
-  * `<space>e` - open NERDTree and keep cursor on current file. (NERDTree can be complex, but we don't have to make it that way, the essential is fine)
+  * `<SPC>e` - open NERDTree and keep cursor on current file. (NERDTree can be complex, but we don't have to make it that way, the essential is fine)
 
   ```vim
   While NERDTree is invoking:
@@ -296,7 +299,7 @@ All the key bindings are as both mnemonic and instinct as possible, you will get
   " s: open vsplit
   ```
 
-  * `<space>a<space>` - invoke `ag` which aims at searching key words in massive files, kind of `grep`, default search under current path
+  * `<SPC>a<SPC>` - invoke `ag` which aims at searching key words in massive files, kind of `grep`, default search under current path
 
   ```vim
   :Ack[!] [options] {pattern} [{directory}] 
@@ -330,13 +333,13 @@ All the key bindings are as both mnemonic and instinct as possible, you will get
 
   * [sessionman](https://github.com/vim-scripts/sessionman.vim) will help you manage your session
 
-      * `<space>sl` show session list
-      * `<space>ss` save session and input a name for it
-      * `<space>sc` close current session
+      * `<SPC>sl` show session list
+      * `<SPC>ss` save session and input a name for it
+      * `<SPC>sc` close current session
 
   * [undotree](https://github.com/mbbill/undotree) is an undo history visualizer
 
-      * `<space>u` toggle undotree, navigate with 'j/k', press 'enter' to confirm and 'q' to exit
+      * `<SPC>u` toggle undotree, navigate with 'j/k', press 'enter' to confirm and 'q' to exit
       * `u` undo
       * `Ctrl-r` redo
 
