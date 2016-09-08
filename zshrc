@@ -98,7 +98,7 @@ alias ....='cd ../../..; ls'
 alias m='mark'
 alias ms='marks'
 alias j='jump'
-alias brewu='brew update && brew cask update && brew cleanup && brew cask cleanup && brew prune && brew doctor'
+alias brewu='brew update && brew cask update && brew cleanup && brew cask cleanup && brew prune'
 alias pipu="pip freeze --local | grep -v '^\-e' | cut -d = -f 1  | xargs pip install -U"
 
 # Function
