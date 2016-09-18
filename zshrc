@@ -13,6 +13,7 @@ export CHEATCOLORS=true
 # time that oh-my-zsh is loaded.
 ZSH_THEME=pygmalion
 
+
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
 
@@ -49,7 +50,7 @@ HIST_STAMPS="yyyy/mm/dd"
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-plugins=(markdown git svn cp vagrant colored-man colorize github virtualenv pip python brew-cask brew jump osx zsh-syntax-highlighting)
+plugins=(emacs markdown git colorize github virtualenv pip python brew-cask brew jump osx zsh-syntax-highlighting)
 
 # User configuration
 export MANPATH="/usr/local/man:$MANPATH"
@@ -80,7 +81,6 @@ export SSH_KEY_PATH="~/.ssh/dsa_id"
 # For a full list of active aliases, run `alias`.
 #
 # Aliases
-alias s='subl'
 alias v='nvim'
 alias vi='nvim'
 alias vim='nvim'
@@ -98,8 +98,6 @@ alias ....='cd ../../..; ls'
 alias m='mark'
 alias ms='marks'
 alias j='jump'
-alias brewu='brew update && brew cask update && brew cleanup && brew cask cleanup && brew prune'
-alias brewg='brew upgrade'
 alias pipu="pip freeze --local | grep -v '^\-e' | cut -d = -f 1  | xargs pip install -U"
 alias p='percol'
 
