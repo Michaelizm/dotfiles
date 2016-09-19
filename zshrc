@@ -50,7 +50,7 @@ HIST_STAMPS="yyyy/mm/dd"
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-plugins=(emacs markdown git colorize github virtualenv pip python brew-cask brew jump osx zsh-syntax-highlighting)
+plugins=(markdown git colorize github virtualenv pip python brew-cask brew jump osx zsh-syntax-highlighting)
 
 # User configuration
 export MANPATH="/usr/local/man:$MANPATH"
