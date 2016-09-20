@@ -1,6 +1,7 @@
 # dotfiles #
 
 > When you see a good move, look for a better one.                     --Emanuel Lasker  
+
 If you are a geek with lofty ideals, you would agree that `life is for hacking`, I spent lots of time gathering the best bits of top dotfile repos to my personal config, trying to make it elegant and powerful, meanwhile easier for maintaining and reference. Hoping you will like the way I reformed, or just tweak it, get your hands dirty:
 
   * `vimrc.init` - for initialization, such as some import pre-settings and create undo-dir for `persist undo`, and you won't want to change it for millennia
