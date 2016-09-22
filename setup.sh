@@ -73,11 +73,11 @@ create_symlinks() {
     lnif "$source_path/percol.d"            "$target_path/.percol.d"
 
     lnif "$source_path/zshrc"               "$target_path/.zshrc"
-    lnif "$source_path/zshenv"              "$target_path/.zshenv"
-    lnif "$source_path/zlogin"              "$target_path/.zlogin"
-    lnif "$source_path/zlogout"             "$target_path/.zlogout"
-    lnif "$source_path/zpreztorc"           "$target_path/.zpreztorc"
-    lnif "$source_path/zprofile"            "$target_path/.zprofile"
+    # lnif "$source_path/zshenv"              "$target_path/.zshenv"
+    # lnif "$source_path/zlogin"              "$target_path/.zlogin"
+    # lnif "$source_path/zlogout"             "$target_path/.zlogout"
+    # lnif "$source_path/zpreztorc"           "$target_path/.zpreztorc"
+    # lnif "$source_path/zprofile"            "$target_path/.zprofile"
     ret="$?"
     success "Setting up vim symlinks."
     debug
