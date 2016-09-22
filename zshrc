@@ -11,14 +11,14 @@ export CHEATCOLORS=true
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME=pygmalion
+ZSH_THEME=sorin
 
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
 
 # Uncomment the following line to disable bi-weekly auto-update checks.
-# DISABLE_AUTO_UPDATE="true"
+DISABLE_AUTO_UPDATE="true"
 
 # Uncomment the following line to change how often to auto-update (in days).
 export UPDATE_ZSH_DAYS=7
@@ -30,7 +30,7 @@ export UPDATE_ZSH_DAYS=7
 DISABLE_AUTO_TITLE="true"
 
 # Uncomment the following line to enable command auto-correction.
-#ENABLE_CORRECTION="true"
+ENABLE_CORRECTION="true"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
 COMPLETION_WAITING_DOTS="true"
@@ -38,7 +38,7 @@ COMPLETION_WAITING_DOTS="true"
 # Uncomment the following line if you want to disable marking untracked files
 # under VCS as dirty. This makes repository status check for large repositories
 # much, much faster.
-# DISABLE_UNTRACKED_FILES_DIRTY="true"
+DISABLE_UNTRACKED_FILES_DIRTY="true"
 
 # Uncomment the following line if you want to change the command execution time
 # stamp shown in the history command output.
@@ -50,11 +50,11 @@ HIST_STAMPS="yyyy/mm/dd"
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-plugins=(markdown git colorize github virtualenv pip python brew-cask brew jump osx zsh-syntax-highlighting)
+plugins=(z brew git github virtualenv pip python osx)
 
 # User configuration
 export MANPATH="/usr/local/man:$MANPATH"
-export PATH="$HOME/bin:/usr/lib/:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$PATH"
+export PATH="$HOME/bin:/usr/lib:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$PATH"
 
 source $ZSH/oh-my-zsh.sh
 
@@ -95,9 +95,6 @@ alias histg="history | grep"
 alias ..='cd ..; ls'
 alias ...='cd ../..; ls'
 alias ....='cd ../../..; ls'
-alias m='mark'
-alias ms='marks'
-alias j='jump'
 alias pipu="pip freeze --local | grep -v '^\-e' | cut -d = -f 1  | xargs pip install -U"
 alias p='percol'
 
