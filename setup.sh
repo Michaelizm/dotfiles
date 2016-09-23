@@ -79,7 +79,7 @@ create_symlinks() {
     # lnif "$source_path/zpreztorc"           "$target_path/.zpreztorc"
     # lnif "$source_path/zprofile"            "$target_path/.zprofile"
     ret="$?"
-    success "Setting up vim symlinks."
+    success "Setting up symlinks."
     debug
 }
 
