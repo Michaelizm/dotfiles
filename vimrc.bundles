@@ -1,4 +1,4 @@
-" Function {
+" Plugin Manager {
 function! DoRemote(arg)
     UpdateRemotePlugins
 endfunction
@@ -29,7 +29,7 @@ elseif executable('ack-grep')
 elseif executable('ack')
     Plug 'mileszs/ack.vim'
 endif
-nnoremap <leader>a<space> :Ack!<space>
+nnoremap <leader>aa :Ack!<space>
 Plug 'vim-scripts/restore_view.vim'
 Plug 'tpope/vim-scriptease'
 nnoremap <leader>pk :Verbose map<CR>
@@ -49,6 +49,7 @@ endif
 " Mine {
 if count(g:bundle_groups, 'mine')
     Plug 'morhetz/gruvbox'
+    Plug 'iCyMind/NeoSolarized'
     Plug 'rizzatti/dash.vim'
     nmap <silent> <leader>d <Plug>DashSearch
 endif

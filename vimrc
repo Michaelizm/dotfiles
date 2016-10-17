@@ -11,7 +11,7 @@ if filereadable(expand("~/.vimrc.bundles"))
 endif
 " }
 
-" General {
+" Env Setting {
 set termguicolors               " Force true color for neovim
 set nowrap                      " Do not wrap long lines
 set autoindent                  " Indent at the same level of the previous line
@@ -23,6 +23,7 @@ set nojoinspaces                " Prevents inserting two spaces after punctuatio
 set splitright                  " Puts new vsplit windows to the right of the current
 set splitbelow                  " Puts new split windows to the bottom of the current
 set matchpairs+=<:>             " Match, to be used with %
+set lazyredraw                  " redraw only when we need to.
 
 set backspace=indent,eol,start  " Backspace for dummies
 set linespace=0                 " No extra spaces between rows
@@ -42,7 +43,6 @@ set foldenable                  " Auto fold code
 set list
 set listchars=tab:›\ ,trail:•,extends:#,nbsp:. " Highlight problematic whitespace
 
-map <F7> mzgg=G`z
 set pastetoggle=<F12>           " pastetoggle (sane indentation on pastes)
 
 filetype plugin indent on           " Automatically detect file types.
@@ -68,27 +68,45 @@ set hidden                          " Allow buffer switching without saving
 
 " Always switch to the current file directory
 autocmd BufEnter * if bufname("") !~ "^\[A-Za-z0-9\]*://" | lcd %:p:h | endif
+" }
 
-" Use Q to intelligently close a window 
-" (if there are multiple windows into the same buffer)
-" or kill the buffer entirely if it's the last window looking into that buffer
-function! CloseWindowOrKillBuffer()
-    let number_of_windows_to_this_buffer = len(filter(range(1, winnr('$')), "winbufnr(v:val) == bufnr('%')"))
+" Vim UI {
+set background=dark
+" let g:gruvbox_contrast_dark = 'medium'
+" let g:gruvbox_italic = 1
+" let g:airline_theme = 'gruvbox'
+" colorscheme gruvbox
+set t_8f=^[[38;2;%lu;%lu;%lum
+set t_8b=^[[48;2;%lu;%lu;%lum
+let g:neosolarized_contrast = "normal"
+let g:neosolarized_visibility = "normal"
+let g:neosolarized_bold = 1
+let g:neosolarized_underline = 1
+let g:neosolarized_italic = 1
+colorscheme NeoSolarized
 
-    " We should never bdelete a nerd tree
-    if matchstr(expand("%"), 'NERD') == 'NERD'
-        wincmd c
-        return
-    endif
+set showmode                    " Display the current mode
+set cursorline                  " Highlight current line
 
-    if number_of_windows_to_this_buffer > 1
-        wincmd c
-    else
-        bdelete
-    endif
-endfunction
+highlight clear SignColumn      " SignColumn should match background
+highlight clear LineNr          " Current line number row will have same background color in relative mode
+highlight clear CursorLineNr    " Remove highlight color from current line number
 
-nnoremap <silent> Q :call CloseWindowOrKillBuffer()<CR>
+if has('cmdline_info')
+    set ruler                   " Show the ruler
+    set rulerformat=%30(%=\:b%n%y%m%r%w\ %l,%c%V\ %P%) " A ruler on steroids
+    set showcmd                 " Show partial commands in status line and
+endif
+
+if has('statusline')
+    set laststatus=2
+    set statusline=%<%f\                     " Filename
+    set statusline+=%w%h%m%r                 " Options
+    set statusline+=%{fugitive#statusline()} " Git Hotness
+    set statusline+=\ [%{&ff}/%Y]            " Filetype
+    set statusline+=\ [%{getcwd()}]          " Current dir
+    set statusline+=%=%-14.(%l,%c%V%)\ %p%%  " Right aligned file nav info
+endif
 " }
 
 " Key (re)Mappings {
@@ -151,35 +169,3 @@ nnoremap <silent> <leader>z :bp<CR>
 nnoremap <silent> <leader>x :bn<CR>
 " }
 
-" Vim UI {
-set background=dark
-let g:gruvbox_contrast_dark = 'medium'
-let g:gruvbox_italic = 1
-let g:airline_theme = 'gruvbox'
-colorscheme gruvbox
-
-set showmode                    " Display the current mode
-set cursorline                  " Highlight current line
-
-highlight clear SignColumn      " SignColumn should match background
-highlight clear LineNr          " Current line number row will have same background color in relative mode
-highlight clear CursorLineNr    " Remove highlight color from current line number
-
-if has('cmdline_info')
-    set ruler                   " Show the ruler
-    set rulerformat=%30(%=\:b%n%y%m%r%w\ %l,%c%V\ %P%) " A ruler on steroids
-    set showcmd                 " Show partial commands in status line and
-endif
-
-if has('statusline')
-    set laststatus=2
-    set statusline=%<%f\                     " Filename
-    set statusline+=%w%h%m%r                 " Options
-    if !exists('g:override_bundles')
-        set statusline+=%{fugitive#statusline()} " Git Hotness
-    endif
-    set statusline+=\ [%{&ff}/%Y]            " Filetype
-    set statusline+=\ [%{getcwd()}]          " Current dir
-    set statusline+=%=%-14.(%l,%c%V%)\ %p%%  " Right aligned file nav info
-endif
-" }
