@@ -72,18 +72,18 @@ autocmd BufEnter * if bufname("") !~ "^\[A-Za-z0-9\]*://" | lcd %:p:h | endif
 
 " Vim UI {
 set background=dark
-" let g:gruvbox_contrast_dark = 'medium'
-" let g:gruvbox_italic = 1
-" let g:airline_theme = 'gruvbox'
-" colorscheme gruvbox
-set t_8f=^[[38;2;%lu;%lu;%lum
-set t_8b=^[[48;2;%lu;%lu;%lum
-let g:neosolarized_contrast = "normal"
-let g:neosolarized_visibility = "normal"
-let g:neosolarized_bold = 1
-let g:neosolarized_underline = 1
-let g:neosolarized_italic = 1
-colorscheme NeoSolarized
+let g:gruvbox_contrast_dark = 'medium'
+let g:gruvbox_italic = 1
+let g:airline_theme = 'gruvbox'
+colorscheme gruvbox
+" set t_8f=^[[38;2;%lu;%lu;%lum
+" set t_8b=^[[48;2;%lu;%lu;%lum
+" let g:neosolarized_contrast = "normal"
+" let g:neosolarized_visibility = "normal"
+" let g:neosolarized_bold = 1
+" let g:neosolarized_underline = 1
+" let g:neosolarized_italic = 1
+" colorscheme NeoSolarized
 
 set showmode                    " Display the current mode
 set cursorline                  " Highlight current line
