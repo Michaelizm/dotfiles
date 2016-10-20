@@ -129,14 +129,16 @@ if count(g:bundle_groups, 'general')
         let g:airline_symbols = {}
     endif
     if !exists('g:airline_powerline_fonts')
-        let g:airline_left_sep = '▶'
+        let g:airline_left_sep = '»'
         let g:airline_left_alt_sep = '❯'
-        let g:airline_right_sep = '◀'
+        let g:airline_right_sep = '«'
         let g:airline_right_alt_sep = '❮'
     endif
     Plug 'powerline/fonts'
     Plug 'bling/vim-bufferline'
     Plug 'easymotion/vim-easymotion'
+    let g:EasyMotion_do_mapping = 0
+    let g:EasyMotion_smartcase = 1
     Plug 'jistr/vim-nerdtree-tabs'
     Plug 'flazz/vim-colorschemes'
     Plug 'mbbill/undotree'
@@ -199,7 +201,6 @@ if count(g:bundle_groups, 'programming')
     nnoremap <silent> <leader>gi :Git add -p %<CR>
     nnoremap <silent> <leader>gg :SignifyToggle<CR>
     Plug 'mattn/webapi-vim'
-    Plug 'mattn/gist-vim'
     Plug 'scrooloose/nerdcommenter'
     Plug 'tpope/vim-commentary'
     Plug 'godlygeek/tabular'
