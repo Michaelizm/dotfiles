@@ -164,8 +164,11 @@ nmap <Leader>ff [I:let nr = input("Which one: ")<Bar>exe "normal " . nr ."[\t"<C
 " Fast jump out of insert mode
 inoremap kj <ESC>
 
-"Move back and forth through previous and next buffers
-nnoremap <silent> <leader>z :bp<CR>
-nnoremap <silent> <leader>x :bn<CR>
+"move back and forth through previous and next buffers
+nnoremap <silent> <leader>z :bp<cr>
+noremap <silent> <leader>x :bn<cr>
+
+nmap <leader>s <Plug>(wildfire-quick-select)
+
 " }
 
