@@ -173,8 +173,8 @@ nmap <Leader>ff [I:let nr = input("Which one: ")<Bar>exe "normal " . nr ."[\t"<C
 inoremap kj <ESC>
 
 "move back and forth through previous and next buffers
-nnoremap <silent> <leader>z :bp<cr>
-noremap <silent> <leader>x :bn<cr>
+nnoremap <silent> <C-f> :bp<cr>
+noremap <silent> <C-b> :bn<cr>
 
 nmap <leader>s <Plug>(wildfire-quick-select)
 
