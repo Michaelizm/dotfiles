@@ -68,6 +68,8 @@ set hidden                          " Allow buffer switching without saving
 
 " Always switch to the current file directory
 autocmd BufEnter * if bufname("") !~ "^\[A-Za-z0-9\]*://" | lcd %:p:h | endif
+" let terminal resize scale the internal windows
+autocmd VimResized * :wincmd =
 " }
 
 " Vim UI {
