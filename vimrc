@@ -119,6 +119,12 @@ map <C-L> <C-W>l<C-W>_
 map <C-H> <C-W>h<C-W>_
 map <Leader>= <C-w>=
 
+" Use arrow keys to resize windows
+noremap <up>    <C-W>+
+noremap <down>  <C-W>-
+noremap <left>  3<C-W><
+noremap <right> 3<C-W>>
+
 " Most prefer to toggle search highlighting rather than clear the current
 nmap <silent> <leader>/ :set invhlsearch<CR>
 
@@ -175,5 +181,6 @@ nmap <leader>s <Plug>(wildfire-quick-select)
 " Move visual block
 vnoremap J :m '>+1<CR>gv=gv
 vnoremap K :m '<-2<CR>gv=gv
+
 " }
 
