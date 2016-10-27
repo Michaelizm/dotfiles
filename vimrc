@@ -112,6 +112,12 @@ endif
 " }
 
 " Key (re)Mappings {
+
+" Emacs-like <C-g>
+cnoremap <silent> <C-g> <ESC><CR>
+vnoremap <silent> <C-g> <ESC>
+
+
 " Easier moving in tabs and windows
 map <C-J> <C-W>j<C-W>_
 map <C-K> <C-W>k<C-W>_
