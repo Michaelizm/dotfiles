@@ -170,5 +170,8 @@ noremap <silent> <leader>x :bn<cr>
 
 nmap <leader>s <Plug>(wildfire-quick-select)
 
+" Move visual block
+vnoremap J :m '>+1<CR>gv=gv
+vnoremap K :m '<-2<CR>gv=gv
 " }
 
