@@ -74,10 +74,10 @@ autocmd VimResized * :wincmd =
 
 " Vim UI {
 set background=dark
-let g:gruvbox_contrast_dark = 'medium'
-let g:gruvbox_italic = 1
-let g:airline_theme = 'gruvbox'
-colorscheme gruvbox
+" let g:gruvbox_contrast_dark = 'medium'
+" let g:gruvbox_italic = 1
+" let g:airline_theme = 'gruvbox'
+" colorscheme gruvbox
 " set t_8f=^[[38;2;%lu;%lu;%lum
 " set t_8b=^[[48;2;%lu;%lu;%lum
 " let g:neosolarized_contrast = "normal"
@@ -86,6 +86,7 @@ colorscheme gruvbox
 " let g:neosolarized_underline = 1
 " let g:neosolarized_italic = 1
 " colorscheme NeoSolarized
+colorscheme sourcerer
 
 set showmode                    " Display the current mode
 set cursorline                  " Highlight current line
