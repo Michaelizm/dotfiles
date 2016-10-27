@@ -128,6 +128,10 @@ noremap <right> 3<C-W>>
 " Most prefer to toggle search highlighting rather than clear the current
 nmap <silent> <leader>/ :set invhlsearch<CR>
 
+" Keep search matches in the middle of the screen
+nnoremap n nzz
+nnoremap N Nzz
+
 " For when you forget to sudo.. Really Write the file.
 cmap w!! w !sudo tee % >/dev/null
 
