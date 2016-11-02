@@ -69,6 +69,7 @@ create_symlinks() {
     lnif "$source_path/vimrc"               "$target_path/.vimrc"
     lnif "$source_path/vimrc.bundles"       "$target_path/.vimrc.bundles"
     lnif "$source_path/vimrc.init"          "$target_path/.vimrc.init"
+    lnif "$source_path/tmux.conf"           "$target_path/.tmux.conf"
 
     lnif "$source_path/percol.d"            "$target_path/.percol.d"
 
@@ -79,7 +80,8 @@ create_symlinks() {
 
 ############################ MAIN()
 variable_set "$HOME"
-program_must_exist "vim"
+program_must_exist "nvim"
+program_must_exist "tmux"
 program_must_exist "git"
 create_symlinks "$APP_PATH" "$HOME"
 
