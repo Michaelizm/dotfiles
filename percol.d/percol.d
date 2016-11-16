@@ -1,1 +1,0 @@
-/home/zhchen/src/dotfiles/percol.d
