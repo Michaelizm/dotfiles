@@ -1,17 +1,17 @@
 # Run command file for percol
-percol.view.PROMPT = ur"<blue>Input:</blue> %q"
-percol.view.RPROMPT = ur"(%F) [%i/%I]"
-percol.view.__class__.PROMPT = property(
-    lambda self:
-    ur"<bold><blue>QUERY </blue>[a]:</bold> %q" if percol.model.finder.case_insensitive
-    else ur"<bold><green>QUERY </green>[A]:</bold> %q"
-)
-percol.view.prompt_replacees["F"] = lambda self, **args: self.model.finder.get_name()
-percol.view.RPROMPT = ur"(%F) [%i/%I]"
-percol.view.CANDIDATES_LINE_BASIC    = ("on_default", "default")
-percol.view.CANDIDATES_LINE_SELECTED = ("underline", "on_yellow", "white")
-percol.view.CANDIDATES_LINE_MARKED   = ("bold", "on_cyan", "black")
-percol.view.CANDIDATES_LINE_QUERY    = ("yellow", "bold")
+# percol.view.PROMPT = ur"<blue>Input:</blue> %q"
+# percol.view.RPROMPT = ur"(%F) [%i/%I]"
+# percol.view.__class__.PROMPT = property(
+#     lambda self:
+#     ur"<bold><blue>QUERY </blue>[a]:</bold> %q" if percol.model.finder.case_insensitive
+#     else ur"<bold><green>QUERY </green>[A]:</bold> %q"
+# )
+# percol.view.prompt_replacees["F"] = lambda self, **args: self.model.finder.get_name()
+# percol.view.RPROMPT = ur"(%F) [%i/%I]"
+# percol.view.CANDIDATES_LINE_BASIC    = ("on_default", "default")
+# percol.view.CANDIDATES_LINE_SELECTED = ("underline", "on_yellow", "white")
+# percol.view.CANDIDATES_LINE_MARKED   = ("bold", "on_cyan", "black")
+# percol.view.CANDIDATES_LINE_QUERY    = ("yellow", "bold")
 
 # Emacs like
 percol.import_keymap({
