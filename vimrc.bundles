@@ -123,7 +123,6 @@ if count(g:bundle_groups, 'core')
     nmap <leader>sl :SessionList<CR>
     nmap <leader>ss :SessionSave<CR>
     nmap <leader>sc :SessionClose<CR>
-    Plug 'matchit.zip'
     let b:match_ignorecase = 1
     Plug 'vim-airline/vim-airline'
     Plug 'vim-airline/vim-airline-themes'
@@ -277,8 +276,6 @@ if count(g:bundle_groups, 'python')
     let g:pymode_options = 0
     let g:pymode_rope = 0
     Plug 'yssource/python.vim'
-    Plug 'python_match.vim'
-    Plug 'pythoncomplete'
 endif
 " }
 
